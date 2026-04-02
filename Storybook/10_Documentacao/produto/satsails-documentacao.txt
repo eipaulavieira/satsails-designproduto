@@ -1,0 +1,503 @@
+SATSAILS — DOCUMENTAÇÃO COMPLETA E CONSOLIDADA
+Versão unificada — Abril 2025
+================================================================================
+
+
+1. O QUE É A SATSAILS
+================================================================================
+
+A Satsails é uma carteira digital brasileira de autocustódia com suporte a
+Bitcoin, Lightning Network e Liquid Network, com interface em português e inglês.
+Fundada por Alan Schramm, a Satsails foi projetada para oferecer aos usuários
+controle total sobre seus ativos digitais, sem intermediários e com total
+privacidade.
+
+Com código aberto e auditado, a plataforma combina praticidade e segurança,
+reunindo Bitcoin, Lightning Network, Liquid Network e stablecoins em um único
+aplicativo intuitivo. Disponível para dispositivos Android e iOS, a Satsails
+nasceu com a missão de democratizar a soberania financeira — permitindo que
+qualquer pessoa, independentemente do nível técnico, possa gerenciar suas
+finanças digitais de forma autônoma.
+
+Através de uma interface simples e intuitiva, qualquer pessoa pode comprar,
+guardar, enviar e receber criptoativos usando PIX, com liquidação quase
+instantânea e taxas reduzidas.
+
+Tagline: "Seja soberano com a Satsails."
+
+Slogan do site: "Simplicidade e poder nas suas mãos. A wallet que simplifica
+suas transações e coloca a soberania em suas mãos. Você não precisa de
+complexidade para converter bitcoin, você precisa de simplicidade."
+
+
+2. DADOS DA EMPRESA
+================================================================================
+
+- Nome: Satsails
+- Fundador: Alan Schramm
+- Endereço corporativo: 390 NE 191st St STE 8558, Miami, Florida, USA, 33179
+- Site oficial: satsails.com
+- Suporte: suporte@satsails.com
+- Comunidade: t.me/satsails
+- Instagram: @satsails
+- Repositório oficial: github.com/Satsails/Satsails
+- Licença: GPL-2.0
+- Disponibilidade: Google Play Store, Apple App Store e APK direto via GitHub
+
+
+3. PROPOSTA DE VALOR
+================================================================================
+
+A principal proposta da Satsails é oferecer soberania financeira real ao
+usuário brasileiro. O app permite que qualquer pessoa — independente do nível
+técnico — gerencie seus próprios ativos digitais sem depender de bancos,
+corretoras ou intermediários.
+
+A Satsails entrega isso por meio de uma carteira de autocustódia completa, que
+unifica Bitcoin (onchain, Lightning e Liquid), stablecoins e a compra direta
+via PIX em uma única plataforma intuitiva, com suporte em português.
+
+A proposta central pode ser resumida em:
+"Você no controle total do seu dinheiro — com simplicidade, segurança e
+liberdade."
+
+
+4. PRINCIPAIS CARACTERÍSTICAS
+================================================================================
+
+- Autocustódia: Controle total sobre seus fundos, sem intermediários.
+- Código aberto e auditado: Transparência e segurança verificáveis publicamente
+  no GitHub.
+- Suporte multimoeda: Compatibilidade com Bitcoin onchain, LBTC, USDT, EURx e
+  DePix.
+- Rede Lightning Network e Liquid Network: Transações rápidas, econômicas e com
+  maior privacidade.
+- Integração com DePix e PIX: Compra e conversão direta de reais para Bitcoin
+  dentro do app.
+- Suporte em português e inglês: Atendimento 24/7 diretamente no aplicativo.
+- Programa de afiliados: Canal de crescimento orgânico via comunidade. Indique
+  amigos e ganhe comissão nas taxas de transação.
+- Analytics e portfolio: Gráfico de evolução patrimonial, taxa de rendimento e
+  histórico completo de transações.
+- CounterFlow: Gráficos de preço e indicadores do Bitcoin integrados ao app
+  para decisões informadas.
+- Disponibilidade: Android e iOS.
+
+
+5. FUNCIONALIDADES DETALHADAS
+================================================================================
+
+5.1 Carteira Bitcoin e DePix
+-----------------------------
+Armazenamento seguro de Bitcoin na rede Liquid. DePix é um token lastreado 1:1
+no Real Brasileiro, com conversão em tempo real entre BRL, BTC e DePix.
+
+5.2 Compra via PIX
+-----------------------------
+Compra de DePix e Bitcoin usando PIX de qualquer banco, sem burocracia. A
+liquidação pode ser imediata (modo Pessoal) ou em até 24h (modo Comercial).
+
+5.3 Saque Eulen — DePix para BRL
+-----------------------------
+Novo fluxo de venda de DePix diretamente via PIX, com input de telefone
+formatado automaticamente e exibição do saldo convertido em tempo real antes
+de confirmar a operação.
+
+5.4 Enviar e Receber
+-----------------------------
+- Receber Bitcoin via QR Code em qualquer rede (Onchain, Lightning, Liquid)
+- Enviar Bitcoin inserindo endereço ou escaneando QR Code
+- Enviar e receber stablecoins (USDT, EURx, DePix) na Liquid Network
+- Enviar USDT nas principais redes via contratos inteligentes
+- Lightning Bitcoin através da Boltz
+
+5.5 Conversão entre Ativos
+-----------------------------
+Conversão direta entre ativos dentro do app: DePix para Bitcoin, USDT para
+LBTC, BTC Onchain para Lightning, entre outros. Visualização de preview de
+taxa e valor recebido antes de confirmar.
+
+5.6 CounterFlow
+-----------------------------
+Gráficos de preço e indicadores do Bitcoin integrados ao app. Ferramenta
+educacional que permite ao usuário aprender a ler o mercado enquanto usa
+a carteira.
+
+5.7 Analytics e Portfolio
+-----------------------------
+Gráfico de evolução patrimonial, taxa de rendimento sobre saldo em DePix e
+histórico completo de transações com status em tempo real. Filtro por ativo
+ou rede e acesso a detalhes de cada transação.
+
+5.8 Programa de Afiliados
+-----------------------------
+Indique amigos e ganhe comissão nas taxas de transação. Acompanhe seus
+indicados e ganhos pelo painel da carteira. O programa funciona via link de
+afiliado inserido no cadastro.
+
+Slogan do programa: "Transforme sua audiência em satoshis. Espalhe soberania.
+Seja recompensado em sats."
+
+Registro e login em: affiliates.satsails.com
+
+5.9 Suporte Técnico
+-----------------------------
+Chat de suporte técnico embutido diretamente no aplicativo, com atendimento
+24/7 em português e inglês. Suporte humano, não apenas FAQs.
+
+
+6. ESTRUTURA DE USO DA CARTEIRA
+================================================================================
+
+A partir da versão mais recente do aplicativo, o usuário escolhe como quer
+utilizar a Satsails. Cada modo oferece condições específicas para garantir
+menos fraude, mais previsibilidade e uma operação sustentável.
+
+6.1 Uso Pessoal
+-----------------------------
+Para uso individual. Indicado para quem utiliza a carteira para fins próprios.
+
+- Liquidação imediata: o saldo de DePix cai na hora
+- ID fixo vinculado ao usuário (Eulen ID)
+- Uso exclusivo do próprio titular
+- Não permite receber PIX de terceiros
+- Taxa: 3%, podendo chegar a 0,8%
+- Requer cadastro de e-mail
+
+6.2 Uso Comercial
+-----------------------------
+Para quem recebe de clientes. Indicado para lojistas e profissionais que
+utilizam a plataforma para receber pagamentos.
+
+- Receba PIX de qualquer CPF ou CNPJ
+- Liquidação em até 24 horas
+- O prazo existe para proteção contra golpes de estorno
+- Taxa reduzida: 0,8% a 3%
+- Cadastro de merchant simplificado
+
+6.3 Por que essa mudança?
+-----------------------------
+Usuários mal-intencionados vinham praticando o golpe do estorno em escala,
+comprometendo a operação do banco liquidador parceiro. A nova estrutura cria
+mecanismos de classificação que permitem identificar o perfil de uso de cada
+carteira, aplicar regras de liquidação adequadas ao risco e proteger os
+usuários legítimos sem impactar a experiência de quem usa a plataforma
+corretamente.
+
+IMPORTANTE: A atualização do aplicativo é obrigatória para continuar utilizando
+todos os recursos normalmente. Disponível até o momento somente para dispositivos
+Android.
+
+
+7. O QUE O APP PERMITE O USUÁRIO FAZER
+================================================================================
+
+7.1 Onboarding e Acesso
+-----------------------------
+- Criar ou restaurar carteira via seed phrase
+- Fazer login com PIN numérico (biometria opcional)
+- Entrar com link de afiliado no cadastro
+
+7.2 Página Inicial (Home)
+-----------------------------
+- Visualizar saldo total consolidado (BTC + stablecoins) com opção de ocultar
+- Ver saldo individual por ativo: Bitcoin onchain, Lightning BTC, Liquid BTC,
+  USDT, EURx, DePix
+- Acessar botões de ação rápida: Enviar, Receber, Converter, Comprar
+- Ver gráfico de preço e indicadores CounterFlow do Bitcoin
+
+7.3 Enviar e Receber
+-----------------------------
+- Receber Bitcoin via QR Code em qualquer rede (Onchain, Lightning, Liquid)
+- Enviar Bitcoin inserindo endereço ou escaneando QR Code
+- Enviar e receber stablecoins (USDT, EURx, DePix) na Liquid Network
+- Enviar USDT nas principais redes via contratos inteligentes
+
+7.4 Compra e Conversão
+-----------------------------
+- Comprar DePix diretamente via PIX dentro do app
+- Converter entre ativos: DePix para Bitcoin, USDT para LBTC, BTC Onchain para
+  Lightning
+- Visualizar preview de taxa e valor recebido antes de confirmar
+
+7.5 Histórico e Analytics
+-----------------------------
+- Ver histórico completo de transações com status (enviado, recebido, pendente)
+- Filtrar transações por ativo ou rede
+- Acessar detalhes de cada transação
+- Ver analytics das ações realizadas na carteira
+- Consultar gráficos de fluxo Bitcoin (CounterFlow)
+
+7.6 Suporte e Configurações
+-----------------------------
+- Acionar suporte técnico diretamente dentro do app (chat 24/7)
+- Gerenciar configurações de segurança (PIN, biometria, backup)
+- Acessar programa de afiliados e compartilhar link
+
+
+8. ATUALIZAÇÕES RECENTES DO APLICATIVO
+================================================================================
+
+8.1 Saque Eulen (DePix → BRL via PIX)
+Novo fluxo de venda de DePix diretamente via PIX, com input de telefone
+formatado automaticamente e exibição do saldo convertido em tempo real.
+
+8.2 Mensagens Customizadas
+Novo sistema de comunicação interno ao app. Avisos, atualizações e notificações
+enviados diretamente pela equipe Satsails.
+
+8.3 Novo Modelo de Contas
+Interface redesenhada com cards explicativos por tipo de conta. Benefícios,
+taxas e condições de cada modo apresentados de forma clara antes da escolha.
+
+8.4 Verificação de E-mail
+Novo fluxo de validação no cadastro, com política de um e-mail único por
+usuário para maior segurança. Integrado ao Eulen ID no modo Pessoal.
+
+8.5 Cadastro de Merchant Melhorado
+Processo de cadastro comercial mais simples e direto, com menos etapas até
+a aprovação.
+
+8.6 Nova Área de Informações da Conta
+Página completa com todos os dados do usuário: histórico de uso, taxas pagas
+e configurações em um só lugar.
+
+
+9. STATUS DE TRANSAÇÕES
+================================================================================
+
+Se o aplicativo exibir o status "delayed" em uma transação, isso não significa
+erro ou problema. Trata-se de uma medida anti-estorno aplicada temporariamente.
+
+STATUS      | DESCRIÇÃO
+------------|-------------------------------------------------------------------
+pending     | Transação enviada, aguardando processamento.
+delayed     | Transação aprovada, aguardando liquidação em até 24h.
+completed   | Saldo creditado com sucesso na carteira.
+failed      | Transação recusada. Entre em contato com o suporte.
+
+O status "delayed" é uma resposta de emergência ao aumento de golpes de estorno
+praticados por usuários mal-intencionados. O banco liquidador parceiro solicitou
+essa medida com urgência. Ela será removida conforme a nova estrutura de contas
+for implementada para todos os usuários.
+
+
+10. BOAS PRÁTICAS DE SEGURANÇA
+================================================================================
+
+- Nunca compartilhe seu Eulen ID ou credenciais com terceiros
+- Ative a verificação de e-mail para maior proteção da conta
+- Atualize o aplicativo sempre que uma nova versão estiver disponível
+- Em caso de suspeita de acesso não autorizado, contate o suporte imediatamente
+- Usuários no modo Pessoal não podem receber PIX de terceiros — tentativas
+  violam os Termos de Uso
+- Usuários no modo Comercial devem informar corretamente se receberão de CPF
+  ou CNPJ
+
+
+11. PÚBLICO-ALVO
+================================================================================
+
+O público-alvo da Satsails é composto principalmente por:
+
+- Brasileiros que buscam soberania financeira e proteção contra a inflação e
+  desvalorização monetária
+- Usuários iniciantes e intermediários em criptomoedas que precisam de uma
+  interface acessível em português
+- Pessoas insatisfeitas com o sistema financeiro tradicional — que sentem que
+  as regras do jogo são invisíveis
+- Usuários do PIX que desejam converter reais para Bitcoin de forma simples
+  via DePix
+- Pessoas com mentalidade de longo prazo que querem preservar valor e ter
+  autonomia real sobre seu patrimônio
+
+
+12. DIFERENCIAIS COMPETITIVOS
+================================================================================
+
+- Suporte nativo em português: diferencial crítico no mercado brasileiro, com
+  atendimento 24/7
+- Integração com DePix e PIX: possibilita a compra e conversão direta de reais
+  para Bitcoin dentro do próprio app
+- Tudo em um só lugar: Bitcoin onchain, Lightning Network, Liquid Network e
+  stablecoins em um único aplicativo
+- Código aberto e auditado: transparência e segurança verificáveis publicamente
+  no GitHub
+- Foco em soberania financeira: proposta de valor alinhada às dores reais do
+  público brasileiro (inflação, dependência bancária, falta de educação
+  financeira)
+- Programa de afiliados: canal de crescimento orgânico via comunidade
+- Interface acessível para todos os níveis de usuário, sem abrir mão de
+  recursos avançados
+- CounterFlow como diferencial educacional: o usuário aprende a ler o mercado
+  enquanto usa
+
+
+13. DIFERENCIAIS DA EXPERIÊNCIA DO APP
+================================================================================
+
+- Interface 100% em português com linguagem acessível para iniciantes
+- Design dark com identidade visual Bitcoin — sombrio, moderno e confiável
+- Onboarding guiado que educa o usuário sobre autocustódia sem intimidar
+- PIX como porta de entrada: remover a fricção de entrada no mundo cripto via
+  método de pagamento já familiar
+- Tudo em um só app: sem precisar alternar entre carteiras diferentes para cada
+  rede
+- Suporte humano embutido — não apenas FAQs — transmitindo confiança para quem
+  está começando
+- CounterFlow como diferencial educacional: o usuário aprende a ler o mercado
+  enquanto usa
+
+
+14. CONCORRENTES
+================================================================================
+
+Os principais concorrentes diretos identificados são Bipa e Wallet Aqua.
+
+A Satsails se destaca por ser a única solução que combina: integração PIX/DePix
+nativa, suporte completo em português, Lightning + Liquid + Onchain, stablecoins
+e programa de afiliados — tudo em um só aplicativo.
+
+
+15. PARCEIROS E INTEGRAÇÕES
+================================================================================
+
+- SideShift.ai — serviço de conversão de ativos
+- NoxPay — infraestrutura de pagamentos
+- Spark Money — soluções financeiras
+- Blockstream — infraestrutura Liquid Network
+- DePix — stablecoin lastreada no Real Brasileiro
+- Eulen — sistema de identidade e liquidação
+
+
+16. IDENTIDADE VISUAL
+================================================================================
+
+16.1 Paleta de Cores
+-----------------------------
+COR           | HEX       | USO
+--------------|-----------|---------------------------------------------------
+Cinza claro   | #D1D2D2   | Textos sobre fundo escuro
+Laranja       | #FF9800   | CTAs, ícones ativos e destaques
+Vermelho      | #CF1C0E   | Erros, alertas e variação negativa
+Verde         | #00C853   | Confirmações e variação positiva
+Cinza escuro  | #333333   | Elementos de interface
+Preto         | #0C0B0D   | Fundo principal (dark mode)
+Branco        | #FFFFFF   | Textos sobre fundo escuro
+
+16.2 Tipografia
+-----------------------------
+- Fonte principal: Inter
+- Estilo: Sans-serif moderna, alta legibilidade em telas pequenas
+- Hierarquia: Títulos em bold / Corpo em regular / Labels em medium
+- Tamanhos recomendados: Título 24-32px / Corpo 14-16px / Labels 12px
+
+16.3 Estilo Visual Geral
+-----------------------------
+- Dark mode como padrão — fundo #0C0B0D com elementos em #333333
+- Acentos em laranja #FF9800 para CTAs, ícones ativos e destaques
+- Verde #00C853 para confirmações e variação positiva
+- Vermelho #CF1C0E para erros, alertas e variação negativa
+- Identidade visual alinhada ao universo Bitcoin: sombria, técnica e confiável
+
+
+17. DORES DO PÚBLICO-ALVO
+================================================================================
+
+17.1 Raiz do Problema: Soberania Financeira
+--------------------------------------------
+O usuário-alvo da Satsails depende de um sistema financeiro que não controla.
+Não sabe que existe um sistema mais seguro, nunca foi ensinado a questionar o
+modelo atual e não teve acesso a ferramentas ou recomendações nesse sentido.
+O mercado cripto ainda é novo, a cultura está acostumada com o sistema
+tradicional e as escolas não ensinam educação financeira.
+
+17.2 Dores Complementares
+--------------------------------------------
+1.  Sensação de estar jogando um jogo com regras invisíveis — A pessoa sente
+    que trabalha, investe, guarda dinheiro, mas não entende quem define as
+    regras.
+
+2.  Impotência diante de decisões que ela não controla — Inflação sobe. Juros
+    mudam. Moeda perde valor. E ela não participou de nenhuma decisão.
+
+3.  Medo silencioso do futuro — Não é medo de hoje. É medo de descobrir tarde
+    demais que deveria ter protegido melhor o patrimônio.
+
+4.  Dependência emocional do sistema tradicional — Confiança cega em banco,
+    governo ou instituições porque "sempre foi assim".
+
+5.  Falta de repertório para questionar o modelo atual — Ela não discorda do
+    sistema — porque nunca foi ensinada a questionar.
+
+6.  Sensação de atraso — Quando descobre que existe outro sistema (Bitcoin,
+    autocustódia), vem a culpa: "Por que ninguém me falou disso antes?"
+
+7.  Medo de sair do padrão social — Se ninguém do ciclo dela usa, ela hesita.
+    O risco social parece maior que o risco financeiro.
+
+8.  Desconfiança de tudo que é novo — Não porque seja irracional, mas porque
+    nunca foi educada para entender alternativas.
+
+9.  Cansaço de correr e não sair do lugar — Trabalha mais. Ganha mais. Mas o
+    poder de compra não acompanha.
+
+10. Falta de visão de longo prazo — O sistema ensina consumo imediato. Não
+    ensina preservação de valor.
+
+11. Sensação de que o dinheiro "evapora" — Sem entender inflação estrutural ou
+    expansão monetária, a pessoa só sente que está sempre recomeçando.
+
+12. Falta de autonomia real — Ela usa dinheiro todos os dias, mas não controla
+    emissão, custódia ou regras.
+
+13. Medo de perseguição financeira futura — Bloqueios, censuras, limites,
+    travas. Mesmo que nunca tenha acontecido, o medo existe.
+
+14. Desalinhamento entre esforço e recompensa — Trabalha no presente. Mas o
+    sistema favorece quem entende o mecanismo.
+
+15. Sensação de que a escola falhou — Anos estudando e nunca aprendeu como
+    proteger valor no longo prazo.
+
+
+18. CONTEXTO HISTÓRICO CITADO
+================================================================================
+
+O sistema monetário perdeu o lastro com o ouro em 15 de agosto de 1971.
+O sistema não foi desenhado para pensar no longo prazo — recompensa quem
+domina o presente, não quem protege o futuro. Essa é a base ideológica da
+proposta da Satsails: oferecer uma alternativa real e acessível para
+preservação de valor fora do sistema tradicional.
+
+
+19. LINKS ÚTEIS
+================================================================================
+
+- Site:               https://www.satsails.com/
+- Google Play:        https://play.google.com/store/apps/details?id=com.satsails.Satsails
+- App Store:          https://apps.apple.com/us/app/satsails/id6738081156
+- APK Android:        https://github.com/Satsails/Satsails/releases/download/v2.2.2/satsails.apk
+- GitHub:             https://github.com/Satsails/Satsails
+- Afiliados Registro: https://affiliates.satsails.com/register
+- Afiliados Login:    https://affiliates.satsails.com/login
+- Privacidade:        https://www.satsails.com/política-de-privacidade
+- Termos de Uso:      https://www.satsails.com/termos-de-uso
+- Termos Afiliados:   https://www.satsails.com/termos-afiliados
+- Suporte:            suporte@satsails.com
+- Telegram:           t.me/satsails
+- Instagram:          @satsails
+
+
+20. CONTATO
+================================================================================
+
+- Site oficial: satsails.com
+- Suporte:      suporte@satsails.com
+- Comunidade:   t.me/satsails
+- Instagram:    @satsails
+
+================================================================================
+"Seguimos ajustando o sistema para crescer com segurança e cortar oportunistas
+do caminho." — Equipe Satsails
+================================================================================
