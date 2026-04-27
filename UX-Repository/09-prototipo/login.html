@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Satsails — Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      min-height: 100vh;
+      padding: 32px 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Moldura do celular */
+    .phone-frame {
+      width: 390px;
+      height: 844px;
+      background: #080808;
+      border-radius: 30px;
+      overflow: hidden;
+      position: relative;
+      box-shadow:
+        0 0 0 2px #2a2a2a,
+        0 40px 80px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Status bar */
+    .status-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px 0;
+      z-index: 10;
+    }
+
+    .status-time {
+      font-size: 15px;
+      font-weight: 500;
+      color: #fff;
+      letter-spacing: -0.3px;
+    }
+
+    .status-icons {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-icons svg {
+      fill: #fff;
+    }
+
+    /* Hero image — logo 3D */
+    .hero-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 540px;
+      background-image: url('https://www.figma.com/api/mcp/asset/bd66874d-60ef-4b55-a929-46029de988f3');
+      background-size: cover;
+      background-position: center top;
+    }
+
+    /* Gradiente que faz a imagem fundir com o fundo */
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(to bottom, transparent, #080808);
+    }
+
+    /* Conteúdo principal (parte de baixo) */
+    .main-content {
+      position: absolute;
+      bottom: 16px;
+      left: 31px;
+      right: 31px;
+      display: flex;
+      flex-direction: column;
+      gap: 68px;
+      align-items: center;
+    }
+
+    .content-section {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      width: 100%;
+    }
+
+    .text-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .headline {
+      font-size: 48px;
+      font-weight: 500;
+      color: #ffffff;
+      letter-spacing: -1.92px;
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 24px;
+      font-weight: 300;
+      color: #727272;
+      letter-spacing: -0.96px;
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    /* Botões */
+    .buttons-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .btn {
+      width: 100%;
+      height: 52px;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.25);
+      transition: opacity 0.15s ease, transform 0.1s ease;
+      letter-spacing: -0.2px;
+    }
+
+    .btn:active {
+      opacity: 0.85;
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: #FF9800;
+      color: #000000;
+    }
+
+    .btn-secondary {
+      background: #080808;
+      color: #ffffff;
+      border: 1px solid #333333;
+    }
+
+    /* Texto de termos */
+    .terms-text {
+      font-size: 8px;
+      font-weight: 400;
+      color: #727272;
+      text-align: center;
+      line-height: 1.5;
+      width: 163px;
+    }
+
+    .terms-text strong {
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    /* Responsivo: tela pequena mostra versão "browser" */
+    @media (max-width: 500px) {
+      body {
+        background: #080808;
+        align-items: flex-start;
+      }
+
+      .phone-frame {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="splash-screen.html" style="
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #727272;
+    text-decoration: none;
+    letter-spacing: -0.2px;
+    transition: color 0.15s;
+  " onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#727272'">
+    ← Recomeçar fluxo
+  </a>
+
+  <div class="phone-frame">
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+      <span class="status-time">9:41</span>
+      <div class="status-icons">
+        <!-- Signal -->
+        <svg width="17" height="12" viewBox="0 0 17 12" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="7" width="3" height="5" rx="0.5" fill="white"/>
+          <rect x="4.5" y="5" width="3" height="7" rx="0.5" fill="white"/>
+          <rect x="9" y="2.5" width="3" height="9.5" rx="0.5" fill="white"/>
+          <rect x="13.5" y="0" width="3" height="12" rx="0.5" fill="white" opacity="0.35"/>
+        </svg>
+        <!-- WiFi -->
+        <svg width="16" height="12" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 9.5C8.828 9.5 9.5 10.172 9.5 11S8.828 12.5 8 12.5 6.5 11.828 6.5 11 7.172 9.5 8 9.5z" fill="white"/>
+          <path d="M8 6.5C9.657 6.5 11.143 7.19 12.218 8.282L13.28 7.22C11.924 5.838 10.057 5 8 5s-3.924.838-5.28 2.22l1.062 1.062C4.857 7.19 6.343 6.5 8 6.5z" fill="white"/>
+          <path d="M8 3C10.756 3 13.243 4.06 15.1 5.82L16.14 4.78C14.003 2.735 11.148 1.5 8 1.5S1.997 2.735-.14 4.78L.9 5.82C2.757 4.06 5.244 3 8 3z" fill="white" opacity="0.5"/>
+        </svg>
+        <!-- Battery -->
+        <svg width="25" height="12" viewBox="0 0 25 12" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="white" stroke-opacity="0.35"/>
+          <rect x="22.5" y="3.5" width="1" height="5" rx="0.5" fill="white" fill-opacity="0.4"/>
+          <rect x="2" y="2" width="17" height="8" rx="2" fill="white"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Hero: logo 3D Satsails -->
+    <div class="hero-image"></div>
+
+    <!-- Conteúdo inferior -->
+    <div class="main-content">
+
+      <div class="content-section">
+
+        <div class="text-section">
+          <h1 class="headline">Seja soberano com a Satsails</h1>
+          <p class="subtitle">Gerencie Bitcoin e stablecoins sem depender de ninguém.</p>
+        </div>
+
+        <div class="buttons-container">
+          <button class="btn btn-primary" onclick="window.location.href='criar-pin.html'">Criar carteira</button>
+          <button class="btn btn-secondary">Recuperar carteira</button>
+        </div>
+
+      </div>
+
+      <p class="terms-text">
+        Ao continuar, você concorda com nossos
+        <strong>Termos de Uso</strong>
+        e
+        <strong>Política de Privacidade</strong>.
+      </p>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

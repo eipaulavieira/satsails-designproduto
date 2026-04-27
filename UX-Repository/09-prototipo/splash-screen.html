@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Satsails</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: sans-serif;
+    }
+
+    .phone-frame {
+      width: 390px;
+      height: 844px;
+      background: #0c0b0d;
+      border-radius: 30px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 0 2px #2a2a2a, 0 40px 80px rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo {
+      width: 200px;
+      height: 200px;
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    .phone-frame.fade-out {
+      animation: fadeOut 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to   { opacity: 0; }
+    }
+
+    @media (max-width: 500px) {
+      body { background: #0c0b0d; }
+      .phone-frame { width: 100%; height: 100vh; border-radius: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="phone-frame" id="frame">
+    <img
+      class="logo"
+      src="https://www.figma.com/api/mcp/asset/fa1df47a-e7a5-47dd-8516-aa84814ce94f"
+      alt="Satsails"
+    />
+  </div>
+
+  <script>
+    setTimeout(function () {
+      document.getElementById('frame').classList.add('fade-out');
+      setTimeout(function () {
+        window.location.href = 'login.html';
+      }, 500);
+    }, 2000);
+  </script>
+
+</body>
+</html>

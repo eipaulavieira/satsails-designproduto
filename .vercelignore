@@ -1,0 +1,16 @@
+# Storybook — não incluso neste deploy
+Storybook/
+
+# Pastas UX não publicadas
+UX-Repository/01-briefing-e-estrategia
+UX-Repository/02-arquitetura-de-informacao
+UX-Repository/03-design-system
+UX-Repository/04-ui-e-mockups
+UX-Repository/05-branding-e-identidade
+UX-Repository/05-variants-e-estados
+UX-Repository/06-documentacao-e-handoff
+UX-Repository/07-comunicacao-e-conteudo
+UX-Repository/08-arquivo
+
+# Interno
+CLAUDE.md
