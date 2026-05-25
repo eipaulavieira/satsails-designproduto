@@ -1,0 +1,113 @@
+import { Meta } from '@storybook/blocks';
+import { colorGroups } from '../tokens/colors';
+
+<Meta title="Fundação/Cores" />
+
+export const groups = Object.entries(colorGroups);
+
+<div style={{ maxWidth: 900, fontFamily: 'Inter, -apple-system, sans-serif' }}>
+
+<div style={{ marginBottom: 40 }}>
+  <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#F7931A', margin: '0 0 8px' }}>
+    01 / Fundação
+  </p>
+  <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em', color: '#0C0B0D', margin: '0 0 12px' }}>Cores</h1>
+  <p style={{ fontSize: 15, color: '#6b7280', lineHeight: 1.7, margin: '0 0 8px', maxWidth: 560 }}>
+    Paleta oficial da Satsails organizada por família. Cada cor exibe três formatos de uso:
+  </p>
+  <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+    <span style={{ fontSize: 13, color: '#374151' }}><code style={{ background: '#f3f4f6', padding: '2px 6px', borderRadius: 4 }}>HEX</code> — para CSS e Figma</span>
+    <span style={{ fontSize: 13, color: '#374151' }}><code style={{ background: '#f3f4f6', padding: '2px 6px', borderRadius: 4 }}>CSS</code> — custom property (<code>var(--color-x)</code>)</span>
+    <span style={{ fontSize: 13, color: '#374151' }}><code style={{ background: '#f3f4f6', padding: '2px 6px', borderRadius: 4 }}>Flutter</code> — <code>Color(0xFFRRGGBB)</code></span>
+  </div>
+</div>
+
+{groups.map(([groupKey, group]) => (
+  <div key={groupKey} style={{ marginBottom: 52 }}>
+    <h2 style={{
+      fontSize: 14,
+      fontWeight: 700,
+      color: '#0C0B0D',
+      margin: '0 0 16px',
+      paddingBottom: 10,
+      borderBottom: '2px solid #f3f4f6',
+      textTransform: 'uppercase',
+      letterSpacing: '0.06em',
+    }}>
+      {group.title}
+    </h2>
+
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fill, minmax(186px, 1fr))',
+      gap: 12,
+    }}>
+      {Object.entries(group.colors).map(([key, color]) => (
+        <div key={key} style={{
+          borderRadius: 10,
+          overflow: 'hidden',
+          border: '1px solid #e5e7eb',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+        }}>
+          {/* Swatch */}
+          <div style={{
+            height: 68,
+            background: color.value,
+            outline: color.value === '#FFFFFF' || color.value === '#F3F4F6' ? '1px solid #e5e7eb' : 'none',
+            outlineOffset: -1,
+          }} />
+
+          {/* Info */}
+          <div style={{ padding: '10px 12px', background: '#fff' }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: '#111827', marginBottom: 8 }}>
+              {color.label}
+            </div>
+
+            {/* HEX */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+              <span style={{
+                fontSize: 9, fontWeight: 600, letterSpacing: '0.05em',
+                color: '#fff', background: '#6b7280',
+                padding: '1px 5px', borderRadius: 3, flexShrink: 0,
+              }}>HEX</span>
+              <code style={{ fontSize: 11, color: '#374151', fontFamily: 'monospace' }}>{color.value}</code>
+            </div>
+
+            {/* CSS */}
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 4 }}>
+              <span style={{
+                fontSize: 9, fontWeight: 600, letterSpacing: '0.05em',
+                color: '#fff', background: '#3b82f6',
+                padding: '1px 5px', borderRadius: 3, flexShrink: 0,
+              }}>CSS</span>
+              <code style={{ fontSize: 10, color: '#374151', fontFamily: 'monospace', wordBreak: 'break-all' }}>{color.token}</code>
+            </div>
+
+            {/* Flutter */}
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 8 }}>
+              <span style={{
+                fontSize: 9, fontWeight: 600, letterSpacing: '0.05em',
+                color: '#fff', background: '#06b6d4',
+                padding: '1px 5px', borderRadius: 3, flexShrink: 0,
+              }}>FLT</span>
+              <code style={{ fontSize: 10, color: '#374151', fontFamily: 'monospace', wordBreak: 'break-all' }}>{color.flutter}</code>
+            </div>
+
+            <div style={{ fontSize: 10, color: '#9ca3af', lineHeight: 1.4, borderTop: '1px solid #f3f4f6', paddingTop: 6 }}>
+              {color.use}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+))}
+
+---
+
+## Acessibilidade
+
+As combinações de cor devem respeitar contraste mínimo de **4.5:1** para texto normal e **3:1** para texto grande (WCAG AA).
+Sempre teste `--color-primary` e `--color-primary-medium` sobre fundos claros antes de usar.
+
+</div>

@@ -3,16 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Satsails — Login</title>
+  <title>Satsails — Configure sua conta</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       background: #111;
@@ -26,25 +22,19 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* Moldura do celular */
     .phone-frame {
       width: 390px;
       height: 844px;
-      background: #080808;
+      background: #000000;
       border-radius: 30px;
       overflow: hidden;
       position: relative;
-      box-shadow:
-        0 0 0 2px #2a2a2a,
-        0 40px 80px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 0 2px #2a2a2a, 0 40px 80px rgba(0,0,0,0.8);
     }
 
-    /* Status bar */
     .status-bar {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 44px;
       display: flex;
       align-items: center;
@@ -52,172 +42,140 @@
       padding: 12px 20px 0;
       z-index: 10;
     }
+    .status-time { font-size: 15px; font-weight: 500; color: #fff; letter-spacing: -0.3px; }
+    .status-icons { display: flex; align-items: center; gap: 6px; }
 
-    .status-time {
-      font-size: 15px;
-      font-weight: 500;
-      color: #fff;
-      letter-spacing: -0.3px;
-    }
-
-    .status-icons {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .status-icons svg {
-      fill: #fff;
-    }
-
-    /* Hero image — logo 3D */
-    .hero-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 540px;
-      background-image: url('https://www.figma.com/api/mcp/asset/bd66874d-60ef-4b55-a929-46029de988f3');
-      background-size: cover;
-      background-position: center top;
-    }
-
-    /* Gradiente que faz a imagem fundir com o fundo */
-    .hero-image::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 200px;
-      background: linear-gradient(to bottom, transparent, #080808);
-    }
-
-    /* Conteúdo principal (parte de baixo) */
     .main-content {
       position: absolute;
-      bottom: 16px;
-      left: 31px;
-      right: 31px;
+      top: 84px;
+      left: 16px;
+      right: 16px;
       display: flex;
       flex-direction: column;
-      gap: 68px;
+      gap: 32px;
       align-items: center;
     }
 
-    .content-section {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      width: 100%;
-    }
-
-    .text-section {
+    .header {
       display: flex;
       flex-direction: column;
       gap: 8px;
-      width: 100%;
+      align-items: center;
       text-align: center;
+      width: 100%;
     }
-
-    .headline {
-      font-size: 48px;
-      font-weight: 500;
+    .header-title {
+      font-size: 23px;
+      font-weight: 400;
       color: #ffffff;
-      letter-spacing: -1.92px;
-      line-height: 1.1;
-      text-align: center;
+      line-height: 1.2;
     }
-
-    .subtitle {
-      font-size: 24px;
-      font-weight: 300;
-      color: #727272;
-      letter-spacing: -0.96px;
-      line-height: 1.1;
-      text-align: center;
-    }
-
-    /* Botões */
-    .buttons-container {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      width: 100%;
-    }
-
-    .btn {
-      width: 100%;
-      height: 52px;
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      border: none;
-      box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.25);
-      transition: opacity 0.15s ease, transform 0.1s ease;
-      letter-spacing: -0.2px;
-    }
-
-    .btn:active {
-      opacity: 0.85;
-      transform: scale(0.98);
-    }
-
-    .btn-primary {
-      background: #FF9800;
-      color: #000000;
-    }
-
-    .btn-secondary {
-      background: #080808;
-      color: #ffffff;
-      border: 1px solid #333333;
-    }
-
-    /* Texto de termos */
-    .terms-text {
-      font-size: 8px;
+    .header-subtitle {
+      font-size: 13px;
       font-weight: 400;
       color: #727272;
-      text-align: center;
-      line-height: 1.5;
-      width: 163px;
+      line-height: 1.2;
     }
 
-    .terms-text strong {
-      color: #ffffff;
-      font-weight: 500;
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
     }
 
-    /* Responsivo: tela pequena mostra versão "browser" */
+    .option-wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .option-card {
+      background: #080808;
+      border: 1.276px solid #0c0b0d;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      height: 102px;
+      cursor: pointer;
+      width: 100%;
+      transition: border-color 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .option-card:active { opacity: 0.85; }
+    .option-card.active {
+      border-color: #FF9800;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .option-text { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .option-title { font-size: 13px; font-weight: 700; color: #ffffff; line-height: 1.2; white-space: nowrap; }
+    .option-desc  { font-size: 11px; font-weight: 400; color: #d1d2d2; line-height: 1.2; max-width: 202px; }
+
+    .option-arrow { display: flex; align-items: center; padding: 10px; flex-shrink: 0; }
+
+    /* ── Accordion ── */
+    .accordion {
+      display: none;
+      border-left: 1.276px solid #FF9800;
+      border-right: 1.276px solid #FF9800;
+      border-bottom: 1.5px solid #FF9800;
+      border-radius: 0 0 8px 8px;
+      background: #000000;
+      padding: 16px 24px 32px;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+    }
+    .accordion.open { display: flex; }
+
+    .acc-item-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-height: 58px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .acc-icon-box {
+      background: rgba(255,152,0,0.18);
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .acc-item-text { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .acc-item-title    { font-size: 13px; font-weight: 700; color: #ffffff; line-height: 1.2; white-space: nowrap; }
+    .acc-item-subtitle { font-size: 11px; font-weight: 400; color: #d1d2d2; line-height: 1.2; max-width: 202px; }
+    .acc-arrow { display: flex; align-items: center; padding: 10px; flex-shrink: 0; }
+
+    .acc-separator { width: 100%; height: 1px; background: #1a1a1a; }
+
+    .acc-details { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; width: 100%; }
+
+    .det-section { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+    .det-section-header { display: flex; align-items: center; gap: 10px; padding: 0 8px; }
+    .det-section-header span { font-size: 12px; font-weight: 500; color: #ffffff; line-height: 1.2; white-space: nowrap; }
+
+    .det-list { list-style: disc; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+    .det-list li { font-size: 11px; font-weight: 400; color: #727272; line-height: 1.2; }
+
+    .rate-badge { background: rgba(255,152,0,0.24); padding: 8px 10px; border-radius: 8px; display: inline-block; }
+    .rate-badge span { font-size: 11px; font-weight: 400; color: #FF9800; line-height: 1.2; white-space: nowrap; }
+
     @media (max-width: 500px) {
-      body {
-        background: #080808;
-        align-items: flex-start;
-      }
-
-      .phone-frame {
-        width: 100%;
-        height: 100vh;
-        border-radius: 0;
-        box-shadow: none;
-      }
+      body { background: #000000; align-items: flex-start; padding: 0; }
+      .phone-frame { width: 100%; height: 100vh; border-radius: 0; box-shadow: none; }
     }
   </style>
 </head>
 <body>
 
-  <a href="splash-screen.html" style="
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    color: #727272;
-    text-decoration: none;
-    letter-spacing: -0.2px;
-    transition: color 0.15s;
-  " onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#727272'">
+  <a href="splash-screen.html" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:400;color:#727272;text-decoration:none;letter-spacing:-0.2px;transition:color 0.15s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#727272'">
     ← Recomeçar fluxo
   </a>
 
@@ -227,21 +185,18 @@
     <div class="status-bar">
       <span class="status-time">9:41</span>
       <div class="status-icons">
-        <!-- Signal -->
-        <svg width="17" height="12" viewBox="0 0 17 12" xmlns="http://www.w3.org/2000/svg">
-          <rect x="0" y="7" width="3" height="5" rx="0.5" fill="white"/>
-          <rect x="4.5" y="5" width="3" height="7" rx="0.5" fill="white"/>
-          <rect x="9" y="2.5" width="3" height="9.5" rx="0.5" fill="white"/>
-          <rect x="13.5" y="0" width="3" height="12" rx="0.5" fill="white" opacity="0.35"/>
+        <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0"    y="7"   width="3" height="5"    rx="0.5" fill="white"/>
+          <rect x="4.5"  y="5"   width="3" height="7"    rx="0.5" fill="white"/>
+          <rect x="9"    y="2.5" width="3" height="9.5"  rx="0.5" fill="white"/>
+          <rect x="13.5" y="0"   width="3" height="12"   rx="0.5" fill="white" opacity="0.35"/>
         </svg>
-        <!-- WiFi -->
-        <svg width="16" height="12" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8 9.5C8.828 9.5 9.5 10.172 9.5 11S8.828 12.5 8 12.5 6.5 11.828 6.5 11 7.172 9.5 8 9.5z" fill="white"/>
-          <path d="M8 6.5C9.657 6.5 11.143 7.19 12.218 8.282L13.28 7.22C11.924 5.838 10.057 5 8 5s-3.924.838-5.28 2.22l1.062 1.062C4.857 7.19 6.343 6.5 8 6.5z" fill="white"/>
-          <path d="M8 3C10.756 3 13.243 4.06 15.1 5.82L16.14 4.78C14.003 2.735 11.148 1.5 8 1.5S1.997 2.735-.14 4.78L.9 5.82C2.757 4.06 5.244 3 8 3z" fill="white" opacity="0.5"/>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="11" r="1.5" fill="white"/>
+          <path d="M4.5 8.3C5.4 7.3 6.6 6.7 8 6.7s2.6.6 3.5 1.6" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+          <path d="M1.5 5.5C3.1 3.8 5.4 2.7 8 2.7s4.9 1.1 6.5 2.8" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.5"/>
         </svg>
-        <!-- Battery -->
-        <svg width="25" height="12" viewBox="0 0 25 12" xmlns="http://www.w3.org/2000/svg">
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="white" stroke-opacity="0.35"/>
           <rect x="22.5" y="3.5" width="1" height="5" rx="0.5" fill="white" fill-opacity="0.4"/>
           <rect x="2" y="2" width="17" height="8" rx="2" fill="white"/>
@@ -249,36 +204,117 @@
       </div>
     </div>
 
-    <!-- Hero: logo 3D Satsails -->
-    <div class="hero-image"></div>
-
-    <!-- Conteúdo inferior -->
+    <!-- Main Content -->
     <div class="main-content">
 
-      <div class="content-section">
+      <!-- Header -->
+      <div class="header">
+        <p class="header-title">Configure sua conta</p>
+        <p class="header-subtitle">Selecione seu tipo de usuário e conta</p>
+      </div>
 
-        <div class="text-section">
-          <h1 class="headline">Seja soberano com a Satsails</h1>
-          <p class="subtitle">Gerencie Bitcoin e stablecoins sem depender de ninguém.</p>
+      <!-- Options -->
+      <div class="options-list">
+
+        <!-- Não sou usuário + accordion -->
+        <div class="option-wrapper">
+          <div class="option-card" id="card-nao-usuario" onclick="toggleAccordion()">
+            <div class="option-text">
+              <p class="option-title">Não sou usuário</p>
+              <p class="option-desc">Quero criar minha carteira e ter soberania financeira.</p>
+            </div>
+            <div class="option-arrow" id="arrow-nao-usuario">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 4.5L11.5 9L7 13.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="accordion" id="accordion-nao-usuario">
+            <!-- Individual header → criar-pin -->
+            <a class="acc-item-header" href="criar-pin.html">
+              <div class="acc-icon-box">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="9" cy="5.5" r="2.75" stroke="#FF9800" stroke-width="1.3"/>
+                  <path d="M3.75 15.5C3.75 12.6 6.1 10.25 9 10.25s5.25 2.35 5.25 5.25" stroke="#FF9800" stroke-width="1.3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="acc-item-text">
+                <p class="acc-item-title">Individual</p>
+                <p class="acc-item-subtitle">Os depósitos devem vir de um único CPF.</p>
+              </div>
+              <div class="acc-arrow">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 4.5L11.5 9L7 13.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </a>
+
+            <div class="acc-separator"></div>
+
+            <div class="acc-details">
+              <!-- Benefícios -->
+              <div class="det-section">
+                <div class="det-section-header">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="8" cy="8" r="6.5" stroke="white" stroke-width="1"/>
+                    <path d="M5.5 8l2 2 3-3" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>Benefícios</span>
+                </div>
+                <ul class="det-list">
+                  <li>Liquidação imediata dos ativos na carteira</li>
+                  <li>Operação rápida para uso cotidiano</li>
+                </ul>
+              </div>
+
+              <!-- Condições -->
+              <div class="det-section">
+                <div class="det-section-header">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 4h12M2 8h12M2 12h8" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+                  </svg>
+                  <span>Condições</span>
+                </div>
+                <ul class="det-list">
+                  <li>É necessário vincular um e-mail</li>
+                  <li>Compras restritas ao uso pessoal</li>
+                </ul>
+              </div>
+
+              <div class="rate-badge">
+                <span>Taxa: 3% a 0.8%</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="buttons-container">
-          <button class="btn btn-primary" onclick="window.location.href='criar-pin.html'">Criar carteira</button>
-          <button class="btn btn-secondary">Recuperar carteira</button>
+        <!-- Sou usuário -->
+        <div class="option-card" onclick="window.location.href='email.html'">
+          <div class="option-text">
+            <p class="option-title">Sou usuário</p>
+            <p class="option-desc">Já tenho carteira Satsails e quero acessar minha conta.</p>
+          </div>
+          <div class="option-arrow">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 4.5L11.5 9L7 13.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </div>
 
       </div>
-
-      <p class="terms-text">
-        Ao continuar, você concorda com nossos
-        <strong>Termos de Uso</strong>
-        e
-        <strong>Política de Privacidade</strong>.
-      </p>
-
     </div>
-
   </div>
+
+  <script>
+    function toggleAccordion() {
+      const card = document.getElementById('card-nao-usuario');
+      const accordion = document.getElementById('accordion-nao-usuario');
+      const isOpen = accordion.classList.contains('open');
+      card.classList.toggle('active', !isOpen);
+      accordion.classList.toggle('open', !isOpen);
+    }
+  </script>
 
 </body>
 </html>

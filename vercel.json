@@ -1,7 +1,11 @@
 {
   "version": 2,
   "framework": null,
-  "buildCommand": null,
+  "buildCommand": "cd Storybook && npm install && npm run build-storybook",
   "outputDirectory": ".",
-  "cleanUrls": false
+  "cleanUrls": false,
+  "rewrites": [
+    { "source": "/storybook/(.*)", "destination": "/Storybook/storybook-static/$1" },
+    { "source": "/storybook",      "destination": "/Storybook/storybook-static/index.html" }
+  ]
 }

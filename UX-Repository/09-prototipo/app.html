@@ -18,7 +18,7 @@
       justify-content: center;
       gap: 20px;
       min-height: 100vh;
-      padding: 32px 0;
+      padding: 24px 0;
       font-family: 'Inter', sans-serif;
     }
 
@@ -31,6 +31,7 @@
       position: relative;
       box-shadow: 0 0 0 2px #2a2a2a, 0 40px 80px rgba(0,0,0,0.8);
       background: #0c0b0d;
+      zoom: 0.75;
     }
 
     /* ── Screens ── */
@@ -212,14 +213,35 @@
     .key span { font-size: 18px; font-weight: 700; color: #fff; user-select: none; }
     .key img { width: 18px; height: 18px; object-fit: contain; }
 
-    .error-msg {
-      position: absolute;
-      top: 175px; left: 0; right: 0;
-      text-align: center; font-size: 12px; color: #ff3b30;
-      opacity: 0; transition: opacity 0.2s;
+    .pin-dots-group {
+      display: flex;
+      width: 254px;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
     }
 
-    .error-msg.visible { opacity: 1; }
+    .error-msg {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0; right: 0;
+      display: none;
+      padding: 10px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: #ff3b30;
+      text-align: center;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .error-msg.visible { display: flex; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
 
     .btn-cta {
       position: absolute;
@@ -240,7 +262,8 @@
     /* ════════════════════════
        TIPO DE CONTA
     ════════════════════════ */
-    #tipo-conta { background: #000; overflow-y: auto; }
+    #tipo-conta { background: #000; overflow-y: auto; scrollbar-width: none; }
+    #tipo-conta::-webkit-scrollbar { display: none; }
 
     .tc-body {
       padding: 84px 16px 32px;
@@ -283,10 +306,11 @@
       align-items: center;
       justify-content: space-between;
       padding: 27px 24px;
+      width: 358px;
       height: 102px;
       border: 1.276px solid #0c0b0d;
       border-radius: 19px;
-      background: #000;
+      background: #080808;
       cursor: pointer;
       transition: border-radius 0.3s ease, border-bottom-color 0.3s ease;
       -webkit-tap-highlight-color: transparent;
@@ -304,6 +328,11 @@
     .tc-arrow { flex-shrink: 0; transition: transform 0.3s ease; color: #fff; }
     .tc-card.open .tc-arrow { transform: rotate(90deg); }
 
+    .tc-card.dimmed .tc-card-title,
+    .tc-card.dimmed .tc-card-desc,
+    .tc-card.dimmed .tc-arrow { opacity: 0.35; transition: opacity 0.25s ease; }
+    .tc-card-title, .tc-card-desc, .tc-arrow { transition: opacity 0.25s ease; }
+
     /* Accordion */
     .tc-suboptions {
       max-height: 0;
@@ -311,18 +340,20 @@
       transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .tc-suboptions.open { max-height: 260px; }
+    .tc-suboptions.open { max-height: 1200px; }
 
     .tc-subcard {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 16px;
       padding: 24px;
       height: 102px;
-      background: #080808;
-      border-left: 1.276px solid #0c0b0d;
+      background: #000;
+      border-top: none;
       border-right: 1.276px solid #0c0b0d;
-      border-bottom: 1.276px solid #0c0b0d;
+      border-bottom: 1.28px solid #0c0b0d;
+      border-left: 1.276px solid #0c0b0d;
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
       transition: background 0.15s;
@@ -330,6 +361,9 @@
 
     .tc-subcard:last-child { border-radius: 0 0 19px 19px; }
     .tc-subcard:active { background: #111; }
+
+    .tc-subcard.selected .tc-arrow { opacity: 1; stroke: #FF9800; }
+    .tc-subcard.selected .tc-arrow path { stroke: #FF9800; }
 
     .tc-subcard-icon {
       width: 38px; height: 38px;
@@ -341,10 +375,512 @@
     .icon-orange { background: rgba(255,152,0,0.18); }
     .icon-green  { background: rgba(0,200,83,0.18); }
 
-    .tc-subcard-text { display: flex; flex-direction: column; gap: 6px; }
+    .tc-subcard-text { display: flex; flex-direction: column; gap: 6px; flex: 1; }
     .tc-subcard-title { font-size: 13px; font-weight: 700; color: #fff; line-height: 1.2; }
     .tc-subcard-desc  { font-size: 11px; font-weight: 400; color: #d1d2d2; line-height: 1.2; max-width: 202px; }
     .tc-subcard-desc span { color: #d1d2d2; }
+
+    /* ── Painel de detalhes ── */
+    .tc-detail {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* max-height definido abaixo com valor maior */
+
+    .tc-detail-inner {
+      display: flex;
+      padding: 16px 24px 32px 24px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      align-self: stretch;
+      border-radius: 0 0 8px 8px;
+      border-right: 1px solid #0c0b0d;
+      border-bottom: 1px solid #0c0b0d;
+      border-left: 1px solid #0c0b0d;
+      background: #000;
+    }
+
+    .tc-detail-section { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+
+    .tc-detail-section-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tc-detail-section-header span {
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .tc-detail-list {
+      list-style: disc;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .tc-detail-list li {
+      font-size: 11px;
+      font-weight: 400;
+      color: #d1d2d2;
+      line-height: 1.4;
+    }
+
+    .tc-taxa-bar {
+      display: flex;
+      padding: 10px 16px;
+      align-items: center;
+      align-self: stretch;
+      border-radius: 6px;
+      background: rgba(255, 152, 0, 0.15);
+      border: 1px solid rgba(255, 152, 0, 0.3);
+    }
+
+    .tc-taxa-bar span {
+      font-size: 12px;
+      font-weight: 700;
+      color: #FF9800;
+      line-height: 1.2;
+    }
+
+    .tc-info-box {
+      display: flex;
+      padding: 12px 14px;
+      align-items: flex-start;
+      gap: 8px;
+      align-self: stretch;
+      border-radius: 6px;
+      background: rgba(0, 200, 83, 0.12);
+      border: 1px solid rgba(0, 200, 83, 0.25);
+    }
+
+    .tc-info-box span {
+      font-size: 11px;
+      font-weight: 400;
+      color: #00C853;
+      line-height: 1.5;
+    }
+
+    .tc-input-wrap {
+      display: flex;
+      height: 52px;
+      padding: 0 20px;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      align-self: stretch;
+      border-radius: 8px;
+      background: #080808;
+      box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    .tc-input-wrap input {
+      background: none;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      flex: 1;
+      width: 100%;
+    }
+
+    .tc-input-wrap input::placeholder { color: #444; }
+
+    .tc-select-btn {
+      display: flex;
+      padding: 15px 16px;
+      justify-content: center;
+      align-items: center;
+      align-self: stretch;
+      border-radius: 8px;
+      background: #00C853;
+      border: none;
+      color: #000;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: opacity 0.15s;
+    }
+
+    .tc-select-btn:active { opacity: 0.85; }
+
+    .tc-disclaimer {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      padding: 0 2px;
+    }
+
+    .tc-disclaimer span {
+      font-size: 10px;
+      font-weight: 400;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .tc-detail.open { max-height: 600px; }
+
+    /* ════════════════════════
+       EMAIL CONTA
+    ════════════════════════ */
+    #email-conta { background: #080808; }
+
+    .email-progress-header {
+      position: absolute;
+      top: 44px; left: 0; right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 0 0;
+      gap: 10px;
+      z-index: 5;
+    }
+
+    .email-conta-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.01em;
+    }
+
+    .email-progress-track {
+      width: 300px;
+      height: 3px;
+      background: #1c1c1c;
+      border-radius: 99px;
+    }
+
+    .email-progress-fill {
+      width: 100px;
+      height: 3px;
+      background: #00C853;
+      border-radius: 99px;
+      transition: width 0.4s ease;
+    }
+
+    .email-scroll-body {
+      position: absolute;
+      top: 100px; left: 0; right: 0; bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 36px 16px 0;
+      overflow-y: auto;
+      scrollbar-width: none;
+    }
+
+    .email-scroll-body::-webkit-scrollbar { display: none; }
+
+    .email-content-wrap {
+      display: flex;
+      width: 358px;
+      flex-direction: column;
+      align-items: center;
+      gap: 46px;
+    }
+
+    .email-text-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      width: 282px;
+    }
+
+    .email-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      color: #fff;
+      text-align: center;
+    }
+
+    .email-subtitle {
+      font-size: 16px;
+      font-weight: 300;
+      color: #727272;
+      line-height: normal;
+      text-align: center;
+      width: 274px;
+    }
+
+    .email-input {
+      display: flex;
+      height: 52px;
+      padding: 0 20px;
+      align-items: center;
+      gap: 10px;
+      align-self: stretch;
+      border-radius: 8px;
+      border: 1px solid #000;
+      background: #000;
+    }
+
+    .email-input input {
+      background: none;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      flex: 1;
+    }
+
+    .email-input input::placeholder { color: #3a3a3a; }
+
+    .email-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      align-self: stretch;
+    }
+
+    .email-divider::before,
+    .email-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #1e1e1e;
+    }
+
+    .email-divider span {
+      font-size: 12px;
+      color: #444;
+    }
+
+    .email-social-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-self: stretch;
+    }
+
+    .social-btn {
+      display: flex;
+      height: 48px;
+      padding: 6px 22px;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      align-self: stretch;
+      width: 100%;
+      border-radius: 8px;
+      background: #2C2C2D;
+      border: none;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .social-btn:active { opacity: 0.8; }
+
+    .email-cta-wrap {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 0 16px 40px;
+      background: linear-gradient(to bottom, transparent, #080808 40%);
+    }
+
+    .btn-email-cta {
+      display: flex;
+      width: 100%;
+      height: 52px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      background: #FF9800;
+      border: none;
+      color: #000;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .btn-email-cta:active { opacity: 0.85; }
+
+    /* ════════════════════════
+       VERIFY CODE
+    ════════════════════════ */
+    #verify-code { background: #080808; }
+    #verify-code .email-scroll-body {
+      justify-content: center;
+      padding-top: 0;
+      padding-bottom: 164px;
+    }
+
+    /* ════════════════════════
+       AFILIADO
+    ════════════════════════ */
+    #afiliado { background: #080808; }
+
+    #afiliado .email-scroll-body {
+      justify-content: center;
+      padding-top: 0;
+      padding-bottom: 160px;
+    }
+
+    .afiliado-content-wrap {
+      display: flex;
+      width: 328px;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .afiliado-image {
+      width: 296px;
+      height: 296px;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+
+    .afiliado-text-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .afiliado-cta-wrap {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 0 16px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      background: linear-gradient(to bottom, transparent, #080808 35%);
+    }
+
+    .btn-afiliado-primary {
+      display: flex;
+      width: 100%;
+      height: 52px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      background: #00C853;
+      border: none;
+      color: #000;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .btn-afiliado-primary:active { opacity: 0.85; }
+
+    .btn-afiliado-secondary {
+      background: none;
+      border: none;
+      color: #727272;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+
+    .btn-afiliado-secondary:hover { color: #fff; }
+
+    .vc-image {
+      width: 223.18px;
+      height: 231px;
+      aspect-ratio: 57/59;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .vc-code-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      align-self: stretch;
+    }
+
+    .vc-boxes {
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+    }
+
+    .vc-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      border: 0.87px solid transparent;
+      background: #080808;
+      border-color: #191818;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 120%;
+      text-align: center;
+      outline: none;
+      caret-color: #FF9800;
+      transition: background 0.15s;
+    }
+
+    .vc-box:focus { border-color: #FF9800; }
+
+    .vc-resend {
+      font-size: 13px;
+      font-weight: 400;
+      color: #727272;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: color 0.15s;
+    }
+
+    .vc-resend:hover { color: #fff; }
+
+    .btn-verify-cta {
+      display: flex;
+      width: 100%;
+      height: 52px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      background: #CD7C04;
+      box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.25);
+      border: none;
+      color: #000;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-verify-cta.active {
+      background: #FF9800;
+      box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.25);
+    }
 
     /* ── Recomeçar fluxo ── */
     .restart-btn {
@@ -356,17 +892,165 @@
 
     .restart-btn:hover { color: #fff; }
 
-    @media (max-width: 500px) {
-      body { background: #000; padding: 0; gap: 0; }
-      .phone-frame { width: 100%; height: 100vh; border-radius: 0; box-shadow: none; }
-      .restart-btn { display: none; }
+    /* ── Demo layout ── */
+    .demo-layout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .demo-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── Screen nav ── */
+    .screen-nav {
+      position: fixed;
+      left: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 152px;
+      z-index: 100;
+    }
+
+    .nav-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: #444;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0 12px;
+      margin-bottom: 4px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: none;
+      border: none;
+      border-radius: 10px;
+      color: #727272;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s, color 0.15s;
+      width: 100%;
+    }
+
+    .nav-item:hover { background: #1a1a1a; color: #fff; }
+
+    .nav-item.nav-active {
+      background: #1a1a1a;
+      color: #FF9800;
+      font-weight: 600;
+    }
+
+    .nav-item .nav-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+      opacity: 0.5;
+    }
+
+    .nav-item.nav-active .nav-dot { opacity: 1; }
+
+    .nav-divider {
+      height: 1px;
+      background: #1a1a1a;
+      margin: 8px 0;
+    }
+
+    /* ── Tablet / Mobile ── */
+    @media (max-width: 768px) {
+      body { padding: 24px 0 40px; }
+
+      .demo-layout { flex-direction: column; align-items: center; gap: 0; }
+
+      /* Nav abaixo do mockup, como pílulas horizontais */
+      .screen-nav {
+        position: static;
+        transform: none;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        min-width: unset;
+        width: 100%;
+        padding: 20px 16px 0;
+        order: 2;
+      }
+
+      .nav-section-label,
+      .nav-divider { display: none; }
+
+      .nav-item {
+        padding: 8px 14px;
+        border-radius: 20px;
+        border: 1px solid #222;
+        font-size: 12px;
+        width: auto;
+      }
+
+      .phone-frame { zoom: 0.85; }
+    }
+
+    @media (max-width: 430px) {
+      .phone-frame { zoom: 0.78; }
     }
   </style>
 </head>
 <body>
 
-  <button class="restart-btn" onclick="restart()">← Recomeçar fluxo</button>
+  <div class="demo-layout">
 
+    <!-- ── Painel de navegação lateral ── -->
+    <nav class="screen-nav">
+      <span class="nav-section-label">Fluxo do app</span>
+
+      <button class="nav-item" id="nav-splash" onclick="jumpTo('splash')">
+        <span class="nav-dot"></span> Splash
+      </button>
+      <button class="nav-item" id="nav-login" onclick="jumpTo('login')">
+        <span class="nav-dot"></span> Login
+      </button>
+      <button class="nav-item" id="nav-criar-pin" onclick="jumpTo('criar-pin')">
+        <span class="nav-dot"></span> Criar PIN
+      </button>
+      <button class="nav-item" id="nav-confirmar-pin" onclick="jumpTo('confirmar-pin')">
+        <span class="nav-dot"></span> Confirmar PIN
+      </button>
+      <button class="nav-item" id="nav-tipo-conta" onclick="jumpTo('tipo-conta')">
+        <span class="nav-dot"></span> Tipo de conta
+      </button>
+      <button class="nav-item" id="nav-email-conta" onclick="jumpTo('email-conta')">
+        <span class="nav-dot"></span> Inserir e-mail
+      </button>
+      <button class="nav-item" id="nav-verify-code" onclick="jumpTo('verify-code')">
+        <span class="nav-dot"></span> Verificar código
+      </button>
+      <button class="nav-item" id="nav-afiliado" onclick="jumpTo('afiliado')">
+        <span class="nav-dot"></span> Afiliado
+      </button>
+
+      <div class="nav-divider"></div>
+
+      <button class="nav-item" onclick="restart()" style="color:#444;">
+        <span class="nav-dot"></span> Recomeçar fluxo
+      </button>
+    </nav>
+
+    <!-- ── Telefone ── -->
+    <div class="demo-center">
   <div class="phone-frame">
 
     <!-- ══════════════ SPLASH ══════════════ -->
@@ -514,11 +1198,13 @@
         </button>
         <h2>Confirmar o seu PIN</h2>
       </div>
-      <p class="error-msg" id="errMsg">PINs não coincidem. Tente novamente.</p>
       <div class="pin-main">
-        <div class="pin-dots" id="dots2">
-          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        <div class="pin-dots-group">
+          <div class="pin-dots" id="dots2">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+          </div>
+          <p class="error-msg" id="errMsg">PINs não coincidem. Tente novamente.</p>
         </div>
         <div class="numpad">
           <div class="numpad-row">
@@ -577,49 +1263,11 @@
 
       <div class="tc-body">
         <div class="tc-header">
-          <h2 class="tc-title">Define qual é seu próximo passo</h2>
+          <h2 class="tc-title">Configure sua conta</h2>
           <p class="tc-subtitle">Selecione seu tipo de usuário e conta</p>
         </div>
 
         <div class="tc-groups">
-
-          <!-- Grupo: Sou usuário / Usuário ativo -->
-          <div class="tc-group">
-            <div class="tc-card" id="card-usuario" onclick="toggleGroup('usuario')">
-              <div class="tc-card-text">
-                <span class="tc-card-title">Sou usuário</span>
-                <span class="tc-card-desc">Já tenho carteira Satsails e quero acessar minha conta.</span>
-              </div>
-              <svg class="tc-arrow" width="8" height="14" viewBox="0 0 8 14" fill="none">
-                <path d="M1 1l6 6-6 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="tc-suboptions" id="sub-usuario">
-              <div class="tc-subcard" onclick="selectConta('usuario-ativo','individual')">
-                <div class="tc-subcard-icon icon-orange">
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <circle cx="9" cy="6" r="3.5" stroke="#FF9800" stroke-width="1.5"/>
-                    <path d="M2.5 16c0-3.59 2.91-6.5 6.5-6.5s6.5 2.91 6.5 6.5" stroke="#FF9800" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                </div>
-                <div class="tc-subcard-text">
-                  <span class="tc-subcard-title">Individual</span>
-                  <span class="tc-subcard-desc">Os depósitos devem vir de um único CPF.</span>
-                </div>
-              </div>
-              <div class="tc-subcard" onclick="selectConta('usuario-ativo','comerciante')">
-                <div class="tc-subcard-icon icon-green">
-                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path d="M3 7h12M6 7V5a3 3 0 0 1 6 0v2M3.5 7l1 8h9l1-8h-11z" stroke="#00C853" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </div>
-                <div class="tc-subcard-text">
-                  <span class="tc-subcard-title">Comerciante</span>
-                  <span class="tc-subcard-desc">Pode ter depósitos de diferentes CPFs ou CNPJs. Caso haja algum estorno do Pix sua conta será bloqueada.</span>
-                </div>
-              </div>
-            </div>
-          </div>
 
           <!-- Grupo: Não sou usuário -->
           <div class="tc-group">
@@ -633,7 +1281,7 @@
               </svg>
             </div>
             <div class="tc-suboptions" id="sub-novo">
-              <div class="tc-subcard" onclick="selectConta('novo','individual')">
+              <div class="tc-subcard" onclick="selectConta('novo','individual',this)">
                 <div class="tc-subcard-icon icon-orange">
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                     <circle cx="9" cy="6" r="3.5" stroke="#FF9800" stroke-width="1.5"/>
@@ -644,8 +1292,52 @@
                   <span class="tc-subcard-title">Individual</span>
                   <span class="tc-subcard-desc">Os depósitos devem vir de um único CPF.</span>
                 </div>
+                <svg class="tc-arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" style="flex-shrink:0;opacity:0.4;">
+                  <path d="M1 1l6 6-6 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </div>
-              <div class="tc-subcard" onclick="selectConta('novo','comerciante')">
+
+              <!-- Painel de detalhes: Individual -->
+              <div class="tc-detail" id="detail-individual">
+                <div class="tc-detail-inner">
+
+                  <div class="tc-detail-section">
+                    <div class="tc-detail-section-header">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="6.5" stroke="#d1d2d2" stroke-width="1.2"/>
+                        <path d="M5.5 8l2 2 3-3" stroke="#d1d2d2" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span>Benefícios</span>
+                    </div>
+                    <ul class="tc-detail-list">
+                      <li>Liquidação imediata (primeira compra após 24h)</li>
+                    </ul>
+                  </div>
+
+                  <div class="tc-detail-section">
+                    <div class="tc-detail-section-header">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2 4h12M2 8h8M2 12h10" stroke="#d1d2d2" stroke-width="1.2" stroke-linecap="round"/>
+                      </svg>
+                      <span>Condições</span>
+                    </div>
+                    <ul class="tc-detail-list">
+                      <li>ID fixo (Eulen ID) — não recebe de terceiros</li>
+                      <li>Taxas: 0,8% a 3%</li>
+                      <li>Limite Diário: R$ 6.000 (intervalo mínimo de 30min entre compras)</li>
+                    </ul>
+                  </div>
+
+                  <div class="tc-taxa-bar">
+                    <span>Taxa: 3% a 0,8%</span>
+                  </div>
+
+                  <button class="tc-select-btn" onclick="goToEmail('individual')">Selecionar</button>
+
+                </div>
+              </div>
+
+              <div class="tc-subcard" onclick="selectConta('novo','comerciante',this)">
                 <div class="tc-subcard-icon icon-green">
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                     <path d="M3 7h12M6 7V5a3 3 0 0 1 6 0v2M3.5 7l1 8h9l1-8h-11z" stroke="#00C853" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -655,7 +1347,90 @@
                   <span class="tc-subcard-title">Comerciante</span>
                   <span class="tc-subcard-desc">Pode ter depósitos de diferentes CPFs ou CNPJs. Caso haja algum estorno do Pix sua conta será bloqueada.</span>
                 </div>
+                <svg class="tc-arrow" width="8" height="14" viewBox="0 0 8 14" fill="none" style="flex-shrink:0;opacity:0.4;">
+                  <path d="M1 1l6 6-6 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </div>
+
+              <!-- Painel de detalhes: Comerciante -->
+              <div class="tc-detail" id="detail-comerciante">
+                <div class="tc-detail-inner">
+
+                  <div class="tc-detail-section">
+                    <div class="tc-detail-section-header">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="6.5" stroke="#d1d2d2" stroke-width="1.2"/>
+                        <path d="M5.5 8l2 2 3-3" stroke="#d1d2d2" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span>Benefícios</span>
+                    </div>
+                    <ul class="tc-detail-list">
+                      <li>Recebimento via PIX de CPF/CNPJ</li>
+                    </ul>
+                  </div>
+
+                  <div class="tc-detail-section">
+                    <div class="tc-detail-section-header">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M2 4h12M2 8h8M2 12h10" stroke="#d1d2d2" stroke-width="1.2" stroke-linecap="round"/>
+                      </svg>
+                      <span>Condições</span>
+                    </div>
+                    <ul class="tc-detail-list">
+                      <li>Taxas: 0,8% a 3%</li>
+                      <li>Liquidação: até 24h (se "delayed", aguarda proteção antifraud)</li>
+                      <li>Limite Diário: R$ 6.000 (intervalo mínimo de 30min entre compras)</li>
+                    </ul>
+                  </div>
+
+                  <div class="tc-info-box">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:1px;">
+                      <circle cx="7" cy="7" r="6" stroke="#00C853" stroke-width="1.2"/>
+                      <path d="M7 6v4M7 4.5v.5" stroke="#00C853" stroke-width="1.2" stroke-linecap="round"/>
+                    </svg>
+                    <span>O prazo da liquidação protege contra golpes de estorno (chargeback)</span>
+                  </div>
+
+                  <div class="tc-input-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;">
+                      <path d="M16.2366 14.9062C15.1657 13.0549 13.5155 11.7274 11.5896 11.0981C12.5422 10.531 13.2824 9.66686 13.6963 8.63841C14.1103 7.60996 14.1752 6.47405 13.8811 5.40513C13.5871 4.33621 12.9502 3.39338 12.0684 2.72142C11.1866 2.04947 10.1086 1.68555 9.00001 1.68555C7.89137 1.68555 6.81338 2.04947 5.93159 2.72142C5.0498 3.39338 4.41296 4.33621 4.11887 5.40513C3.82479 6.47405 3.88971 7.60996 4.30369 8.63841C4.71766 9.66686 5.45778 10.531 6.4104 11.0981C4.48454 11.7267 2.8343 13.0542 1.76344 14.9062C1.72417 14.9702 1.69813 15.0415 1.68684 15.1158C1.67555 15.19 1.67925 15.2658 1.69772 15.3386C1.71619 15.4114 1.74905 15.4798 1.79438 15.5397C1.8397 15.5996 1.89656 15.6498 1.9616 15.6874C2.02665 15.7249 2.09856 15.7491 2.17309 15.7584C2.24762 15.7678 2.32327 15.7621 2.39557 15.7417C2.46787 15.7213 2.53535 15.6867 2.59404 15.6398C2.65273 15.5929 2.70143 15.5347 2.73727 15.4687C4.06196 13.1793 6.40337 11.8125 9.00001 11.8125C11.5966 11.8125 13.9381 13.1793 15.2627 15.4687C15.2986 15.5347 15.3473 15.5929 15.406 15.6398C15.4647 15.6867 15.5321 15.7213 15.6044 15.7417C15.6767 15.7621 15.7524 15.7678 15.8269 15.7584C15.9015 15.7491 15.9734 15.7249 16.0384 15.6874C16.1035 15.6498 16.1603 15.5996 16.2056 15.5397C16.251 15.4798 16.2838 15.4114 16.3023 15.3386C16.3208 15.2658 16.3245 15.19 16.3132 15.1158C16.3019 15.0415 16.2758 14.9702 16.2366 14.9062ZM5.06251 6.74996C5.06251 5.9712 5.29344 5.20992 5.7261 4.5624C6.15875 3.91488 6.77371 3.4102 7.49319 3.11218C8.21268 2.81416 9.00438 2.73619 9.76818 2.88812C10.532 3.04005 11.2336 3.41506 11.7842 3.96573C12.3349 4.5164 12.7099 5.21799 12.8618 5.98179C13.0138 6.74559 12.9358 7.53729 12.6378 8.25678C12.3398 8.97626 11.8351 9.59121 11.1876 10.0239C10.54 10.4565 9.77877 10.6875 9.00001 10.6875C7.95606 10.6863 6.95519 10.2711 6.21701 9.53296C5.47883 8.79478 5.06362 7.79391 5.06251 6.74996Z" fill="#727272"/>
+                    </svg>
+                    <input type="text" placeholder="Nome" />
+                  </div>
+
+                  <div class="tc-input-wrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;">
+                      <path d="M15.6354 11.1416L12.323 9.65728L12.3138 9.65306C12.1419 9.57951 11.9543 9.54999 11.768 9.56718C11.5818 9.58437 11.4028 9.64772 11.2472 9.7515C11.2289 9.7636 11.2113 9.77675 11.1945 9.79087L9.48305 11.2499C8.39883 10.7232 7.27946 9.61228 6.75282 8.54212L8.21391 6.8047C8.22798 6.78712 8.24133 6.76955 8.25399 6.75056C8.35554 6.59538 8.41716 6.41751 8.43335 6.23276C8.44954 6.04802 8.41981 5.86213 8.3468 5.69165V5.68322L6.85829 2.36517C6.76178 2.14247 6.59583 1.95695 6.38522 1.83631C6.1746 1.71567 5.93062 1.66638 5.68969 1.6958C4.73694 1.82117 3.8624 2.28907 3.22941 3.01211C2.59643 3.73515 2.24828 4.66389 2.25001 5.62486C2.25001 11.2077 6.79219 15.7499 12.375 15.7499C13.336 15.7516 14.2647 15.4034 14.9878 14.7705C15.7108 14.1375 16.1787 13.2629 16.3041 12.3102C16.3335 12.0693 16.2844 11.8254 16.1638 11.6148C16.0433 11.4042 15.858 11.2382 15.6354 11.1416ZM12.375 14.6249C9.98886 14.6223 7.70119 13.6732 6.01392 11.9859C4.32666 10.2987 3.37761 8.01101 3.37501 5.62486C3.37236 4.93825 3.61973 4.27415 4.07091 3.75659C4.5221 3.23903 5.14625 2.90339 5.8268 2.81236C5.82653 2.81516 5.82653 2.81799 5.8268 2.8208L7.30337 6.12548L5.85001 7.86501C5.83525 7.88199 5.82185 7.90009 5.80993 7.91915C5.70412 8.08152 5.64205 8.26846 5.62973 8.46187C5.61741 8.65528 5.65526 8.84858 5.73962 9.02306C6.37665 10.326 7.68938 11.6288 9.00633 12.2652C9.18209 12.3487 9.37652 12.3853 9.57062 12.3712C9.76473 12.3572 9.95187 12.293 10.1138 12.185C10.1318 12.1729 10.1492 12.1597 10.1658 12.1456L11.8751 10.6874L15.1798 12.1674C15.1798 12.1674 15.1854 12.1674 15.1875 12.1674C15.0976 12.8489 14.7624 13.4744 14.2448 13.9267C13.7271 14.379 13.0624 14.6272 12.375 14.6249Z" fill="#727272"/>
+                    </svg>
+                    <input type="tel" placeholder="WhatsApp" />
+                  </div>
+
+                  <button class="tc-select-btn" onclick="goToEmail('comerciante')">Selecionar</button>
+
+                  <div class="tc-disclaimer">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="flex-shrink:0;margin-top:1px;">
+                      <circle cx="6" cy="6" r="5" stroke="#555" stroke-width="1"/>
+                      <path d="M6 5v3.5M6 3.5v.5" stroke="#555" stroke-width="1" stroke-linecap="round"/>
+                    </svg>
+                    <span>Essa classificação permite liquidação imediata para comerciantes, e maior proteção contra fraudes para todos.</span>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Grupo: Usuário ativo (sem accordion — navega para email) -->
+          <div class="tc-group">
+            <div class="tc-card" id="card-usuario" style="border-radius: 19px;" onclick="goToEmail('usuario-ativo')">
+              <div class="tc-card-text">
+                <span class="tc-card-title">Usuário ativo</span>
+                <span class="tc-card-desc">Já tenho carteira Satsails e quero acessar minha conta.</span>
+              </div>
+              <svg class="tc-arrow" width="8" height="14" viewBox="0 0 8 14" fill="none">
+                <path d="M1 1l6 6-6 6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
           </div>
 
@@ -663,7 +1438,216 @@
       </div>
     </div>
 
+    <!-- ══════════════ EMAIL CONTA ══════════════ -->
+    <div class="screen" id="email-conta">
+      <div class="status-bar">
+        <span class="status-time">9:41</span>
+        <div class="status-icons">
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
+            <rect x="0" y="7" width="3" height="5" rx="0.5" fill="white"/>
+            <rect x="4.5" y="5" width="3" height="7" rx="0.5" fill="white"/>
+            <rect x="9" y="2.5" width="3" height="9.5" rx="0.5" fill="white"/>
+            <rect x="13.5" y="0" width="3" height="12" rx="0.5" fill="white" opacity="0.35"/>
+          </svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+            <path d="M8 9.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" fill="white"/>
+            <path d="M8 6.5c1.657 0 3.143.69 4.218 1.782L13.28 7.22A7.46 7.46 0 0 0 8 5a7.46 7.46 0 0 0-5.28 2.22l1.062 1.062A5.46 5.46 0 0 1 8 6.5z" fill="white"/>
+            <path d="M8 3c2.756 0 5.243 1.06 7.1 2.82l1.04-1.04A10.46 10.46 0 0 0 8 1.5 10.46 10.46 0 0 0-.14 4.78L.9 5.82A8.46 8.46 0 0 1 8 3z" fill="white" opacity="0.5"/>
+          </svg>
+          <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+            <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="white" stroke-opacity="0.35"/>
+            <rect x="22.5" y="3.5" width="1" height="5" rx="0.5" fill="white" fill-opacity="0.4"/>
+            <rect x="2" y="2" width="17" height="8" rx="2" fill="white"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Header de progresso -->
+      <div class="email-progress-header">
+        <span class="email-conta-label" id="emailContaLabel">Conta Individual</span>
+        <div class="email-progress-track">
+          <div class="email-progress-fill" id="emailProgressFill"></div>
+        </div>
+      </div>
+
+      <!-- Conteúdo scrollável -->
+      <div class="email-scroll-body">
+        <div class="email-content-wrap">
+
+          <!-- Texto + Input -->
+          <div class="email-text-group">
+            <h1 class="email-title">Insira seu e-mail para começar</h1>
+            <p class="email-subtitle">Você receberá um código único para validar cada operação e manter o controle total da sua conta.</p>
+          </div>
+
+          <div class="email-input">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;">
+              <path d="M15.75 3.375H2.25C1.836 3.375 1.5 3.711 1.5 4.125v9.75c0 .414.336.75.75.75h13.5c.414 0 .75-.336.75-.75v-9.75c0-.414-.336-.75-.75-.75zm-.75 9.75H3V5.648l5.647 4.383a.562.562 0 0 0 .706 0L15 5.648V13.125zm-6-4.14L3.92 4.875h10.16L9 8.985z" fill="#3a3a3a"/>
+            </svg>
+            <input type="email" placeholder="Digite seu melhor e-mail *" />
+          </div>
+
+        </div>
+
+        <!-- Divider -->
+        <div class="email-divider" style="width:358px;margin-top:46px;">
+          <span>Ou</span>
+        </div>
+
+        <!-- Botões sociais -->
+        <div class="email-social-group" style="width:358px;margin-top:32px;">
+          <button class="social-btn">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M17.64 9.205c0-.64-.057-1.252-.164-1.841H9v3.481h4.844c-.209 1.124-.843 2.078-1.796 2.717v2.258h2.908C16.658 14.252 17.64 11.945 17.64 9.205z" fill="#fff" opacity=".9"/>
+              <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#fff" opacity=".7"/>
+              <path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#fff" opacity=".5"/>
+              <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#fff" opacity=".8"/>
+            </svg>
+            Continuar com Google
+          </button>
+          <button class="social-btn">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M14.174 9.387c-.02-2.04 1.665-3.02 1.74-3.068-.949-1.387-2.426-1.576-2.95-1.596-1.258-.128-2.457.744-3.093.744-.637 0-1.618-.726-2.66-.707-1.368.02-2.63.8-3.337 2.033-1.42 2.46-.364 6.104 1.02 8.1.678.974 1.48 2.065 2.535 2.026 1.02-.04 1.403-.657 2.635-.657 1.232 0 1.576.657 2.656.637 1.1-.02 1.79-.993 2.463-1.97.78-1.125 1.1-2.214 1.12-2.27-.024-.01-2.145-.822-2.128-3.272zM12.124 3.22c.558-.68.935-1.62.832-2.562-.804.034-1.785.537-2.362 1.21-.516.597-.97 1.556-.85 2.473.9.07 1.82-.458 2.38-1.12z" fill="#fff" opacity=".85"/>
+            </svg>
+            Continuar com Apple
+          </button>
+        </div>
+
+        <!-- Espaço para o botão fixo não sobrepor -->
+        <div style="height: 100px;"></div>
+      </div>
+
+      <!-- Botão fixo no fundo -->
+      <div class="email-cta-wrap">
+        <button class="btn-email-cta" onclick="goToVerifyCode()">Continuar</button>
+      </div>
+    </div>
+
+    <!-- ══════════════ VERIFY CODE ══════════════ -->
+    <div class="screen" id="verify-code">
+      <div class="status-bar">
+        <span class="status-time">9:41</span>
+        <div class="status-icons">
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
+            <rect x="0" y="7" width="3" height="5" rx="0.5" fill="white"/>
+            <rect x="4.5" y="5" width="3" height="7" rx="0.5" fill="white"/>
+            <rect x="9" y="2.5" width="3" height="9.5" rx="0.5" fill="white"/>
+            <rect x="13.5" y="0" width="3" height="12" rx="0.5" fill="white" opacity="0.35"/>
+          </svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+            <path d="M8 9.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" fill="white"/>
+            <path d="M8 6.5c1.657 0 3.143.69 4.218 1.782L13.28 7.22A7.46 7.46 0 0 0 8 5a7.46 7.46 0 0 0-5.28 2.22l1.062 1.062A5.46 5.46 0 0 1 8 6.5z" fill="white"/>
+            <path d="M8 3c2.756 0 5.243 1.06 7.1 2.82l1.04-1.04A10.46 10.46 0 0 0 8 1.5 10.46 10.46 0 0 0-.14 4.78L.9 5.82A8.46 8.46 0 0 1 8 3z" fill="white" opacity="0.5"/>
+          </svg>
+          <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+            <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="white" stroke-opacity="0.35"/>
+            <rect x="22.5" y="3.5" width="1" height="5" rx="0.5" fill="white" fill-opacity="0.4"/>
+            <rect x="2" y="2" width="17" height="8" rx="2" fill="white"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Header de progresso (etapa 2) -->
+      <div class="email-progress-header">
+        <span class="email-conta-label" id="vcContaLabel">Conta Individual</span>
+        <div class="email-progress-track">
+          <div class="email-progress-fill" id="vcProgressFill" style="width:200px; transition: width 0.4s ease;"></div>
+        </div>
+      </div>
+
+      <!-- Conteúdo scrollável -->
+      <div class="email-scroll-body">
+        <div class="email-content-wrap">
+
+          <!-- Imagem -->
+          <img class="vc-image" src="./imagens/Codigo_segurança.svg" alt="Código de segurança" />
+
+          <!-- Texto -->
+          <div class="email-text-group">
+            <h1 class="email-title">Verifique o código que foi enviado no seu e-mail</h1>
+            <p class="email-subtitle" id="vcSubtitle">Acesse o e-mail "nome@gmail.com" e insira o código enviado.</p>
+          </div>
+
+          <!-- Código + reenviar -->
+          <div class="vc-code-group">
+            <div class="vc-boxes" id="vcBoxes">
+              <input class="vc-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" oninput="vcInput(this)" onkeydown="vcKey(event,this)"/>
+              <input class="vc-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" oninput="vcInput(this)" onkeydown="vcKey(event,this)"/>
+              <input class="vc-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" oninput="vcInput(this)" onkeydown="vcKey(event,this)"/>
+              <input class="vc-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" oninput="vcInput(this)" onkeydown="vcKey(event,this)"/>
+              <input class="vc-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" oninput="vcInput(this)" onkeydown="vcKey(event,this)"/>
+              <input class="vc-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" oninput="vcInput(this)" onkeydown="vcKey(event,this)"/>
+            </div>
+            <button class="vc-resend">Enviar código novamente</button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Botão fixo -->
+      <div class="email-cta-wrap">
+        <button class="btn-verify-cta" id="btnVerify" onclick="goToAfiliado()">Continuar</button>
+      </div>
+    </div>
+
+    <!-- ══════════════ AFILIADO ══════════════ -->
+    <div class="screen" id="afiliado">
+      <div class="status-bar">
+        <span class="status-time">9:41</span>
+        <div class="status-icons">
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="none">
+            <rect x="0" y="7" width="3" height="5" rx="0.5" fill="white"/>
+            <rect x="4.5" y="5" width="3" height="7" rx="0.5" fill="white"/>
+            <rect x="9" y="2.5" width="3" height="9.5" rx="0.5" fill="white"/>
+            <rect x="13.5" y="0" width="3" height="12" rx="0.5" fill="white" opacity="0.35"/>
+          </svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+            <path d="M8 9.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" fill="white"/>
+            <path d="M8 6.5c1.657 0 3.143.69 4.218 1.782L13.28 7.22A7.46 7.46 0 0 0 8 5a7.46 7.46 0 0 0-5.28 2.22l1.062 1.062A5.46 5.46 0 0 1 8 6.5z" fill="white"/>
+            <path d="M8 3c2.756 0 5.243 1.06 7.1 2.82l1.04-1.04A10.46 10.46 0 0 0 8 1.5 10.46 10.46 0 0 0-.14 4.78L.9 5.82A8.46 8.46 0 0 1 8 3z" fill="white" opacity="0.5"/>
+          </svg>
+          <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+            <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="white" stroke-opacity="0.35"/>
+            <rect x="22.5" y="3.5" width="1" height="5" rx="0.5" fill="white" fill-opacity="0.4"/>
+            <rect x="2" y="2" width="17" height="8" rx="2" fill="white"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="email-scroll-body">
+        <div class="afiliado-content-wrap">
+
+          <!-- Imagem -->
+          <img src="./imagens/afiliado-parceiros.svg" class="afiliado-image" alt="Afiliado" />
+
+          <!-- Texto -->
+          <div class="afiliado-text-group">
+            <h1 class="email-title" style="font-size:28px;width:250px;">Insira seu código de afiliado</h1>
+            <p class="email-subtitle" style="width:298px;">Você pode adicionar isso mais tarde nas configurações, se preferir.</p>
+          </div>
+
+          <!-- Input -->
+          <div class="email-input" style="align-self:stretch;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;">
+              <path d="M17.3818 12.1309C17.3359 12.0355 17.2639 11.9549 17.1742 11.8986C17.0846 11.8422 16.9808 11.8124 16.8749 11.8124H10.1249V10.1249H15.1874C15.2963 10.1249 15.4029 10.0932 15.4942 10.0338C15.5855 9.97432 15.6576 9.88962 15.7017 9.78998C15.7458 9.69034 15.76 9.58004 15.7426 9.47249C15.7252 9.36493 15.6769 9.26475 15.6036 9.18411L10.1249 3.15762V0.562388C10.1242 0.446443 10.0878 0.333524 10.0205 0.239086C9.95326 0.144647 9.85845 0.0733035 9.74908 0.0348187C9.6397 -0.00366612 9.52111 -0.0074116 9.40952 0.0240948C9.29794 0.0556013 9.19882 0.12082 9.12572 0.210826L1.81322 9.21083C1.74712 9.29339 1.70563 9.39292 1.69352 9.49799C1.68141 9.60306 1.69917 9.70942 1.74476 9.80485C1.79035 9.90029 1.86192 9.98094 1.95126 10.0375C2.04061 10.0942 2.1441 10.1244 2.24986 10.1249H8.99986V11.8124H1.12486C1.01886 11.8123 0.914993 11.8422 0.825237 11.8986C0.735481 11.955 0.663489 12.0356 0.617557 12.1312C0.571626 12.2267 0.553626 12.3333 0.565631 12.4386C0.577636 12.5439 0.619158 12.6437 0.685411 12.7265L2.76666 15.328C2.87182 15.4599 3.00542 15.5664 3.15749 15.6394C3.30956 15.7125 3.47616 15.7502 3.64486 15.7499H14.3549C14.5236 15.7502 14.6902 15.7125 14.8422 15.6394C14.9943 15.5664 15.1279 15.4599 15.2331 15.328L17.3143 12.7265C17.3806 12.6436 17.4221 12.5438 17.434 12.4384C17.4459 12.333 17.4278 12.2264 17.3818 12.1309ZM13.9161 8.99989H10.1249V4.82965L13.9161 8.99989ZM3.43182 8.99989L8.99986 2.14653V8.99989H3.43182ZM14.3549 14.6249H3.64486L2.29486 12.9374H15.7049L14.3549 14.6249Z" fill="#727272"/>
+            </svg>
+            <input type="text" placeholder="Digite seu PIN" />
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Botões fixos -->
+      <div class="afiliado-cta-wrap">
+        <button class="btn-afiliado-primary">Cadastrar agora</button>
+        <button class="btn-afiliado-secondary">Cadastrar depois</button>
+      </div>
+    </div>
+
   </div><!-- /phone-frame -->
+    </div><!-- /demo-center -->
+  </div><!-- /demo-layout -->
 
   <script>
     /* ── Navegação ── */
@@ -672,6 +1656,7 @@
       const to   = document.getElementById(toId);
       from.classList.remove('active');
       to.classList.add('active');
+      setNavActive(toId);
     }
 
     function goBack(fromId, toId) {
@@ -682,8 +1667,30 @@
       setTimeout(() => resetPin(2), 400);
     }
 
+    /* ── Navegação direta pelo painel lateral ── */
+    const navScreens = ['splash','login','criar-pin','confirmar-pin','tipo-conta','email-conta','verify-code','afiliado'];
+
+    function jumpTo(screenId) {
+      navScreens.forEach(id => {
+        document.getElementById(id).classList.remove('active','exit-left');
+        const navBtn = document.getElementById('nav-' + id);
+        if (navBtn) navBtn.classList.remove('nav-active');
+      });
+      document.getElementById(screenId).classList.add('active');
+      const navBtn = document.getElementById('nav-' + screenId);
+      if (navBtn) navBtn.classList.add('nav-active');
+      closeAllGroups();
+    }
+
+    function setNavActive(screenId) {
+      navScreens.forEach(id => {
+        const btn = document.getElementById('nav-' + id);
+        if (btn) btn.classList.toggle('nav-active', id === screenId);
+      });
+    }
+
     function restart() {
-      ['login','criar-pin','confirmar-pin','tipo-conta'].forEach(id =>
+      ['login','criar-pin','confirmar-pin','tipo-conta','email-conta','verify-code','afiliado'].forEach(id =>
         document.getElementById(id).classList.remove('active','exit-left')
       );
       closeAllGroups();
@@ -747,6 +1754,8 @@
     /* ── Accordion tipo de conta ── */
     let openGroup = null;
 
+    const allGroups = ['novo', 'usuario'];
+
     function toggleGroup(name) {
       if (openGroup === name) {
         closeAllGroups();
@@ -756,18 +1765,89 @@
       openGroup = name;
       document.getElementById('card-' + name).classList.add('open');
       document.getElementById('sub-'  + name).classList.add('open');
+      allGroups.filter(n => n !== name).forEach(n => {
+        document.getElementById('card-' + n).classList.add('dimmed');
+      });
     }
 
     function closeAllGroups() {
       openGroup = null;
-      ['usuario','novo'].forEach(n => {
-        document.getElementById('card-' + n).classList.remove('open');
-        document.getElementById('sub-'  + n).classList.remove('open');
-      });
+      document.getElementById('card-novo').classList.remove('open', 'dimmed');
+      document.getElementById('sub-novo').classList.remove('open');
+      document.getElementById('card-usuario').classList.remove('dimmed');
     }
 
-    function selectConta(perfil, tipo) {
-      alert('Selecionado: ' + perfil + ' — ' + tipo);
+    let currentContaLabel = 'Conta Individual';
+
+    function goToEmail(tipo) {
+      currentContaLabel = tipo === 'comerciante' ? 'Conta Comercial' : tipo === 'usuario-ativo' ? 'Usuário ativo' : 'Conta Individual';
+      document.getElementById('emailContaLabel').textContent = currentContaLabel;
+      const screens = ['splash','login','criar-pin','confirmar-pin','tipo-conta','email-conta','verify-code'];
+      screens.forEach(id => document.getElementById(id).classList.remove('active','exit-left'));
+      document.getElementById('email-conta').classList.add('active');
+      setNavActive('email-conta');
+    }
+
+    function goToVerifyCode() {
+      document.getElementById('vcContaLabel').textContent = currentContaLabel;
+      const screens = ['splash','login','criar-pin','confirmar-pin','tipo-conta','email-conta','verify-code'];
+      screens.forEach(id => document.getElementById(id).classList.remove('active','exit-left'));
+      document.getElementById('verify-code').classList.add('active');
+      setNavActive('verify-code');
+      /* reseta boxes */
+      document.querySelectorAll('.vc-box').forEach(b => b.value = '');
+      document.getElementById('btnVerify').classList.remove('active');
+      setTimeout(() => document.querySelector('.vc-box').focus(), 300);
+    }
+
+    function goToAfiliado() {
+      const fill = document.getElementById('vcProgressFill');
+      if (fill) fill.style.width = '300px';
+      setTimeout(() => {
+        const screens = ['splash','login','criar-pin','confirmar-pin','tipo-conta','email-conta','verify-code','afiliado'];
+        screens.forEach(id => document.getElementById(id).classList.remove('active','exit-left'));
+        document.getElementById('afiliado').classList.add('active');
+        setNavActive('afiliado');
+        if (fill) fill.style.width = '200px';
+      }, 450);
+    }
+
+    /* ── Lógica dos boxes de código ── */
+    function vcInput(el) {
+      el.value = el.value.replace(/[^0-9]/g, '').slice(-1);
+      if (el.value && el.nextElementSibling) el.nextElementSibling.focus();
+      vcCheckComplete();
+    }
+
+    function vcKey(e, el) {
+      if (e.key === 'Backspace' && !el.value && el.previousElementSibling) {
+        el.previousElementSibling.focus();
+      }
+    }
+
+    function vcCheckComplete() {
+      const boxes = document.querySelectorAll('.vc-box');
+      const allFilled = [...boxes].every(b => b.value.length === 1);
+      document.getElementById('btnVerify').classList.toggle('active', allFilled);
+    }
+
+    function selectConta(perfil, tipo, el) {
+      const detailIndividual  = document.getElementById('detail-individual');
+      const detailComercial   = document.getElementById('detail-comerciante');
+      const isAlreadySelected = el.classList.contains('selected');
+
+      /* Fecha tudo primeiro */
+      const parent = el.closest('.tc-suboptions');
+      parent.querySelectorAll('.tc-subcard').forEach(c => c.classList.remove('selected'));
+      if (detailIndividual) detailIndividual.classList.remove('open');
+      if (detailComercial)  detailComercial.classList.remove('open');
+
+      /* Toggle: se não estava selecionado abre, se já estava fecha */
+      if (!isAlreadySelected) {
+        el.classList.add('selected');
+        if (tipo === 'individual' && detailIndividual) detailIndividual.classList.add('open');
+        if (tipo === 'comerciante' && detailComercial) detailComercial.classList.add('open');
+      }
     }
   </script>
 

@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/blocks';
+import { spacing } from '../tokens/spacing';
+
+<Meta title="Fundação/Espaçamento" />
+
+export const scale = spacing;
+
+<div style={{ maxWidth: 800 }}>
+
+<div style={{ marginBottom: 32 }}>
+  <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#F7931A', margin: '0 0 8px' }}>03 / Fundação</p>
+  <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em', color: '#0C0B0D', margin: '0 0 10px' }}>Espaçamento</h1>
+  <p style={{ fontSize: 15, color: '#6b7280', lineHeight: 1.7, margin: 0, maxWidth: 520 }}>
+    Escala de espaçamento em múltiplos de 4px. Use sempre os tokens para garantir consistência de layout.
+  </p>
+</div>
+
+---
+
+## Escala
+
+<div style={{ marginTop: 24 }}>
+  {scale.map(s => (
+    <div key={s.token} style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '12px 0', borderBottom: '1px solid #f3f3f3' }}>
+      <span style={{ fontSize: 12, fontFamily: 'monospace', color: '#6b7280', minWidth: 90 }}>{s.token}</span>
+      <div style={{ background: '#F7931A', height: 8, borderRadius: 4, width: s.px, flexShrink: 0 }} />
+      <span style={{ fontSize: 12, fontFamily: 'monospace', color: '#0C0B0D', minWidth: 40 }}>{s.value}</span>
+      <span style={{ fontSize: 12, color: '#9ca3af' }}>{s.use}</span>
+    </div>
+  ))}
+</div>
+
+---
+
+## Tabela de Referência
+
+| Token | Valor | px | Uso típico |
+|---|---|---|---|
+| `--space-1` | `4px` | 4 | Gap interno mínimo |
+| `--space-2` | `8px` | 8 | Padding de badges e tags |
+| `--space-3` | `12px` | 12 | Padding interno de inputs (y) |
+| `--space-4` | `16px` | 16 | Padding padrão de componentes |
+| `--space-5` | `20px` | 20 | Gap entre elementos de formulário |
+| `--space-6` | `24px` | 24 | Padding de cards |
+| `--space-8` | `32px` | 32 | Espaçamento de seções menores |
+| `--space-10` | `40px` | 40 | Padding de containers |
+| `--space-12` | `48px` | 48 | Espaçamento entre seções |
+| `--space-16` | `64px` | 64 | Seções maiores de layout |
+
+---
+
+## Regra de Uso
+
+Sempre prefira tokens de espaçamento a valores ad-hoc. A base da escala é **4px** — use apenas múltiplos desta unidade para manter a grade consistente.
+
+</div>

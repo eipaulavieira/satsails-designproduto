@@ -1,0 +1,63 @@
+{/* Typography.mdx */}
+import { Meta } from '@storybook/blocks';
+import { fontFamilies, fontSizes, fontWeights } from '../tokens/typography';
+
+<Meta title="Fundação/Tipografia" />
+
+<div style={{ maxWidth: 800 }}>
+
+<div style={{ marginBottom: 32 }}>
+  <p className="ds-section-label">02 / Fundação</p>
+  <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em', color: '#0C0B0D', margin: '0 0 10px' }}>Tipografia</h1>
+  <p style={{ fontSize: 15, color: '#6b7280', lineHeight: 1.7, margin: 0, maxWidth: 520 }}>
+    Famílias tipográficas, escala de tamanhos e pesos utilizados em toda a interface da Satsails.
+  </p>
+</div>
+
+---
+
+## Famílias
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 24 }}>
+  {Object.values(fontFamilies).map(f => (
+    <div key={f.token} style={{ padding: '24px', border: '1px solid #e8e8e8', borderRadius: 10 }}>
+      <div style={{ fontSize: 11, fontFamily: 'JetBrains Mono, monospace', color: '#9ca3af', marginBottom: 12 }}>{f.token}</div>
+      <div style={{ fontSize: 28, fontFamily: f.value, fontWeight: 600, color: '#0C0B0D', marginBottom: 8, letterSpacing: '-0.01em' }}>
+        Aa Bb Cc
+      </div>
+      <div style={{ fontSize: 12, color: '#6b7280' }}>{f.label}</div>
+      <div style={{ fontSize: 11, fontFamily: 'JetBrains Mono, monospace', color: '#d1d5db', marginTop: 4, wordBreak: 'break-all' }}>{f.value}</div>
+    </div>
+  ))}
+</div>
+
+---
+
+## Escala de Tamanhos
+
+<div style={{ marginTop: 24 }}>
+  {fontSizes.map(t => (
+    <div key={t.token} className="ds-type-specimen">
+      <div className="ds-type-meta">{t.token} · {t.size} / {t.lineHeight}</div>
+      <div style={{ fontSize: t.size, lineHeight: t.lineHeight, fontWeight: 400, color: '#0C0B0D' }}>
+        {t.sample}
+      </div>
+    </div>
+  ))}
+</div>
+
+---
+
+## Pesos
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginTop: 24 }}>
+  {fontWeights.map(w => (
+    <div key={w.token} style={{ padding: '20px 16px', border: '1px solid #e8e8e8', borderRadius: 8 }}>
+      <div style={{ fontSize: 11, fontFamily: 'JetBrains Mono, monospace', color: '#9ca3af', marginBottom: 10 }}>{w.token}</div>
+      <div style={{ fontSize: 22, fontWeight: w.value, color: '#0C0B0D', marginBottom: 6 }}>Satsails</div>
+      <div style={{ fontSize: 12, color: '#6b7280' }}>{w.name} · {w.value}</div>
+    </div>
+  ))}
+</div>
+
+</div>
