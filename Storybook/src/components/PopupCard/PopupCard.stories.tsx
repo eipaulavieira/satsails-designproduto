@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { PopupCard, PopupTitle, CoinOption } from './PopupCard';
 
-// Ícones de moedas — src/assets/imagens/
-// Para substituir: coloque o arquivo com o mesmo nome (ex: bitcoin.png) e atualize a extensão abaixo
 import bitcoinIcon        from '../../assets/imagens/bitcoin.svg';
 import lightningIcon      from '../../assets/imagens/lightning-bitcoin.png';
 import depixIcon          from '../../assets/imagens/depix.png';
@@ -46,7 +44,56 @@ const meta: Meta<typeof PopupCard> = {
 export default meta;
 type Story = StoryObj<typeof PopupCard>;
 
-// ── Story: Receber em (fiel à screenshot) ────────────────────────
+// ── Coins helper ─────────────────────────────────────────────────
+
+const COINS = [
+  { icon: bitcoinIcon,       label: 'Bitcoin' },
+  { icon: lightningIcon,     label: 'Lightning Bitcoin' },
+  { icon: depixIcon,         label: 'Depix' },
+  { icon: usdtIcon,          label: 'USDT',           hasChevron: true },
+  { icon: liquidBitcoinIcon, label: 'Liquid Bitcoin', hasChevron: true },
+  { icon: eurxIcon,          label: 'EURx' },
+];
+
+// ── Story: Enviar de ─────────────────────────────────────────────
+
+export const EnviarDe: Story = {
+  name: 'Enviar de:',
+  args: {
+    width: 390,
+    height: 504,
+    blur: 12,
+    showHandle: true,
+  },
+  render: (args) => {
+    const [selected, setSelected] = useState('Bitcoin');
+    return (
+      <div style={{
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        background: '#080808',
+      }}>
+        <PopupCard {...args}>
+          <PopupTitle>Enviar de:</PopupTitle>
+          {COINS.map(({ icon, label, hasChevron }) => (
+            <CoinOption
+              key={label}
+              icon={icon}
+              label={label}
+              hasChevron={hasChevron}
+              isSelected={selected === label}
+              onClick={() => setSelected(label)}
+            />
+          ))}
+        </PopupCard>
+      </div>
+    );
+  },
+};
+
+// ── Story: Receber em ────────────────────────────────────────────
 
 export const ReceberEm: Story = {
   name: 'Receber em:',
@@ -58,14 +105,6 @@ export const ReceberEm: Story = {
   },
   render: (args) => {
     const [selected, setSelected] = useState('Bitcoin');
-    const coins = [
-      { icon: bitcoinIcon,       label: 'Bitcoin' },
-      { icon: lightningIcon,     label: 'Lightning Bitcoin' },
-      { icon: depixIcon,         label: 'Depix' },
-      { icon: usdtIcon,          label: 'USDT',           hasChevron: true },
-      { icon: liquidBitcoinIcon, label: 'Liquid Bitcoin', hasChevron: true },
-      { icon: eurxIcon,          label: 'EURx' },
-    ];
     return (
       <div style={{
         height: '100vh',
@@ -76,7 +115,7 @@ export const ReceberEm: Story = {
       }}>
         <PopupCard {...args}>
           <PopupTitle>Receber em:</PopupTitle>
-          {coins.map(({ icon, label, hasChevron }) => (
+          {COINS.map(({ icon, label, hasChevron }) => (
             <CoinOption
               key={label}
               icon={icon}
@@ -142,112 +181,6 @@ export const ConteudoCustomizado: Story = {
   ),
 };
 
-// ── Story: Blur desativado ───────────────────────────────────────
-
-export const SemBlur: Story = {
-  name: 'Sem blur (referência)',
-  args: {
-    width: 390,
-    height: 504,
-    blur: 0,
-    showHandle: true,
-  },
-  render: (args) => {
-    const [selected, setSelected] = useState('Bitcoin');
-    const coins = [
-      { icon: bitcoinIcon,       label: 'Bitcoin' },
-      { icon: lightningIcon,     label: 'Lightning Bitcoin' },
-      { icon: depixIcon,         label: 'Depix' },
-      { icon: usdtIcon,          label: 'USDT',           hasChevron: true },
-      { icon: liquidBitcoinIcon, label: 'Liquid Bitcoin', hasChevron: true },
-      { icon: eurxIcon,          label: 'EURx' },
-    ];
-    return (
-      <div style={{ height: '100vh', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', background: '#080808' }}>
-        <PopupCard {...args}>
-          <PopupTitle>Receber em:</PopupTitle>
-          {coins.map(({ icon, label, hasChevron }) => (
-            <CoinOption
-              key={label}
-              icon={icon}
-              label={label}
-              hasChevron={hasChevron}
-              isSelected={selected === label}
-              onClick={() => setSelected(label)}
-            />
-          ))}
-        </PopupCard>
-      </div>
-    );
-  },
-};
-
-// ── Story: All (com filtro) ──────────────────────────────────────
-
-export const All: Story = {
-  name: 'All',
-  args: {
-    width: 390,
-    height: 560,
-    blur: 12,
-    showHandle: true,
-  },
-  render: (args) => {
-    const [selected, setSelected] = useState('Bitcoin');
-    const [filterSelected, setFilterSelected] = useState(false);
-    const coins = [
-      { icon: bitcoinIcon,       label: 'Bitcoin' },
-      { icon: lightningIcon,     label: 'Lightning Bitcoin' },
-      { icon: depixIcon,         label: 'Depix' },
-      { icon: usdtIcon,          label: 'USDT' },
-      { icon: liquidBitcoinIcon, label: 'Liquid Bitcoin' },
-      { icon: eurxIcon,          label: 'EURx' },
-    ];
-    return (
-      <div style={{ height: '100vh', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', background: '#080808' }}>
-        <PopupCard {...args}>
-          <PopupTitle>All</PopupTitle>
-          {coins.map(({ icon, label }) => (
-            <CoinOption
-              key={label}
-              icon={icon}
-              label={label}
-              isSelected={selected === label}
-              onClick={() => setSelected(label)}
-            />
-          ))}
-          <div
-            onClick={() => setFilterSelected(s => !s)}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              background: filterSelected ? '#080808' : 'rgba(8, 8, 8, 0.54)',
-              borderRadius: 10,
-              padding: '0 16px',
-              width: '100%',
-              height: 52,
-              boxSizing: 'border-box',
-              flexShrink: 0,
-              cursor: 'pointer',
-              transition: 'background 0.15s ease',
-            }}
-          >
-            <span style={{
-              fontSize: 12,
-              fontWeight: 700,
-              color: '#ffffff',
-              fontFamily: 'Inter, sans-serif',
-              lineHeight: 'normal',
-            }}>
-              Filtrar todos
-            </span>
-          </div>
-        </PopupCard>
-      </div>
-    );
-  },
-};
-
 // ── Story: Vender ────────────────────────────────────────────────
 
 export const Vender: Story = {
@@ -279,6 +212,57 @@ export const Vender: Story = {
               onClick={() => setSelected(label)}
             />
           ))}
+        </PopupCard>
+      </div>
+    );
+  },
+};
+
+// ── Story: All ───────────────────────────────────────────────────
+
+export const All: Story = {
+  name: 'All',
+  args: {
+    width: 390,
+    height: 560,
+    blur: 12,
+    showHandle: true,
+  },
+  render: (args) => {
+    const [selected, setSelected] = useState('Bitcoin');
+    const [filterSelected, setFilterSelected] = useState(false);
+    return (
+      <div style={{ height: '100vh', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', background: '#080808' }}>
+        <PopupCard {...args}>
+          <PopupTitle>All</PopupTitle>
+          {COINS.map(({ icon, label }) => (
+            <CoinOption
+              key={label}
+              icon={icon}
+              label={label}
+              isSelected={selected === label}
+              onClick={() => setSelected(label)}
+            />
+          ))}
+          <div
+            onClick={() => setFilterSelected(s => !s)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              background: filterSelected ? '#080808' : 'rgba(8, 8, 8, 0.54)',
+              borderRadius: 10,
+              padding: '0 16px',
+              width: '100%',
+              height: 52,
+              boxSizing: 'border-box',
+              flexShrink: 0,
+              cursor: 'pointer',
+            }}
+          >
+            <span style={{ fontSize: 12, fontWeight: 700, color: '#ffffff', fontFamily: 'Inter, sans-serif' }}>
+              Filtrar todos
+            </span>
+          </div>
         </PopupCard>
       </div>
     );

@@ -94,7 +94,7 @@ export const colorGroups: Record<string, ColorGroup> = {
     },
   },
 
-  // ── 4. Neutral — Gray Scale ──────────────────────────────────────
+  // ── 4. Neutral — Gray Scale (100% opacidade) ─────────────────────
   neutral: {
     title: 'Neutral — Gray Scale',
     colors: {
@@ -113,11 +113,6 @@ export const colorGroups: Record<string, ColorGroup> = {
         flutter: 'Color(0xFF080808)',
         label: 'Dark', use: 'Fundo principal do app (splash, screens)',
       },
-      darkTint: {
-        value: 'rgba(8, 8, 8, 0.54)', token: '--color-dark-tint',
-        flutter: 'Color(0x8A080808)',
-        label: 'Dark Tint 54%', use: 'Overlay escuro semi-transparente (54% opacidade)',
-      },
       black: {
         value: '#0C0B0D', token: '--color-black',
         flutter: 'Color(0xFF0C0B0D)',
@@ -132,11 +127,6 @@ export const colorGroups: Record<string, ColorGroup> = {
         value: '#333333', token: '--color-neutral-dark',
         flutter: 'Color(0xFF333333)',
         label: 'Neutral Dark', use: 'Bordas, separadores e destaque de texto',
-      },
-      neutralDarkTint: {
-        value: 'rgba(51, 51, 51, 0.34)', token: '--color-neutral-dark-tint',
-        flutter: 'Color(0x57333333)',
-        label: 'Neutral Dark Tint 34%', use: 'Bordas e superfícies sutis semi-transparentes (34% opacidade)',
       },
       neutral: {
         value: '#4C4C4E', token: '--color-neutral',
@@ -167,6 +157,28 @@ export const colorGroups: Record<string, ColorGroup> = {
         value: '#FFFFFF', token: '--color-white',
         flutter: 'Color(0xFFFFFFFF)',
         label: 'White', use: 'Fundo claro e texto sobre escuro',
+      },
+    },
+  },
+
+  // ── 5. Neutral — Alpha (opacidade < 100%) ────────────────────────
+  neutralAlpha: {
+    title: 'Neutral — Alpha',
+    colors: {
+      darkTint: {
+        value: 'rgba(8, 8, 8, 0.54)', token: '--color-dark-tint',
+        flutter: 'Color(0x8A080808)',
+        label: 'Dark Tint 54%', use: 'Overlay escuro semi-transparente (54% opacidade)',
+      },
+      neutralDarkTint: {
+        value: 'rgba(51, 51, 51, 0.34)', token: '--color-neutral-dark-tint',
+        flutter: 'Color(0x57333333)',
+        label: 'Neutral Dark Tint 34%', use: 'Bordas e superfícies sutis semi-transparentes (34% opacidade)',
+      },
+      borderLinear: {
+        value: 'rgba(255, 255, 255, 0.06)', token: '--color-border-linear',
+        flutter: 'Color(0x0FFFFFFF)',
+        label: 'Border Linear 6%', use: 'Borda padrão de cards e botões — var(--linear)',
       },
     },
   },

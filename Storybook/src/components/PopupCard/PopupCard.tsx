@@ -73,7 +73,7 @@ export function PopupTitle({ children }: PopupTitleProps) {
       fontWeight: 500,
       color: '#ffffff',
       fontFamily: 'Inter, sans-serif',
-      margin: 0,
+      margin: '0 0 28px',
       flexShrink: 0,
     }}>
       {children}

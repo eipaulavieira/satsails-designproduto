@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { BottomNavBar } from './BottomNavBar';
 
 const meta: Meta<typeof BottomNavBar> = {
@@ -36,7 +35,7 @@ export const Default: Story = {
   name: 'Home ativo',
   args: { defaultActive: 'home' },
   render: (args) => (
-    <div style={{ height: '100vh', background: '#080808', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+    <div style={{ height: '100vh', background: '#080808', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center' }}>
       <BottomNavBar {...args} />
     </div>
   ),
@@ -46,7 +45,7 @@ export const ScanAtivo: Story = {
   name: 'Scan ativo (botão central)',
   args: { defaultActive: 'scan' },
   render: (args) => (
-    <div style={{ height: '100vh', background: '#080808', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+    <div style={{ height: '100vh', background: '#080808', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center' }}>
       <BottomNavBar {...args} />
     </div>
   ),
@@ -56,7 +55,7 @@ export const MercadoAtivo: Story = {
   name: 'Mercado ativo',
   args: { defaultActive: 'chart' },
   render: (args) => (
-    <div style={{ height: '100vh', background: '#080808', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+    <div style={{ height: '100vh', background: '#080808', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center' }}>
       <BottomNavBar {...args} />
     </div>
   ),
