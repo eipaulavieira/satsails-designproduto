@@ -1,0 +1,19 @@
+# Dependências
+node_modules/
+**/node_modules/
+
+# Build do Storybook
+Storybook/storybook-static/
+
+# Ambiente
+.env
+.env.local
+.env.*.local
+
+# Editor / sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Claude Code
+.claude/
