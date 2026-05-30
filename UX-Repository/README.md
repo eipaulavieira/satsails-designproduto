@@ -1,52 +1,36 @@
-# Satsails — Design System & Documentação UX
+# Satsails — Repositório de UX
 
-> Repositório central de todos os entregáveis de UX/UI da Satsails.  
-> Carteira Bitcoin de autocustódia com suporte a Lightning, Liquid, DePix e PIX.
+Documentação de design, arquitetura de informação, branding e handoff do app Satsails.
+
+> Para instruções de instalação e uso do protótipo e Storybook, consulte o [README principal](../README.md) na raiz do repositório.
 
 ---
 
-## Estrutura do repositório
+## Estrutura
 
 ```
-satsails-design-system/
-├── 01-briefing-e-estrategia/    # Contexto, pesquisa e base estratégica
-├── 02-arquitetura-de-informacao/ # Navegação, taxonomia e inventário
-├── 03-design-system/             # Fundação visual, tokens e componentes
-├── 04-ui-e-mockups/              # Wireframes, mockups PT/EN e protótipos
-├── 05-variants-e-estados/        # Variantes e estados de componentes
-└── 06-documentacao-e-handoff/    # Specs dev, decisões e onboarding
+UX-Repository/
+├── 01-briefing-e-estrategia/     # Contexto, pesquisa e base estratégica
+├── 02-arquitetura-de-informacao/ # Navegação e taxonomia
+├── 03-design-system/             # Tokens de cor, tipografia e espaçamento
+├── 04-ui-e-mockups/              # Wireframes e mockups
+├── 05-branding-e-identidade/     # Identidade visual
+├── 06-documentacao-e-handoff/    # Specs para dev e decisões de design
+├── 07-comunicacao-e-conteudo/    # Textos e tom de voz
+├── 08-arquivo/                   # Versões anteriores
+└── 09-prototipo/                 # app.html — protótipo navegável
 ```
 
 ---
 
-## Conexão com Figma
-
-Os arquivos de design estão no Figma e espelham esta estrutura.  
-Consulte `06-documentacao-e-handoff/onboarding-do-time/links-e-recursos.md` para os links.
-
----
-
-## Como contribuir
-
-1. Siga a nomenclatura de arquivos: `kebab-case` em português
-2. Toda decisão de design deve ser registrada em `06-documentacao-e-handoff/decisoes-de-design/`
-3. Ao atualizar componentes, atualizar também o `changelog.md`
-
----
-
-## Paleta de cores principal
+## Paleta de cores
 
 | Token | Hex | Uso |
 |---|---|---|
 | `--color-primary` | `#F7931A` | Bitcoin / ações primárias |
-| `--color-accent` | `#FF9800` | Destaques |
-| `--color-danger` | `#CF1C0E` | Erros / alertas críticos |
-| `--color-success` | `#00C853` | Confirmações |
-| `--color-neutral-dark` | `#333333` | Texto |
-| `--color-black` | `#0C0B0D` | Fundo escuro |
-| `--color-white` | `#FFFFFF` | Fundo claro |
-| `--color-gray` | `#D1D2D2` | Bordas / divisores |
-
----
-
-_Mantido pela equipe de design. Dúvidas: consulte o onboarding em `06-documentacao-e-handoff/`._
+| `--color-primary-medium` | `#FF9800` | Destaques e CTAs |
+| `--color-secondary` | `#00C853` | Confirmações e sucesso |
+| `--color-danger` | `#CF1C0E` | Erros e alertas |
+| `--color-dark` | `#080808` | Fundo principal do app |
+| `--color-subtitle` | `#727272` | Textos secundários |
+| `--color-gray` | `#D1D2D2` | Bordas e divisores |
