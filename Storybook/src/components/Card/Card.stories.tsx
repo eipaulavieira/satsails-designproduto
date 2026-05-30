@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Card, MetricCard, ListCard } from './Card';
 
 const meta: Meta = {
-  title: 'Componentes/Cards',
+  title: 'Componentes/Cards/Base',
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',

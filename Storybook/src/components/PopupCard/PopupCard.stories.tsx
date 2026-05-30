@@ -10,7 +10,7 @@ import liquidBitcoinIcon  from '../../assets/imagens/liquid.png';
 import eurxIcon           from '../../assets/imagens/eurx.png';
 
 const meta: Meta<typeof PopupCard> = {
-  title: 'Componentes/PopupCard',
+  title: 'Componentes/Popups/PopupCard',
   component: PopupCard,
   parameters: {
     layout: 'fullscreen',

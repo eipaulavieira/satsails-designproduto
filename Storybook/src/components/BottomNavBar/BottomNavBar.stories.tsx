@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { BottomNavBar } from './BottomNavBar';
 
 const meta: Meta<typeof BottomNavBar> = {
-  title: 'Componentes/BottomNavBar',
+  title: 'Componentes/Navegação/BottomNavBar',
   component: BottomNavBar,
   parameters: {
     layout: 'fullscreen',
@@ -54,6 +54,26 @@ export const ScanAtivo: Story = {
 export const MercadoAtivo: Story = {
   name: 'Mercado ativo',
   args: { defaultActive: 'chart' },
+  render: (args) => (
+    <div style={{ height: '100vh', background: '#080808', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center' }}>
+      <BottomNavBar {...args} />
+    </div>
+  ),
+};
+
+export const ServicosAtivo: Story = {
+  name: 'Serviços ativo',
+  args: { defaultActive: 'shop' },
+  render: (args) => (
+    <div style={{ height: '100vh', background: '#080808', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center' }}>
+      <BottomNavBar {...args} />
+    </div>
+  ),
+};
+
+export const HistoricoAtivo: Story = {
+  name: 'Histórico ativo',
+  args: { defaultActive: 'history' },
   render: (args) => (
     <div style={{ height: '100vh', background: '#080808', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center' }}>
       <BottomNavBar {...args} />

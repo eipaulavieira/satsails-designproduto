@@ -2,8 +2,18 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { TransactionHistoryCard } from './TransactionHistoryCard';
 
+const sectionLabelStyle: React.CSSProperties = {
+  fontFamily: 'Inter, sans-serif',
+  fontSize: 11,
+  fontStyle: 'normal',
+  fontWeight: 700,
+  lineHeight: '120%',
+  color: 'var(--white, #D1D2D2)',
+  textTransform: 'uppercase',
+};
+
 const meta: Meta<typeof TransactionHistoryCard> = {
-  title: 'Componentes/TransactionHistoryCard',
+  title: 'Componentes/Histórico/TransactionHistoryCard',
   component: TransactionHistoryCard,
   parameters: {
     layout: 'centered',
@@ -186,10 +196,13 @@ export const HistoricoBitcoin: Story = {
       { type: 'venda'    as const, date: '25/04/2026', amount: '-90.500 sats',  amountBrl: '-325,80 BRL'   },
     ];
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-        {txs.map((tx, i) => (
-          <TransactionHistoryCard key={i} assetName="Bitcoin" {...tx} />
-        ))}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+        <span style={sectionLabelStyle}>Onchain</span>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+          {txs.map((tx, i) => (
+            <TransactionHistoryCard key={i} assetName="Bitcoin" {...tx} />
+          ))}
+        </div>
       </div>
     );
   },

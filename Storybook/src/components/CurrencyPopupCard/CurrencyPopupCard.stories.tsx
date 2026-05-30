@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { CurrencyPopupCard, CurrencyTitle, CurrencyOption } from './CurrencyPopupCard';
 
 const meta: Meta<typeof CurrencyPopupCard> = {
-  title: 'Componentes/CurrencyPopupCard',
+  title: 'Componentes/Popups/CurrencyPopupCard',
   component: CurrencyPopupCard,
   parameters: {
     layout: 'fullscreen',

@@ -10,7 +10,7 @@ import liquidBitcoinIcon from '../../assets/imagens/liquid.png';
 import eurxIcon          from '../../assets/imagens/eurx.png';
 
 const meta: Meta<typeof AssetBalanceCard> = {
-  title: 'Componentes/AssetBalanceCard',
+  title: 'Componentes/Saldo/AssetBalanceCard',
   component: AssetBalanceCard,
   parameters: {
     layout: 'centered',

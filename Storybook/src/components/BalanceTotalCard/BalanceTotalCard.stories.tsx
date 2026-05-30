@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { BalanceTotalCard } from './BalanceTotalCard';
 
 const meta: Meta<typeof BalanceTotalCard> = {
-  title: 'Componentes/BalanceTotalCard',
+  title: 'Componentes/Saldo/BalanceTotalCard',
   component: BalanceTotalCard,
   parameters: {
     layout: 'centered',
@@ -35,20 +35,20 @@ const meta: Meta<typeof BalanceTotalCard> = {
 export default meta;
 type Story = StoryObj<typeof BalanceTotalCard>;
 
+export const Padrao: Story = {
+  name: 'Padrão',
+  args: {
+    totalBalance: 'R$ 68.420,00',
+    cryptoEquivalent: '≈ 0.18563',
+  },
+};
+
 export const DadosPrivados: Story = {
   name: 'Dados Privados',
   args: {
     totalBalance: 'R$ 68.420,00',
     cryptoEquivalent: '≈ 0.18563',
     isPrivate: true,
-  },
-};
-
-export const Padrao: Story = {
-  name: 'Padrão',
-  args: {
-    totalBalance: 'R$ 68.420,00',
-    cryptoEquivalent: '≈ 0.18563',
   },
 };
 

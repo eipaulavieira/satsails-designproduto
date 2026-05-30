@@ -10,7 +10,7 @@ import gbFlag  from '../../assets/flags/gb.svg';
 import pixIcon from '../../assets/flags/pix.svg';
 
 const meta: Meta<typeof FiatPopupCard> = {
-  title: 'Componentes/FiatPopupCard',
+  title: 'Componentes/Popups/FiatPopupCard',
   component: FiatPopupCard,
   parameters: {
     layout: 'fullscreen',
