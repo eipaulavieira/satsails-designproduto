@@ -2900,9 +2900,19 @@
       startSplash();
     }
 
-    /* ── Splash auto-redirect ── */
+    /* ── Splash auto-redirect com dissolve ── */
     function startSplash() {
-      setTimeout(() => goTo('splash', 'login'), 2200);
+      setTimeout(() => {
+        const splash = document.getElementById('splash');
+        const login  = document.getElementById('login');
+        splash.style.transition = 'opacity 1s ease';
+        login.style.transition  = 'opacity 1s ease';
+        goTo('splash', 'login');
+        setTimeout(() => {
+          splash.style.transition = '';
+          login.style.transition  = '';
+        }, 1100);
+      }, 2000);
     }
 
     startSplash();
