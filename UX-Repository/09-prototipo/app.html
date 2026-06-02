@@ -1455,24 +1455,26 @@
       background-position: center;
     }
 
+    /* NavHeader — espelha exatamente NavHeader do Storybook */
     .scan-nav-bar {
       position: absolute;
       top: 44px; left: 0; right: 0;
       height: 50px;
       display: flex;
       align-items: center;
-      padding: 0 8px;
     }
 
     .scan-back {
       display: flex;
       align-items: center;
       gap: 6px;
+      height: 50px;
+      padding: 0 16px;
       background: none;
       border: none;
       cursor: pointer;
-      padding: 8px;
       -webkit-tap-highlight-color: transparent;
+      flex-shrink: 0;
     }
 
     .scan-title {
@@ -1482,6 +1484,7 @@
       font-style: normal;
       font-weight: 700;
       line-height: normal;
+      white-space: nowrap;
     }
 
     .scan-back:active { opacity: 0.6; }
