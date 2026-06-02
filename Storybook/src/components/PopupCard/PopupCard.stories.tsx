@@ -1,13 +1,39 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { PopupCard, PopupTitle, CoinOption } from './PopupCard';
-
 import bitcoinIcon        from '../../assets/imagens/bitcoin.svg';
 import lightningIcon      from '../../assets/imagens/lightning-bitcoin.png';
 import depixIcon          from '../../assets/imagens/depix.png';
 import usdtIcon           from '../../assets/imagens/usdt.png';
 import liquidBitcoinIcon  from '../../assets/imagens/liquid.png';
 import eurxIcon           from '../../assets/imagens/eurx.png';
+
+const PageTitle = ({ component, variant }: { component: string; variant: string }) => (
+  <div style={{
+    padding: '16px 24px 12px',
+    fontFamily: "'Inter', sans-serif",
+    fontSize: 13,
+    fontWeight: 600,
+    color: '#727272',
+    letterSpacing: '0.02em',
+    borderBottom: '1px solid rgba(255,255,255,0.06)',
+  }}>
+    <span style={{ color: '#D1D2D2' }}>{component}</span>
+    <span style={{ color: '#444', margin: '0 6px' }}>—</span>
+    <span style={{ color: '#727272' }}>{variant}</span>
+  </div>
+);
+
+const StoryLabel = ({ text }: { text: string }) => (
+  <div style={{
+    position: 'absolute', top: 16, left: 24,
+    fontFamily: "'Inter', sans-serif",
+    fontSize: 12, fontWeight: 600, color: '#727272',
+    letterSpacing: '0.04em', textTransform: 'uppercase',
+  }}>
+    {text}
+  </div>
+);
 
 const meta: Meta<typeof PopupCard> = {
   title: 'Componentes/Popups/PopupCard',
@@ -68,13 +94,9 @@ export const EnviarDe: Story = {
   render: (args) => {
     const [selected, setSelected] = useState('Bitcoin');
     return (
-      <div style={{
-        height: '100vh',
-        display: 'flex',
-        alignItems: 'flex-end',
-        justifyContent: 'center',
-        background: '#080808',
-      }}>
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: '#080808' }}>
+        <PageTitle component="PopupCard" variant="Enviar de:" />
+        <div style={{ flex: 1, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
         <PopupCard {...args}>
           <PopupTitle>Enviar de:</PopupTitle>
           {COINS.map(({ icon, label, hasChevron }) => (
@@ -88,6 +110,7 @@ export const EnviarDe: Story = {
             />
           ))}
         </PopupCard>
+        </div>
       </div>
     );
   },
@@ -106,13 +129,8 @@ export const ReceberEm: Story = {
   render: (args) => {
     const [selected, setSelected] = useState('Bitcoin');
     return (
-      <div style={{
-        height: '100vh',
-        display: 'flex',
-        alignItems: 'flex-end',
-        justifyContent: 'center',
-        background: '#080808',
-      }}>
+      <div style={{ height: '100vh', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', background: '#080808', position: 'relative' }}>
+        <StoryLabel text="Receber" />
         <PopupCard {...args}>
           <PopupTitle>Receber em:</PopupTitle>
           {COINS.map(({ icon, label, hasChevron }) => (
@@ -142,7 +160,8 @@ export const ConteudoCustomizado: Story = {
     showHandle: true,
   },
   render: (args) => (
-    <div style={{ height: '100vh', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', background: '#080808' }}>
+    <div style={{ height: '100vh', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', background: '#080808', position: 'relative' }}>
+      <StoryLabel text="Confirmar envio" />
       <PopupCard {...args}>
         <PopupTitle>Confirmar envio</PopupTitle>
         <div style={{
@@ -200,7 +219,8 @@ export const Vender: Story = {
       { icon: liquidBitcoinIcon, label: 'Liquid Bitcoin' },
     ];
     return (
-      <div style={{ height: '100vh', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', background: '#080808' }}>
+      <div style={{ height: '100vh', display: 'flex', alignItems: 'flex-end', justifyContent: 'center', background: '#080808', position: 'relative' }}>
+        <StoryLabel text="Vender" />
         <PopupCard {...args}>
           <PopupTitle>Vender:</PopupTitle>
           {coins.map(({ icon, label }) => (

@@ -105,6 +105,60 @@ export const groups = Object.entries(colorGroups);
 
 ---
 
+## Uso nos Botões (CTAs)
+
+Referência rápida de qual token usar em cada botão e estado:
+
+<div style={{ overflowX: 'auto', fontFamily: 'Inter, sans-serif', fontSize: 13 }}>
+  <table style={{ borderCollapse: 'collapse', width: '100%', minWidth: 600 }}>
+    <thead>
+      <tr style={{ background: '#f3f4f6' }}>
+        <th style={{ padding: '10px 14px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>Botão</th>
+        <th style={{ padding: '10px 14px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>Estado</th>
+        <th style={{ padding: '10px 14px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>Token CSS</th>
+        <th style={{ padding: '10px 14px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>HEX</th>
+        <th style={{ padding: '10px 14px', textAlign: 'left', borderBottom: '2px solid #e5e7eb' }}>Flutter</th>
+        <th style={{ padding: '10px 14px', borderBottom: '2px solid #e5e7eb' }}>Cor</th>
+      </tr>
+    </thead>
+    <tbody>
+      {[
+        { btn: 'Criar carteira / Continuar', state: 'idle',   token: '--color-primary-medium', hex: '#FF9800', flutter: 'Color(0xFFFF9800)' },
+        { btn: 'Criar carteira / Continuar', state: 'active', token: '--color-primary-dark',   hex: '#CD7C04', flutter: 'Color(0xFFCD7C04)' },
+        { btn: 'Cadastrar agora',            state: 'idle',   token: '--color-secondary',      hex: '#00C853', flutter: 'Color(0xFF00C853)' },
+        { btn: 'Cadastrar agora',            state: 'active', token: '--color-secondary-dark', hex: '#026A2D', flutter: 'Color(0xFF026A2D)' },
+        { btn: 'Deletar conta',              state: 'idle',   token: '--color-danger-medium',  hex: '#EA2415', flutter: 'Color(0xFFEA2415)' },
+        { btn: 'Deletar conta',              state: 'active', token: '--color-danger',         hex: '#CF1C0E', flutter: 'Color(0xFFCF1C0E)' },
+        { btn: 'Cancelar',                   state: 'idle',   token: '--color-dark-deep',      hex: '#070506', flutter: 'Color(0xFF070506)' },
+        { btn: 'Cancelar',                   state: 'active', token: '--color-dark-mid',       hex: '#191818', flutter: 'Color(0xFF191818)' },
+      ].map((row, i) => (
+        <tr key={i} style={{ borderBottom: '1px solid #f3f4f6', background: i % 2 === 0 ? '#fff' : '#fafafa' }}>
+          <td style={{ padding: '9px 14px', fontWeight: 500 }}>{row.btn}</td>
+          <td style={{ padding: '9px 14px' }}>
+            <span style={{
+              display: 'inline-block',
+              padding: '2px 8px',
+              borderRadius: 4,
+              fontSize: 11,
+              fontWeight: 600,
+              background: row.state === 'idle' ? '#dcfce7' : '#fef3c7',
+              color: row.state === 'idle' ? '#166534' : '#92400e',
+            }}>{row.state}</span>
+          </td>
+          <td style={{ padding: '9px 14px' }}><code style={{ fontSize: 11, background: '#f3f4f6', padding: '2px 6px', borderRadius: 3 }}>{row.token}</code></td>
+          <td style={{ padding: '9px 14px' }}><code style={{ fontSize: 11 }}>{row.hex}</code></td>
+          <td style={{ padding: '9px 14px' }}><code style={{ fontSize: 11 }}>{row.flutter}</code></td>
+          <td style={{ padding: '9px 14px', textAlign: 'center' }}>
+            <div style={{ width: 32, height: 20, borderRadius: 4, background: row.hex, display: 'inline-block', border: '1px solid rgba(0,0,0,0.1)' }} />
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+---
+
 ## Acessibilidade
 
 As combinações de cor devem respeitar contraste mínimo de **4.5:1** para texto normal e **3:1** para texto grande (WCAG AA).

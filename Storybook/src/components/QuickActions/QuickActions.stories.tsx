@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { QuickActions } from './QuickActions';
 
 const meta: Meta<typeof QuickActions> = {
-  title: 'Componentes/Ações/QuickActions',
+  title: 'Componentes/Ações/Quick Actions/Home',
   component: QuickActions,
   parameters: {
     layout: 'centered',

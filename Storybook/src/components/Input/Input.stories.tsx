@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
+import React, { useState } from 'react';
 import { User } from '@phosphor-icons/react';
 import { AppInput } from './AppInput';
 
@@ -137,6 +137,46 @@ export const QuantidadeDesejada: Story = {
     label: 'Quantidade',
     type: 'text',
     placeholder: 'Digite a quantidade desejada',
+  },
+};
+
+// ── Formatador numérico brasileiro ──────────────────────────────
+
+function formatBRL(raw: string): string {
+  const digits = raw.replace(/\D/g, '');
+  if (!digits) return '';
+  const num = parseInt(digits, 10) / 100;
+  return num.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+export const QuantidadePreenchida: Story = {
+  name: 'Envio — Quantidade preenchida (1.000,00)',
+  args: {
+    label: 'Quantidade',
+    type: 'text',
+    value: '1.000,00',
+  },
+};
+
+export const QuantidadeFormatada: StoryObj = {
+  name: 'Envio — Quantidade formatada (interativo)',
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const [value, setValue] = useState('');
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(formatBRL(e.target.value));
+    };
+    return (
+      <div style={{ width: 358, background: '#080808', padding: '24px 0' }}>
+        <AppInput
+          label="Quantidade"
+          type="text"
+          placeholder="Digite a quantidade desejada"
+          value={value}
+          onChange={handleChange}
+        />
+      </div>
+    );
   },
 };
 

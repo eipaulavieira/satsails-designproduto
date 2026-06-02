@@ -20,7 +20,7 @@ export const colorGroups: Record<string, ColorGroup> = {
       primaryDark: {
         value: '#CD7C04', token: '--color-primary-dark',
         flutter: 'Color(0xFFCD7C04)',
-        label: 'Primary Dark', use: 'Variante escura do laranja Bitcoin',
+        label: 'Primary Dark', use: 'CTA active — Criar carteira, Continuar (estado selecionado/bloqueado)',
       },
       primary: {
         value: '#F7931A', token: '--color-primary',
@@ -30,7 +30,7 @@ export const colorGroups: Record<string, ColorGroup> = {
       primaryMedium: {
         value: '#FF9800', token: '--color-primary-medium',
         flutter: 'Color(0xFFFF9800)',
-        label: 'Primary Medium', use: 'Destaques, CTAs e hover states',
+        label: 'Primary Medium', use: 'CTA idle — Criar carteira, Continuar (pronto para clicar)',
       },
       primaryLight: {
         value: '#FFB74D', token: '--color-primary-light',
@@ -52,12 +52,12 @@ export const colorGroups: Record<string, ColorGroup> = {
       secondaryDark: {
         value: '#026A2D', token: '--color-secondary-dark',
         flutter: 'Color(0xFF026A2D)',
-        label: 'Secondary Dark', use: 'Verde escuro — fundos de sucesso',
+        label: 'Secondary Dark', use: 'CTA active — Cadastrar agora (estado selecionado/bloqueado)',
       },
       secondary: {
         value: '#00C853', token: '--color-secondary',
         flutter: 'Color(0xFF00C853)',
-        label: 'Secondary', use: 'Sucesso, confirmações e saldos positivos',
+        label: 'Secondary', use: 'CTA idle — Cadastrar agora (pronto para clicar)',
       },
       secondaryMedium: {
         value: '#11B761', token: '--color-secondary-medium',
@@ -81,10 +81,15 @@ export const colorGroups: Record<string, ColorGroup> = {
   feedback: {
     title: 'Feedback',
     colors: {
+      dangerMedium: {
+        value: '#EA2415', token: '--color-danger-medium',
+        flutter: 'Color(0xFFEA2415)',
+        label: 'Danger Medium', use: 'CTA idle — Deletar conta (pronto para clicar)',
+      },
       danger: {
         value: '#CF1C0E', token: '--color-danger',
         flutter: 'Color(0xFFCF1C0E)',
-        label: 'Error', use: 'Erros e alertas críticos',
+        label: 'Danger Dark', use: 'CTA active — Deletar conta (estado selecionado/bloqueado)',
       },
       warning: {
         value: '#F59E0B', token: '--color-warning',
@@ -106,7 +111,7 @@ export const colorGroups: Record<string, ColorGroup> = {
       darkDeep: {
         value: '#070506', token: '--color-dark-deep',
         flutter: 'Color(0xFF070506)',
-        label: 'Dark Deep', use: 'Fundo mais profundo do app',
+        label: 'Dark Deep', use: 'CTA idle — Cancelar · Fundo mais profundo do app',
       },
       dark: {
         value: '#080808', token: '--color-dark',
@@ -121,7 +126,7 @@ export const colorGroups: Record<string, ColorGroup> = {
       darkMid: {
         value: '#191818', token: '--color-dark-mid',
         flutter: 'Color(0xFF191818)',
-        label: 'Dark Mid', use: 'Fundos intermediários escuros',
+        label: 'Dark Mid', use: 'CTA active — Cancelar (clicável) · Fundos intermediários escuros',
       },
       neutralDark: {
         value: '#333333', token: '--color-neutral-dark',

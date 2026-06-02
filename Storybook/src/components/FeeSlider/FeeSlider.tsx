@@ -53,7 +53,7 @@ export function FeeSlider({ fees = DEFAULT_FEES, defaultIndex = 1, onChange }: F
       {/* ── Track ── */}
       <div style={{ position: 'relative', width: TRACK_W, height: 20, display: 'flex', alignItems: 'center' }}>
 
-        {/* Trilho cinza (6px) */}
+        {/* Trilho — #080808 conforme Figma */}
         <div style={{
           position: 'absolute',
           left: 0, top: '50%',
@@ -61,7 +61,7 @@ export function FeeSlider({ fees = DEFAULT_FEES, defaultIndex = 1, onChange }: F
           width: TRACK_W,
           height: 6,
           borderRadius: 3,
-          background: '#333',
+          background: '#080808',
         }} />
 
         {/* Preenchimento laranja (12px, centrado verticalmente no trilho) */}
@@ -90,7 +90,7 @@ export function FeeSlider({ fees = DEFAULT_FEES, defaultIndex = 1, onChange }: F
               width: 6,
               height: 6,
               borderRadius: '50%',
-              background: i <= index ? '#FF9800' : '#555',
+              background: i <= index ? '#FF9800' : '#000000',
               pointerEvents: 'none',
             }} />
           );

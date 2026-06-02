@@ -1447,7 +1447,7 @@
     /* ════════════════════════
        SCAN
     ════════════════════════ */
-    #scan { background: #000000; }
+    #scan, #enviar-scan { background: #000000; /* --Black */ }
 
     #scan-qr {
       background-image: url('imagens/Scanear-image.png');
@@ -1534,6 +1534,247 @@
 
     .scan-lightbulb:active { opacity: 0.7; }
 
+    /* ════════════════════════
+       ENVIAR
+    ════════════════════════ */
+    #enviar, #enviar-preenchido { background: #000000; /* --Black */ }
+
+    .enviar-body {
+      position: absolute;
+      top: 94px; left: 0; right: 0; bottom: 96px;
+      overflow-y: auto;
+      scrollbar-width: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px;
+      gap: 20px;
+      box-sizing: border-box;
+    }
+    .enviar-body::-webkit-scrollbar { display: none; }
+
+    /* Input com label — espelha AppInput do Storybook */
+    .enviar-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+    .enviar-input-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .enviar-input-label-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #D1D2D2;
+      line-height: normal;
+    }
+    .enviar-usd-selector {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+    .enviar-usd-selector span {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #D1D2D2;
+    }
+    .enviar-input-field {
+      display: flex;
+      height: 52px;
+      padding: 0 20px;
+      align-items: center;
+      gap: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #080808; /* --dark-new */
+      box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.25);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .enviar-input-field input {
+      background: none;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      flex: 1;
+      width: 100%;
+    }
+    .enviar-input-field input::placeholder { color: #3a3a3a; }
+
+    /* Detalhes da Transação */
+    .enviar-details-toggle {
+      display: flex;
+      width: 193px;
+      padding: 8px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .enviar-details-toggle span {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #D1D2D2;
+    }
+    .enviar-details-chevron {
+      transition: transform 0.25s ease;
+    }
+    .enviar-details-chevron.open { transform: rotate(180deg); }
+
+    /* FeeSlider — espelha FeeSlider do Storybook */
+    .enviar-fee-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .fee-track-wrap {
+      position: relative;
+      width: 100%;
+      height: 20px;
+      display: flex;
+      align-items: center;
+    }
+    .fee-track {
+      position: absolute;
+      left: 0; right: 0;
+      height: 6px;
+      border-radius: 3px;
+      background: #080808;
+    }
+    .fee-fill {
+      position: absolute;
+      left: 0;
+      height: 6px;
+      border-radius: 3px;
+      background: #FF9800;
+      pointer-events: none;
+    }
+    .fee-snap-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #000000;
+      pointer-events: none;
+      transform: translateX(-50%);
+    }
+    .fee-snap-dot.active { background: #FF9800; }
+    .fee-thumb {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #FF9800;
+      box-shadow: 0 0 0 3px rgba(255,152,0,0.22);
+      transform: translateX(-50%);
+      cursor: pointer;
+      z-index: 2;
+    }
+    .fee-input-hidden {
+      position: absolute;
+      left: 0; right: 0; top: 0; bottom: 0;
+      width: 100%;
+      opacity: 0;
+      cursor: pointer;
+      margin: 0;
+      padding: 0;
+    }
+    .fee-labels {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .fee-label-side {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: #D1D2D2;
+      font-weight: 400;
+      line-height: 120%;
+    }
+    .fee-label-center {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: #fff;
+      font-weight: 400;
+      line-height: 120%;
+      text-align: center;
+    }
+    .fee-label-center .fee-time { color: #FF9800; }
+
+    /* SlideButton — espelha SlideButton do Storybook */
+    .enviar-slide-wrap {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom, transparent, #080808 35%);
+    }
+    .slide-btn {
+      position: relative;
+      width: 356px;
+      height: 61px;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .slide-fill {
+      position: absolute;
+      left: 0;
+      top: 3px;
+      height: 55px;
+      border-radius: 40px;
+      background: #FF9800;
+      pointer-events: none;
+      display: none;
+    }
+    .slide-fill.visible { display: block; }
+    .slide-fill.done { background: #00C853; }
+    .slide-label {
+      position: absolute;
+      top: 0; bottom: 0;
+      display: flex;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: #727272;
+      white-space: nowrap;
+      pointer-events: none;
+      transition: opacity 0.05s;
+    }
+    .slide-thumb {
+      position: absolute;
+      top: 3px;
+      width: 56px;
+      height: 55px;
+      border-radius: 40px;
+      background: #FF9800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+      z-index: 2;
+      transition: background 0.25s ease;
+    }
+    .slide-thumb.done {
+      background: #00C853;
+      cursor: pointer;
+    }
+
     /* ── Receber popup (Home) — espelha PopupCard do Storybook ── */
     .receber-backdrop {
       position: absolute;
@@ -1613,6 +1854,18 @@
       </button>
       <button class="nav-item" id="nav-scan-qr" onclick="jumpTo('scan-qr')">
         <span class="nav-dot"></span> Scanear (com QR)
+      </button>
+      <button class="nav-item" id="nav-enviar" onclick="jumpTo('enviar')">
+        <span class="nav-dot"></span> Enviar
+      </button>
+      <button class="nav-item" id="nav-enviar-scan" onclick="jumpTo('enviar-scan')">
+        <span class="nav-dot"></span> Enviar (scan QR)
+      </button>
+      <button class="nav-item" id="nav-enviar-scan-qr" onclick="jumpTo('enviar-scan-qr')">
+        <span class="nav-dot"></span> Enviar (scan com QR)
+      </button>
+      <button class="nav-item" id="nav-enviar-preenchido" onclick="jumpTo('enviar-preenchido')">
+        <span class="nav-dot"></span> Enviar (endereço preenchido)
       </button>
 
       <div class="nav-divider"></div>
@@ -2700,6 +2953,117 @@
 
     </div><!-- /bitcoin-detail -->
 
+    <!-- ══════════════ ENVIAR ══════════════ -->
+    <div class="screen" id="enviar">
+
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <span class="status-time">9:41</span>
+        <div class="status-icons">
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="none"><rect x="0" y="7" width="3" height="5" rx="0.5" fill="white"/><rect x="4.5" y="5" width="3" height="7" rx="0.5" fill="white"/><rect x="9" y="2.5" width="3" height="9.5" rx="0.5" fill="white"/><rect x="13.5" y="0" width="3" height="12" rx="0.5" fill="white" opacity="0.35"/></svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><circle cx="8" cy="11" r="1.5" fill="white"/><path d="M4.5 8.3C5.4 7.3 6.6 6.7 8 6.7s2.6.6 3.5 1.6" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M1.5 5.5C3.1 3.8 5.4 2.7 8 2.7s4.9 1.1 6.5 2.8" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.5"/></svg>
+          <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="white" stroke-opacity="0.35"/><rect x="22.5" y="3.5" width="1" height="5" rx="0.5" fill="white" fill-opacity="0.4"/><rect x="2" y="2" width="17" height="8" rx="2" fill="white"/></svg>
+        </div>
+      </div>
+
+      <!-- NavHeader — espelha NavHeader do Storybook -->
+      <div class="scan-nav-bar">
+        <button class="scan-back" onclick="goTo('enviar','home')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="scan-title" id="enviarTitle">Enviar</span>
+        </button>
+      </div>
+
+      <!-- Corpo scrollável -->
+      <div class="enviar-body">
+
+        <!-- BalanceTotalCard — código idêntico ao componente Storybook -->
+        <!-- GlassCard: background=#080808, border=rgba(255,255,255,0.06), blur=12px, radius=16, padding=24px 28px, width=359, minHeight=148 -->
+        <div style="background:#080808;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:24px 28px;width:359px;min-height:148px;box-sizing:border-box;position:relative;overflow:hidden;flex-shrink:0;">
+          <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;height:100px;">
+            <span style="color:#FFF;font-family:'Inter',sans-serif;font-size:11px;font-weight:400;line-height:120%;">Saldo total:</span>
+            <span style="color:#FFF;font-family:'Inter',sans-serif;font-size:33px;font-weight:400;line-height:120%;">R$ 68.420,00</span>
+            <span style="color:#FFF;font-family:'Inter',sans-serif;font-size:16px;font-weight:400;line-height:120%;">≈ 0.18563</span>
+          </div>
+        </div>
+
+        <!-- Input Endereço — espelha AppInput do Storybook -->
+        <div class="enviar-input-group">
+          <div class="enviar-input-row">
+            <span class="enviar-input-label-text">Endereço do destinatário</span>
+          </div>
+          <div class="enviar-input-field">
+            <input type="text" placeholder="Digite o endereço do destinatário" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;cursor:pointer;" onclick="goTo('enviar','enviar-scan')" title="Escanear QR Code">
+              <path d="M15.75 2.8125V5.625C15.75 5.77418 15.6907 5.91726 15.5852 6.02275C15.4798 6.12824 15.3367 6.1875 15.1875 6.1875C15.0383 6.1875 14.8952 6.12824 14.7898 6.02275C14.6843 5.91726 14.625 5.77418 14.625 5.625V3.375H12.375C12.2258 3.375 12.0827 3.31574 11.9773 3.21025C11.8718 3.10476 11.8125 2.96168 11.8125 2.8125C11.8125 2.66332 11.8718 2.52024 11.9773 2.41475C12.0827 2.30926 12.2258 2.25 12.375 2.25H15.1875C15.3367 2.25 15.4798 2.30926 15.5852 2.41475C15.6907 2.52024 15.75 2.66332 15.75 2.8125ZM5.625 14.625H3.375V12.375C3.375 12.2258 3.31574 12.0827 3.21025 11.9773C3.10476 11.8718 2.96168 11.8125 2.8125 11.8125C2.66332 11.8125 2.52024 11.8718 2.41475 11.9773C2.30926 12.0827 2.25 12.2258 2.25 12.375V15.1875C2.25 15.3367 2.30926 15.4798 2.41475 15.5852C2.52024 15.6907 2.66332 15.75 2.8125 15.75H5.625C5.77418 15.75 5.91726 15.6907 6.02275 15.5852C6.12824 15.4798 6.1875 15.3367 6.1875 15.1875C6.1875 15.0383 6.12824 14.8952 6.02275 14.7898C5.91726 14.6843 5.77418 14.625 5.625 14.625ZM15.1875 11.8125C15.0383 11.8125 14.8952 11.8718 14.7898 11.9773C14.6843 12.0827 14.625 12.2258 14.625 12.375V14.625H12.375C12.2258 14.625 12.0827 14.6843 11.9773 14.7898C11.8718 14.8952 11.8125 15.0383 11.8125 15.1875C11.8125 15.3367 11.8718 15.4798 11.9773 15.5852C12.0827 15.6907 12.2258 15.75 12.375 15.75H15.1875C15.3367 15.75 15.4798 15.6907 15.5852 15.5852C15.6907 15.4798 15.75 15.3367 15.75 15.1875V12.375C15.75 12.2258 15.6907 12.0827 15.5852 11.9773C15.4798 11.8718 15.3367 11.8125 15.1875 11.8125ZM2.8125 6.1875C2.96168 6.1875 3.10476 6.12824 3.21025 6.02275C3.31574 5.91726 3.375 5.77418 3.375 5.625V3.375H5.625C5.77418 3.375 5.91726 3.31574 6.02275 3.21025C6.12824 3.10476 6.1875 2.96168 6.1875 2.8125C6.1875 2.66332 6.12824 2.52024 6.02275 2.41475C5.91726 2.30926 5.77418 2.25 5.625 2.25H2.8125C2.66332 2.25 2.52024 2.30926 2.41475 2.41475C2.30926 2.52024 2.25 2.66332 2.25 2.8125V5.625C2.25 5.77418 2.30926 5.91726 2.41475 6.02275C2.52024 6.12824 2.66332 6.1875 2.8125 6.1875ZM5.625 5.0625H12.375C12.5242 5.0625 12.6673 5.12176 12.7727 5.22725C12.8782 5.33274 12.9375 5.47582 12.9375 5.625V12.375C12.9375 12.5242 12.8782 12.6673 12.7727 12.7727C12.6673 12.8782 12.5242 12.9375 12.375 12.9375H5.625C5.47582 12.9375 5.33274 12.8782 5.22725 12.7727C5.12176 12.6673 5.0625 12.5242 5.0625 12.375V5.625C5.0625 5.47582 5.12176 5.33274 5.22725 5.22725C5.33274 5.12176 5.47582 5.0625 5.625 5.0625ZM6.1875 11.8125H11.8125V6.1875H6.1875V11.8125Z" fill="white"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Input Quantidade — espelha AppInput do Storybook -->
+        <div class="enviar-input-group">
+          <div class="enviar-input-row">
+            <span class="enviar-input-label-text">Quantidade</span>
+            <div class="enviar-usd-selector">
+              <span>USD</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#D1D2D2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="enviar-input-field">
+            <input type="text" placeholder="Digite a quantidade desejada" />
+          </div>
+        </div>
+
+        <!-- Detalhes da Transação -->
+        <div class="enviar-fee-wrap">
+          <button class="enviar-details-toggle" onclick="toggleEnviarDetails(this)">
+            <span>Detalhes da Transação</span>
+            <svg class="enviar-details-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4l4 4 4-4" stroke="#D1D2D2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+        </div>
+
+        <!-- FeeSlider — fora do accordion, sempre visível -->
+        <div style="width:100%;display:flex;flex-direction:column;gap:8px;">
+          <div class="fee-track-wrap">
+            <div class="fee-track"></div>
+            <div class="fee-fill" id="enviarFeeFill"></div>
+            <div class="fee-snap-dot active" id="enviarDot0" style="left:0%"></div>
+            <div class="fee-snap-dot" id="enviarDot1" style="left:33.3%"></div>
+            <div class="fee-snap-dot" id="enviarDot2" style="left:66.6%"></div>
+            <div class="fee-snap-dot" id="enviarDot3" style="left:100%"></div>
+            <div class="fee-thumb" id="enviarFeeThumb" style="left:0%"></div>
+            <input class="fee-input-hidden" type="range" min="0" max="3" step="1" value="0"
+              oninput="updateEnviarFee(this.value)" id="enviarFeeInput" />
+          </div>
+          <div class="fee-labels">
+            <span class="fee-label-side">Lento</span>
+            <span class="fee-label-center" id="enviarFeeLabel"><span class="fee-time">~24H</span>: 1.0 sat/vb</span>
+            <span class="fee-label-side">Rápido</span>
+          </div>
+        </div>
+
+      </div><!-- /enviar-body -->
+
+      <!-- SlideButton — espelha SlideButton do Storybook -->
+      <div class="enviar-slide-wrap">
+        <div class="slide-btn" id="enviarSlideBtn">
+          <div class="slide-fill" id="enviarSlideFill"></div>
+          <span class="slide-label" id="enviarSlideLabel" style="left: 72px;">Deslize para enviar</span>
+          <div class="slide-thumb" id="enviarSlideThumb" style="left:3px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M12.7729 9.39828L7.14792 15.0233C7.09565 15.0755 7.03361 15.117 6.96533 15.1453C6.89704 15.1736 6.82386 15.1881 6.74995 15.1881C6.67604 15.1881 6.60285 15.1736 6.53457 15.1453C6.46628 15.117 6.40424 15.0755 6.35198 15.0233C6.29972 14.971 6.25826 14.909 6.22998 14.8407C6.20169 14.7724 6.18713 14.6992 6.18713 14.6253C6.18713 14.5514 6.20169 14.4782 6.22998 14.4099C6.25826 14.3417 6.29972 14.2796 6.35198 14.2273L11.5797 9.00031L6.35198 3.77328C6.24643 3.66773 6.18713 3.52458 6.18713 3.37531C6.18713 3.22605 6.24643 3.08289 6.35198 2.97734C6.45753 2.8718 6.60068 2.8125 6.74995 2.8125C6.89921 2.8125 7.04237 2.8718 7.14792 2.97734L12.7729 8.60234C12.8252 8.65458 12.8667 8.71662 12.895 8.78491C12.9233 8.8532 12.9379 8.92639 12.9379 9.00031C12.9379 9.07423 12.9233 9.14743 12.895 9.21572C12.8667 9.284 12.8252 9.34604 12.7729 9.39828Z" fill="black"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /enviar -->
+
     <!-- ══════════════ SCAN ══════════════ -->
     <div class="screen" id="scan">
 
@@ -2806,6 +3170,208 @@
 
     </div><!-- /scan-qr -->
 
+    <!-- ══════════════ ENVIAR-SCAN (QR para endereço) ══════════════ -->
+    <div class="screen" id="enviar-scan">
+
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <span class="status-time">9:41</span>
+        <div class="status-icons">
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0"    y="7"   width="3" height="5"    rx="0.5" fill="white"/>
+            <rect x="4.5"  y="5"   width="3" height="7"    rx="0.5" fill="white"/>
+            <rect x="9"    y="2.5" width="3" height="9.5"  rx="0.5" fill="white"/>
+            <rect x="13.5" y="0"   width="3" height="12"   rx="0.5" fill="white" opacity="0.35"/>
+          </svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="8" cy="11" r="1.5" fill="white"/>
+            <path d="M4.5 8.3C5.4 7.3 6.6 6.7 8 6.7s2.6.6 3.5 1.6" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+            <path d="M1.5 5.5C3.1 3.8 5.4 2.7 8 2.7s4.9 1.1 6.5 2.8" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.5"/>
+          </svg>
+          <svg width="25" height="12" viewBox="0 0 25 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="white" stroke-opacity="0.35"/>
+            <rect x="22.5" y="3.5" width="1" height="5" rx="0.5" fill="white" fill-opacity="0.4"/>
+            <rect x="2" y="2" width="17" height="8" rx="2" fill="white"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Nav bar -->
+      <div class="scan-nav-bar">
+        <button class="scan-back" onclick="goTo('enviar-scan','enviar')">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 1L1 9L9 17" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="scan-title">Enviar</span>
+        </button>
+      </div>
+
+      <!-- Viewfinder — clique simula escaneamento -->
+      <div class="scan-viewfinder" onclick="goTo('enviar-scan','enviar-scan-qr')" style="cursor:pointer;">
+        <div class="scan-corner scan-corner-tl"></div>
+        <div class="scan-corner scan-corner-tr"></div>
+        <div class="scan-corner scan-corner-bl"></div>
+        <div class="scan-corner scan-corner-br"></div>
+      </div>
+
+    </div><!-- /enviar-scan -->
+
+    <!-- ══════════════ ENVIAR-SCAN-QR (simulação de escaneamento) ══════════════ -->
+    <div class="screen" id="enviar-scan-qr" style="background-image:url('imagens/Scanear-image.png');background-size:cover;background-position:center;">
+
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <span class="status-time">9:41</span>
+        <div class="status-icons">
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0"    y="7"   width="3" height="5"    rx="0.5" fill="white"/>
+            <rect x="4.5"  y="5"   width="3" height="7"    rx="0.5" fill="white"/>
+            <rect x="9"    y="2.5" width="3" height="9.5"  rx="0.5" fill="white"/>
+            <rect x="13.5" y="0"   width="3" height="12"   rx="0.5" fill="white" opacity="0.35"/>
+          </svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="8" cy="11" r="1.5" fill="white"/>
+            <path d="M4.5 8.3C5.4 7.3 6.6 6.7 8 6.7s2.6.6 3.5 1.6" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+            <path d="M1.5 5.5C3.1 3.8 5.4 2.7 8 2.7s4.9 1.1 6.5 2.8" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.5"/>
+          </svg>
+          <svg width="25" height="12" viewBox="0 0 25 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="white" stroke-opacity="0.35"/>
+            <rect x="22.5" y="3.5" width="1" height="5" rx="0.5" fill="white" fill-opacity="0.4"/>
+            <rect x="2" y="2" width="17" height="8" rx="2" fill="white"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Nav bar -->
+      <div class="scan-nav-bar">
+        <button class="scan-back" onclick="goTo('enviar-scan-qr','enviar-scan')">
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 1L1 9L9 17" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="scan-title">Enviar</span>
+        </button>
+      </div>
+
+      <!-- Viewfinder — clique confirma escaneamento e vai para tela preenchida -->
+      <div class="scan-viewfinder" onclick="goTo('enviar-scan-qr','enviar-preenchido')" style="cursor:pointer;">
+        <div class="scan-corner scan-corner-tl"></div>
+        <div class="scan-corner scan-corner-tr"></div>
+        <div class="scan-corner scan-corner-bl"></div>
+        <div class="scan-corner scan-corner-br"></div>
+      </div>
+
+    </div><!-- /enviar-scan-qr -->
+
+    <!-- ══════════════ ENVIAR PREENCHIDO (endereço escaneado) ══════════════ -->
+    <div class="screen" id="enviar-preenchido">
+
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <span class="status-time">9:41</span>
+        <div class="status-icons">
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="none"><rect x="0" y="7" width="3" height="5" rx="0.5" fill="white"/><rect x="4.5" y="5" width="3" height="7" rx="0.5" fill="white"/><rect x="9" y="2.5" width="3" height="9.5" rx="0.5" fill="white"/><rect x="13.5" y="0" width="3" height="12" rx="0.5" fill="white" opacity="0.35"/></svg>
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><circle cx="8" cy="11" r="1.5" fill="white"/><path d="M4.5 8.3C5.4 7.3 6.6 6.7 8 6.7s2.6.6 3.5 1.6" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M1.5 5.5C3.1 3.8 5.4 2.7 8 2.7s4.9 1.1 6.5 2.8" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.5"/></svg>
+          <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3.5" stroke="white" stroke-opacity="0.35"/><rect x="22.5" y="3.5" width="1" height="5" rx="0.5" fill="white" fill-opacity="0.4"/><rect x="2" y="2" width="17" height="8" rx="2" fill="white"/></svg>
+        </div>
+      </div>
+
+      <!-- NavHeader -->
+      <div class="scan-nav-bar">
+        <button class="scan-back" onclick="goTo('enviar-preenchido','enviar')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none">
+            <path d="M9 1L1 9L9 17" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="scan-title" id="enviarPreenchidoTitle">Enviar</span>
+        </button>
+      </div>
+
+      <!-- Corpo scrollável -->
+      <div class="enviar-body">
+
+        <!-- BalanceTotalCard -->
+        <div style="background:#080808;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:24px 28px;width:359px;min-height:148px;box-sizing:border-box;position:relative;overflow:hidden;flex-shrink:0;">
+          <div style="display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;height:100px;">
+            <span style="color:#FFF;font-family:'Inter',sans-serif;font-size:11px;font-weight:400;line-height:120%;">Saldo total:</span>
+            <span style="color:#FFF;font-family:'Inter',sans-serif;font-size:33px;font-weight:400;line-height:120%;">R$ 68.420,00</span>
+            <span style="color:#FFF;font-family:'Inter',sans-serif;font-size:16px;font-weight:400;line-height:120%;">≈ 0.18563</span>
+          </div>
+        </div>
+
+        <!-- Input Endereço — PREENCHIDO (espelha "Endereço preenchido" do Storybook) -->
+        <div class="enviar-input-group">
+          <div class="enviar-input-row">
+            <span class="enviar-input-label-text">Endereço do destinatário</span>
+          </div>
+          <div class="enviar-input-field">
+            <input type="text" value="bc1qar0srrr7xfkvy5l643lydnw9re59" readonly
+              style="background:none;border:none;outline:none;color:#fff;font-family:'Inter',sans-serif;font-size:13px;font-weight:400;flex:1;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0;cursor:pointer;" onclick="goTo('enviar-preenchido','enviar-scan')" title="Re-escanear">
+              <path d="M15.75 2.8125V5.625C15.75 5.77418 15.6907 5.91726 15.5852 6.02275C15.4798 6.12824 15.3367 6.1875 15.1875 6.1875C15.0383 6.1875 14.8952 6.12824 14.7898 6.02275C14.6843 5.91726 14.625 5.77418 14.625 5.625V3.375H12.375C12.2258 3.375 12.0827 3.31574 11.9773 3.21025C11.8718 3.10476 11.8125 2.96168 11.8125 2.8125C11.8125 2.66332 11.8718 2.52024 11.9773 2.41475C12.0827 2.30926 12.2258 2.25 12.375 2.25H15.1875C15.3367 2.25 15.4798 2.30926 15.5852 2.41475C15.6907 2.52024 15.75 2.66332 15.75 2.8125ZM5.625 14.625H3.375V12.375C3.375 12.2258 3.31574 12.0827 3.21025 11.9773C3.10476 11.8718 2.96168 11.8125 2.8125 11.8125C2.66332 11.8125 2.52024 11.8718 2.41475 11.9773C2.30926 12.0827 2.25 12.2258 2.25 12.375V15.1875C2.25 15.3367 2.30926 15.4798 2.41475 15.5852C2.52024 15.6907 2.66332 15.75 2.8125 15.75H5.625C5.77418 15.75 5.91726 15.6907 6.02275 15.5852C6.12824 15.4798 6.1875 15.3367 6.1875 15.1875C6.1875 15.0383 6.12824 14.8952 6.02275 14.7898C5.91726 14.6843 5.77418 14.625 5.625 14.625ZM15.1875 11.8125C15.0383 11.8125 14.8952 11.8718 14.7898 11.9773C14.6843 12.0827 14.625 12.2258 14.625 12.375V14.625H12.375C12.2258 14.625 12.0827 14.6843 11.9773 14.7898C11.8718 14.8952 11.8125 15.0383 11.8125 15.1875C11.8125 15.3367 11.8718 15.4798 11.9773 15.5852C12.0827 15.6907 12.2258 15.75 12.375 15.75H15.1875C15.3367 15.75 15.4798 15.6907 15.5852 15.5852C15.6907 15.4798 15.75 15.3367 15.75 15.1875V12.375C15.75 12.2258 15.6907 12.0827 15.5852 11.9773C15.4798 11.8718 15.3367 11.8125 15.1875 11.8125ZM2.8125 6.1875C2.96168 6.1875 3.10476 6.12824 3.21025 6.02275C3.31574 5.91726 3.375 5.77418 3.375 5.625V3.375H5.625C5.77418 3.375 5.91726 3.31574 6.02275 3.21025C6.12824 3.10476 6.1875 2.96168 6.1875 2.8125C6.1875 2.66332 6.12824 2.52024 6.02275 2.41475C5.91726 2.30926 5.77418 2.25 5.625 2.25H2.8125C2.66332 2.25 2.52024 2.30926 2.41475 2.41475C2.30926 2.52024 2.25 2.66332 2.25 2.8125V5.625C2.25 5.77418 2.30926 5.91726 2.41475 6.02275C2.52024 6.12824 2.66332 6.1875 2.8125 6.1875ZM5.625 5.0625H12.375C12.5242 5.0625 12.6673 5.12176 12.7727 5.22725C12.8782 5.33274 12.9375 5.47582 12.9375 5.625V12.375C12.9375 12.5242 12.8782 12.6673 12.7727 12.7727C12.6673 12.8782 12.5242 12.9375 12.375 12.9375H5.625C5.47582 12.9375 5.33274 12.8782 5.22725 12.7727C5.12176 12.6673 5.0625 12.5242 5.0625 12.375V5.625C5.0625 5.47582 5.12176 5.33274 5.22725 5.22725C5.33274 5.12176 5.47582 5.0625 5.625 5.0625ZM6.1875 11.8125H11.8125V6.1875H6.1875V11.8125Z" fill="white"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Input Quantidade -->
+        <div class="enviar-input-group">
+          <div class="enviar-input-row">
+            <span class="enviar-input-label-text">Quantidade</span>
+            <div class="enviar-usd-selector">
+              <span>USD</span>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="#D1D2D2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="enviar-input-field">
+            <input type="text" placeholder="Digite a quantidade desejada" />
+          </div>
+        </div>
+
+        <!-- Detalhes da Transação -->
+        <div class="enviar-fee-wrap">
+          <button class="enviar-details-toggle" onclick="toggleEnviarEpDetails(this)">
+            <span>Detalhes da Transação</span>
+            <svg class="enviar-details-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4l4 4 4-4" stroke="#D1D2D2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- FeeSlider -->
+        <div style="width:100%;display:flex;flex-direction:column;gap:8px;">
+          <div class="fee-track-wrap">
+            <div class="fee-track"></div>
+            <div class="fee-fill" id="epFeeFill"></div>
+            <div class="fee-snap-dot active" id="epDot0" style="left:0%"></div>
+            <div class="fee-snap-dot" id="epDot1" style="left:33.3%"></div>
+            <div class="fee-snap-dot" id="epDot2" style="left:66.6%"></div>
+            <div class="fee-snap-dot" id="epDot3" style="left:100%"></div>
+            <div class="fee-thumb" id="epFeeThumb" style="left:0%"></div>
+            <input class="fee-input-hidden" type="range" min="0" max="3" step="1" value="0"
+              oninput="updateEpFee(this.value)" id="epFeeInput" />
+          </div>
+          <div class="fee-labels">
+            <span class="fee-label-side">Lento</span>
+            <span class="fee-label-center" id="epFeeLabel"><span class="fee-time">~24H</span>: 1.0 sat/vb</span>
+            <span class="fee-label-side">Rápido</span>
+          </div>
+        </div>
+
+      </div><!-- /enviar-body -->
+
+      <!-- SlideButton -->
+      <div class="enviar-slide-wrap">
+        <div class="slide-btn" id="epSlideBtn">
+          <div class="slide-fill" id="epSlideFill"></div>
+          <span class="slide-label" id="epSlideLabel" style="left:72px;">Deslize para enviar</span>
+          <div class="slide-thumb" id="epSlideThumb" style="left:3px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M12.7729 9.39828L7.14792 15.0233C7.09565 15.0755 7.03361 15.117 6.96533 15.1453C6.89704 15.1736 6.82386 15.1881 6.74995 15.1881C6.67604 15.1881 6.60285 15.1736 6.53457 15.1453C6.46628 15.117 6.40424 15.0755 6.35198 15.0233C6.29972 14.971 6.25826 14.909 6.22998 14.8407C6.20169 14.7724 6.18713 14.6992 6.18713 14.6253C6.18713 14.5514 6.20169 14.4782 6.22998 14.4099C6.25826 14.3417 6.29972 14.2796 6.35198 14.2273L11.5797 9.00031L6.35198 3.77328C6.24643 3.66773 6.18713 3.52458 6.18713 3.37531C6.18713 3.22605 6.24643 3.08289 6.35198 2.97734C6.45753 2.8718 6.60068 2.8125 6.74995 2.8125C6.89921 2.8125 7.04237 2.8718 7.14792 2.97734L12.7729 8.60234C12.8252 8.65458 12.8667 8.71662 12.895 8.78491C12.9233 8.8532 12.9379 8.92639 12.9379 9.00031C12.9379 9.07423 12.9233 9.14743 12.895 9.21572C12.8667 9.284 12.8252 9.34604 12.7729 9.39828Z" fill="black"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /enviar-preenchido -->
+
   </div><!-- /phone-frame -->
     </div><!-- /demo-center -->
   </div><!-- /demo-layout -->
@@ -2829,7 +3395,7 @@
     }
 
     /* ── Navegação direta pelo painel lateral ── */
-    const navScreens = ['splash','login','criar-pin','confirmar-pin','tipo-conta','email-conta','verify-code','afiliado','home','bitcoin-detail','scan','scan-qr'];
+    const navScreens = ['splash','login','criar-pin','confirmar-pin','tipo-conta','email-conta','verify-code','afiliado','home','bitcoin-detail','scan','scan-qr','enviar','enviar-scan','enviar-scan-qr','enviar-preenchido'];
 
     function jumpTo(screenId) {
       navScreens.forEach(id => {
@@ -3139,6 +3705,15 @@
           o.style.opacity = '0.55';
         });
         el.style.opacity = '1';
+        const assetName = el.querySelector('span') ? el.querySelector('span').textContent.trim() : '';
+        if (assetName) {
+          const title = document.getElementById('enviarTitle');
+          if (title) title.textContent = 'Enviar ' + assetName;
+        }
+        setTimeout(() => {
+          window.fecharEnviar();
+          setTimeout(() => goTo('home', 'enviar'), 150);
+        }, 280);
       };
 
       document.addEventListener('DOMContentLoaded', function () {
@@ -3195,6 +3770,193 @@
         if (tipo === 'comerciante' && detailComercial) detailComercial.classList.add('open');
       }
     }
+
+    /* ── Tela Enviar: FeeSlider ── */
+    const FEE_OPTIONS = [
+      { time: '~24H',   rate: '1.0 sat/vb' },
+      { time: '~6H',    rate: '2.5 sat/vb' },
+      { time: '~1H',    rate: '5.0 sat/vb' },
+      { time: '~10min', rate: '10.0 sat/vb' },
+    ];
+
+    function updateEnviarFee(val) {
+      const idx    = parseInt(val);
+      const pct    = idx / 3 * 100;
+      const fill   = document.getElementById('enviarFeeFill');
+      const thumb  = document.getElementById('enviarFeeThumb');
+      const label  = document.getElementById('enviarFeeLabel');
+      if (fill)  fill.style.width  = pct + '%';
+      if (thumb) thumb.style.left  = pct + '%';
+      if (label) label.innerHTML = '<span class="fee-time">' + FEE_OPTIONS[idx].time + '</span>: ' + FEE_OPTIONS[idx].rate;
+      for (let i = 0; i <= 3; i++) {
+        const dot = document.getElementById('enviarDot' + i);
+        if (dot) dot.classList.toggle('active', i <= idx);
+      }
+    }
+
+    function toggleEnviarEpDetails(btn) {
+      const chevron = btn.querySelector('.enviar-details-chevron');
+      chevron.classList.toggle('open');
+    }
+
+    function toggleEnviarDetails(btn) {
+      const slider = document.getElementById('enviarFeeSlider');
+      const chevron = btn.querySelector('.enviar-details-chevron');
+      const isOpen = slider.style.display === 'flex';
+      slider.style.display  = isOpen ? 'none' : 'flex';
+      chevron.classList.toggle('open', !isOpen);
+    }
+
+    /* ── Tela Enviar Preenchido: FeeSlider ── */
+    function updateEpFee(val) {
+      const idx   = parseInt(val);
+      const pct   = idx / 3 * 100;
+      const fill  = document.getElementById('epFeeFill');
+      const thumb = document.getElementById('epFeeThumb');
+      const label = document.getElementById('epFeeLabel');
+      if (fill)  fill.style.width  = pct + '%';
+      if (thumb) thumb.style.left  = pct + '%';
+      if (label) label.innerHTML = '<span class="fee-time">' + FEE_OPTIONS[idx].time + '</span>: ' + FEE_OPTIONS[idx].rate;
+      for (let i = 0; i <= 3; i++) {
+        const dot = document.getElementById('epDot' + i);
+        if (dot) dot.classList.toggle('active', i <= idx);
+      }
+    }
+
+    /* ── Tela Enviar Preenchido: SlideButton ── */
+    (function () {
+      const TRACK_W    = 356;
+      const THUMB_W    = 56;
+      const PADDING    = 3;
+      const MAX_TRAVEL = TRACK_W - THUMB_W - PADDING * 2;
+      const CENTER_X   = (TRACK_W - THUMB_W) / 2;
+
+      let progress = 0, completed = false, dragging = false, startX = 0, startProg = 0;
+
+      const thumb = document.getElementById('epSlideThumb');
+      const fill  = document.getElementById('epSlideFill');
+      const lbl   = document.getElementById('epSlideLabel');
+
+      if (!thumb) return;
+
+      function setProgress(p) {
+        progress = Math.max(0, Math.min(1, p));
+        const left = PADDING + progress * MAX_TRAVEL;
+        thumb.style.left = left + 'px';
+        fill.style.width = (left + THUMB_W) + 'px';
+        fill.classList.toggle('visible', progress > 0);
+        lbl.style.left   = (left + THUMB_W + 12) + 'px';
+        lbl.style.opacity = Math.max(0, 1 - progress * 2.5);
+        if (progress >= 0.95) complete();
+      }
+
+      function complete() {
+        completed = true;
+        fill.classList.remove('visible');
+        thumb.style.transition = 'left 0.35s cubic-bezier(0.4,0,0.2,1), background 0.25s ease';
+        thumb.style.left = CENTER_X + 'px';
+        thumb.classList.add('done');
+        lbl.style.display = 'none';
+        thumb.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.1479 5.46078L7.14792 14.4608C7.09567 14.5131 7.03364 14.5546 6.96535 14.5829C6.89706 14.6112 6.82387 14.6258 6.74995 14.6258C6.67603 14.6258 6.60283 14.6112 6.53454 14.5829C6.46626 14.5546 6.40422 14.5131 6.35198 14.4608L2.41448 10.5233C2.30893 10.4177 2.24963 10.2746 2.24963 10.1253C2.24963 9.97605 2.30893 9.83289 2.41448 9.72734C2.52003 9.6218 2.66318 9.5625 2.81245 9.5625C2.96171 9.5625 3.10487 9.6218 3.21042 9.72734L6.74995 13.2676L15.352 4.66484C15.4575 4.5593 15.6007 4.5 15.7499 4.5C15.8992 4.5 16.0424 4.5593 16.1479 4.66484C16.2535 4.77039 16.3128 4.91355 16.3128 5.06281C16.3128 5.21208 16.2535 5.35523 16.1479 5.46078Z" fill="#080808"/></svg>';
+        setTimeout(() => { thumb.style.transition = ''; }, 400);
+      }
+
+      thumb.addEventListener('mousedown', e => { if (completed) return; dragging = true; startX = e.clientX; startProg = progress; e.preventDefault(); });
+      document.addEventListener('mousemove', e => { if (!dragging || completed) return; setProgress(startProg + (e.clientX - startX) / MAX_TRAVEL); });
+      document.addEventListener('mouseup',   ()  => { if (!dragging) return; dragging = false; if (!completed) setProgress(0); });
+      thumb.addEventListener('touchstart',   e => { if (completed) return; dragging = true; startX = e.touches[0].clientX; startProg = progress; }, { passive: true });
+      document.addEventListener('touchmove', e => { if (!dragging || completed) return; setProgress(startProg + (e.touches[0].clientX - startX) / MAX_TRAVEL); }, { passive: true });
+      document.addEventListener('touchend',  ()  => { if (!dragging) return; dragging = false; if (!completed) setProgress(0); });
+    })();
+
+    /* ── Tela Enviar: SlideButton ── */
+    (function () {
+      const TRACK_W  = 356;
+      const THUMB_W  = 56;
+      const PADDING  = 3;
+      const MAX_TRAVEL = TRACK_W - THUMB_W - PADDING * 2;
+      const CENTER_X = (TRACK_W - THUMB_W) / 2;
+
+      let progress  = 0;
+      let completed = false;
+      let dragging  = false;
+      let startX    = 0;
+      let startProg = 0;
+
+      const thumb = document.getElementById('enviarSlideThumb');
+      const fill  = document.getElementById('enviarSlideFill');
+      const lbl   = document.getElementById('enviarSlideLabel');
+
+      if (!thumb) return;
+
+      function setProgress(p) {
+        progress = Math.max(0, Math.min(1, p));
+        const left = PADDING + progress * MAX_TRAVEL;
+        thumb.style.left  = left + 'px';
+        fill.style.width  = (left + THUMB_W) + 'px';
+        fill.classList.toggle('visible', progress > 0);
+        lbl.style.left    = (left + THUMB_W + 12) + 'px';
+        lbl.style.opacity = Math.max(0, 1 - progress * 2.5);
+        if (progress >= 0.95) complete();
+      }
+
+      function complete() {
+        completed = true;
+        fill.classList.remove('visible');
+        thumb.style.transition = 'left 0.35s cubic-bezier(0.4,0,0.2,1), background 0.25s ease';
+        thumb.style.left = CENTER_X + 'px';
+        thumb.classList.add('done');
+        lbl.style.display = 'none';
+        thumb.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M16.1479 5.46078L7.14792 14.4608C7.09567 14.5131 7.03364 14.5546 6.96535 14.5829C6.89706 14.6112 6.82387 14.6258 6.74995 14.6258C6.67603 14.6258 6.60283 14.6112 6.53454 14.5829C6.46626 14.5546 6.40422 14.5131 6.35198 14.4608L2.41448 10.5233C2.30893 10.4177 2.24963 10.2746 2.24963 10.1253C2.24963 9.97605 2.30893 9.83289 2.41448 9.72734C2.52003 9.6218 2.66318 9.5625 2.81245 9.5625C2.96171 9.5625 3.10487 9.6218 3.21042 9.72734L6.74995 13.2676L15.352 4.66484C15.4575 4.5593 15.6007 4.5 15.7499 4.5C15.8992 4.5 16.0424 4.5593 16.1479 4.66484C16.2535 4.77039 16.3128 4.91355 16.3128 5.06281C16.3128 5.21208 16.2535 5.35523 16.1479 5.46078Z" fill="#080808"/></svg>';
+        setTimeout(() => { thumb.style.transition = ''; }, 400);
+      }
+
+      function resetSlide() {
+        completed = false;
+        progress  = 0;
+        thumb.style.transition = 'left 0.25s ease';
+        thumb.style.left = PADDING + 'px';
+        thumb.classList.remove('done');
+        fill.classList.remove('visible', 'done');
+        lbl.style.display = '';
+        lbl.style.opacity = '1';
+        lbl.style.left = (PADDING + THUMB_W + 12) + 'px';
+        thumb.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M12.7729 9.39828L7.14792 15.0233C7.09565 15.0755 7.03361 15.117 6.96533 15.1453C6.89704 15.1736 6.82386 15.1881 6.74995 15.1881C6.67604 15.1881 6.60285 15.1736 6.53457 15.1453C6.46628 15.117 6.40424 15.0755 6.35198 15.0233C6.29972 14.971 6.25826 14.909 6.22998 14.8407C6.20169 14.7724 6.18713 14.6992 6.18713 14.6253C6.18713 14.5514 6.20169 14.4782 6.22998 14.4099C6.25826 14.3417 6.29972 14.2796 6.35198 14.2273L11.5797 9.00031L6.35198 3.77328C6.24643 3.66773 6.18713 3.52458 6.18713 3.37531C6.18713 3.22605 6.24643 3.08289 6.35198 2.97734C6.45753 2.8718 6.60068 2.8125 6.74995 2.8125C6.89921 2.8125 7.04237 2.8718 7.14792 2.97734L12.7729 8.60234C12.8252 8.65458 12.8667 8.71662 12.895 8.78491C12.9233 8.8532 12.9379 8.92639 12.9379 9.00031C12.9379 9.07423 12.9233 9.14743 12.895 9.21572C12.8667 9.284 12.8252 9.34604 12.7729 9.39828Z" fill="black"/></svg>';
+        setTimeout(() => { thumb.style.transition = ''; }, 250);
+      }
+
+      thumb.addEventListener('mousedown', function (e) {
+        if (completed) { resetSlide(); return; }
+        dragging  = true;
+        startX    = e.clientX;
+        startProg = progress;
+        e.preventDefault();
+      });
+      document.addEventListener('mousemove', function (e) {
+        if (!dragging || completed) return;
+        setProgress(startProg + (e.clientX - startX) / MAX_TRAVEL);
+      });
+      document.addEventListener('mouseup', function () {
+        if (!dragging) return;
+        dragging = false;
+        if (!completed) setProgress(0);
+      });
+      thumb.addEventListener('touchstart', function (e) {
+        if (completed) { resetSlide(); return; }
+        dragging  = true;
+        startX    = e.touches[0].clientX;
+        startProg = progress;
+      }, { passive: true });
+      document.addEventListener('touchmove', function (e) {
+        if (!dragging || completed) return;
+        setProgress(startProg + (e.touches[0].clientX - startX) / MAX_TRAVEL);
+      }, { passive: true });
+      document.addEventListener('touchend', function () {
+        if (!dragging) return;
+        dragging = false;
+        if (!completed) setProgress(0);
+      });
+    })();
   </script>
 
 </body>
