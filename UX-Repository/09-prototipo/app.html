@@ -116,17 +116,25 @@
 
     .text-section { display: flex; flex-direction: column; gap: 8px; text-align: center; align-items: center; transition: opacity 0.35s ease; }
 
-    /* Carousel dots */
-    .login-dots { display: flex; gap: 6px; align-items: center; justify-content: center; }
-    .login-dot {
-      height: 4px; border-radius: 2px;
-      background: rgba(255,255,255,0.3);
-      width: 6px;
-      transition: width 0.3s ease, background 0.3s ease;
-      cursor: pointer;
-      flex-shrink: 0;
+    /* Carousel progress bar — topo */
+    .login-progress {
+      position: absolute;
+      top: 44px; left: 0; right: 0;
+      display: flex;
+      gap: 4px;
+      padding: 0 4px;
+      z-index: 20;
+      box-sizing: border-box;
     }
-    .login-dot.active { width: 24px; background: #FF9800; }
+    .login-dot {
+      flex: 1;
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.25);
+      transition: background 0.35s ease;
+      cursor: pointer;
+    }
+    .login-dot.active { background: #FF9800; }
 
     @keyframes notif-pop-in {
       0%   { opacity: 0; transform: scale(0.5); }
@@ -1960,6 +1968,13 @@
           </svg>
         </div>
       </div>
+      <!-- Progress bar segmentado — topo -->
+      <div class="login-progress">
+        <div class="login-dot active" data-index="0"></div>
+        <div class="login-dot"        data-index="1"></div>
+        <div class="login-dot"        data-index="2"></div>
+      </div>
+
       <div class="hero-image"></div>
       <div class="login-content">
         <div class="login-section">
@@ -1972,13 +1987,6 @@
             <button class="btn btn-primary" onclick="goTo('login','criar-pin')">Criar nova carteira</button>
             <button class="btn btn-secondary">Recuperar carteira</button>
           </div>
-        </div>
-
-        <!-- Carousel dots -->
-        <div class="login-dots">
-          <div class="login-dot active" data-index="0"></div>
-          <div class="login-dot"        data-index="1"></div>
-          <div class="login-dot"        data-index="2"></div>
         </div>
 
         <p class="terms-text">

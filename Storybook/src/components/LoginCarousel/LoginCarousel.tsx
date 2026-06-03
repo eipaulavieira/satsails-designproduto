@@ -56,6 +56,32 @@ export function LoginCarousel({
       fontFamily: "'Inter', sans-serif",
       background: '#080808',
     }}>
+      {/* Progress bar segmentado — topo */}
+      <div style={{
+        position: 'absolute',
+        top: 44, left: 0, right: 0,
+        display: 'flex',
+        gap: 4,
+        padding: '0 4px',
+        zIndex: 20,
+        boxSizing: 'border-box' as const,
+      }}>
+        {slides.map((_, i) => (
+          <div
+            key={i}
+            onClick={() => goTo(i)}
+            style={{
+              flex: 1,
+              height: 3,
+              borderRadius: 2,
+              background: i === current ? '#FF9800' : 'rgba(255,255,255,0.25)',
+              transition: 'background 0.35s ease',
+              cursor: 'pointer',
+            }}
+          />
+        ))}
+      </div>
+
       {/* Background */}
       <div style={{
         position: 'absolute',
@@ -138,24 +164,6 @@ export function LoginCarousel({
           </button>
         </div>
 
-        {/* Dots */}
-        <div style={{ display: 'flex', gap: 6, alignItems: 'center', justifyContent: 'center' }}>
-          {slides.map((_, i) => (
-            <div
-              key={i}
-              onClick={() => goTo(i)}
-              style={{
-                height: 4,
-                width: i === current ? 24 : 6,
-                borderRadius: 2,
-                background: i === current ? '#FF9800' : 'rgba(255,255,255,0.3)',
-                transition: 'width 0.3s ease, background 0.3s ease',
-                cursor: 'pointer',
-                flexShrink: 0,
-              }}
-            />
-          ))}
-        </div>
 
         {/* Terms */}
         <p style={{
