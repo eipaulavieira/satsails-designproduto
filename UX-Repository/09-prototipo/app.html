@@ -113,7 +113,19 @@
 
     .login-section { display: flex; flex-direction: column; gap: 24px; width: 100%; }
 
-    .text-section { display: flex; flex-direction: column; gap: 8px; text-align: center; }
+    .text-section { display: flex; flex-direction: column; gap: 8px; text-align: center; align-items: center; }
+
+    @keyframes notif-pop-in {
+      0%   { opacity: 0; transform: scale(0.5); }
+      65%  { transform: scale(1.06); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .login-notification {
+      display: block;
+      margin-bottom: 10px; /* 10px + 8px gap = 18px total entre imagem e título */
+      animation: notif-pop-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s both;
+    }
 
     .headline {
       font-size: 48px; font-weight: 500; color: #fff;
@@ -1939,6 +1951,7 @@
       <div class="login-content">
         <div class="login-section">
           <div class="text-section">
+            <img class="login-notification" src="imagens/transação-bitcoin.svg" alt="Notificação de transação" />
             <h1 class="headline">Seja soberano com a Satsails</h1>
             <p class="subtitle">Gerencie Bitcoin e stablecoins sem depender de ninguém.</p>
           </div>
@@ -3566,6 +3579,15 @@
       startSplash();
     }
 
+    /* ── Reset animação da notificação no login ── */
+    function resetLoginNotification() {
+      const el = document.querySelector('.login-notification');
+      if (!el) return;
+      el.style.animation = 'none';
+      el.offsetHeight; /* reflow */
+      el.style.animation = '';
+    }
+
     /* ── Splash auto-redirect com dissolve ── */
     function startSplash() {
       setTimeout(() => {
@@ -3574,6 +3596,7 @@
         splash.style.transition = 'opacity 1s ease';
         login.style.transition  = 'opacity 1s ease';
         goTo('splash', 'login');
+        setTimeout(resetLoginNotification, 100);
         setTimeout(() => {
           splash.style.transition = '';
           login.style.transition  = '';
