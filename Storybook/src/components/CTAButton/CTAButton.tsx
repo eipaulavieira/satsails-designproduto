@@ -46,7 +46,7 @@ const styles: Partial<Record<StyleKey, React.CSSProperties>> = {
   secondary: {
     background: 'transparent',
     color: '#ffffff',
-    border: '1px solid #333333',
+    border: 'none',
     boxShadow: 'none',
   },
 
