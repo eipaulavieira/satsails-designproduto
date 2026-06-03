@@ -92,6 +92,7 @@
       background-image: url('imagens/background-satsails.svg');
       background-size: cover;
       background-position: center top;
+      transition: opacity 0.35s ease;
     }
 
     .hero-image::after {
@@ -113,7 +114,19 @@
 
     .login-section { display: flex; flex-direction: column; gap: 24px; width: 100%; }
 
-    .text-section { display: flex; flex-direction: column; gap: 8px; text-align: center; align-items: center; }
+    .text-section { display: flex; flex-direction: column; gap: 8px; text-align: center; align-items: center; transition: opacity 0.35s ease; }
+
+    /* Carousel dots */
+    .login-dots { display: flex; gap: 6px; align-items: center; justify-content: center; }
+    .login-dot {
+      height: 4px; border-radius: 2px;
+      background: rgba(255,255,255,0.3);
+      width: 6px;
+      transition: width 0.3s ease, background 0.3s ease;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .login-dot.active { width: 24px; background: #FF9800; }
 
     @keyframes notif-pop-in {
       0%   { opacity: 0; transform: scale(0.5); }
@@ -1950,16 +1963,24 @@
       <div class="hero-image"></div>
       <div class="login-content">
         <div class="login-section">
-          <div class="text-section">
+          <div class="text-section" id="loginTextSection">
             <img class="login-notification" src="imagens/transação-bitcoin.svg" alt="Notificação de transação" />
-            <h1 class="headline">Seja soberano com a Satsails</h1>
-            <p class="subtitle">Gerencie Bitcoin e stablecoins sem depender de ninguém.</p>
+            <h1 class="headline" id="loginHeadline">Seja soberano com a Satsails</h1>
+            <p class="subtitle" id="loginSubtitle">Gerencie Bitcoin e stablecoins sem depender de ninguém.</p>
           </div>
           <div class="buttons-container">
-            <button class="btn btn-primary" onclick="goTo('login','criar-pin')">Criar carteira</button>
+            <button class="btn btn-primary" onclick="goTo('login','criar-pin')">Criar nova carteira</button>
             <button class="btn btn-secondary">Recuperar carteira</button>
           </div>
         </div>
+
+        <!-- Carousel dots -->
+        <div class="login-dots">
+          <div class="login-dot active" data-index="0"></div>
+          <div class="login-dot"        data-index="1"></div>
+          <div class="login-dot"        data-index="2"></div>
+        </div>
+
         <p class="terms-text">
           Ao continuar, você concorda com nossos
           <strong>Termos de Uso</strong> e
@@ -4100,6 +4121,82 @@
         if (!completed) setProgress(0);
       });
     })();
+    /* ── Login Carousel ── */
+    (function () {
+      const SLIDES = [
+        {
+          bg: "imagens/background-satsails.svg",
+          title: "Seja soberano com a Satsails",
+          subtitle: "Gerencie Bitcoin e stablecoins sem depender de ninguém."
+        },
+        {
+          bg: "imagens/background-satsails.svg",
+          title: "Do PIX direto para o Bitcoin",
+          subtitle: "Compre DePix e converta para Bitcoin sem intermediário."
+        },
+        {
+          bg: "imagens/background-satsails.svg",
+          title: "Rápido, barato e sem custódia",
+          subtitle: "Transações via Lightning e Liquid com total privacidade."
+        }
+      ];
+
+      let current = 0;
+      let timer   = null;
+
+      function goToSlide(index) {
+        const hero    = document.querySelector('#login .hero-image');
+        const text    = document.getElementById('loginTextSection');
+        const headline = document.getElementById('loginHeadline');
+        const subtitle = document.getElementById('loginSubtitle');
+        const dots    = document.querySelectorAll('.login-dot');
+
+        hero.style.opacity = '0';
+        text.style.opacity = '0';
+
+        setTimeout(function () {
+          current = ((index % SLIDES.length) + SLIDES.length) % SLIDES.length;
+          const slide = SLIDES[current];
+          hero.style.backgroundImage = "url('" + slide.bg + "')";
+          headline.textContent = slide.title;
+          subtitle.textContent = slide.subtitle;
+
+          dots.forEach(function (dot, i) {
+            dot.classList.toggle('active', i === current);
+          });
+
+          hero.style.opacity = '1';
+          text.style.opacity = '1';
+
+          resetLoginNotification();
+        }, 350);
+      }
+
+      function startCarousel() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(function () { goToSlide(current + 1); }, 4500);
+      }
+
+      function stopCarousel() {
+        if (timer) { clearInterval(timer); timer = null; }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.login-dot').forEach(function (dot) {
+          dot.addEventListener('click', function () {
+            var i = parseInt(dot.getAttribute('data-index'));
+            stopCarousel();
+            goToSlide(i);
+            startCarousel();
+          });
+        });
+        startCarousel();
+      });
+
+      window.startLoginCarousel = startCarousel;
+      window.stopLoginCarousel  = stopCarousel;
+    })();
+
   </script>
 
 </body>
