@@ -71,8 +71,8 @@ export function LoginCarousel({
             key={i}
             onClick={() => goTo(i)}
             style={{
-              flex: 1,
-              height: 3,
+              flex: '1 0 0',
+              height: 4,
               borderRadius: 2,
               background: i === current ? '#FF9800' : 'rgba(255,255,255,0.25)',
               transition: 'background 0.35s ease',
