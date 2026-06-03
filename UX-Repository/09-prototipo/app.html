@@ -927,7 +927,14 @@
       gap: 6px;
       min-width: 152px;
       z-index: 100;
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #333 transparent;
     }
+    .screen-nav::-webkit-scrollbar { width: 4px; }
+    .screen-nav::-webkit-scrollbar-track { background: transparent; }
+    .screen-nav::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
 
     .nav-section-label {
       font-size: 10px;
@@ -1540,7 +1547,9 @@
     /* ════════════════════════
        ENVIAR
     ════════════════════════ */
-    #enviar, #enviar-preenchido { background: #000000; /* --Black */ }
+    #enviar, #enviar-preenchido,
+    #enviar-lightning, #enviar-liquid,
+    #enviar-depix, #enviar-usdt { background: #000000; /* --Black */ }
 
     .enviar-body {
       position: absolute;
