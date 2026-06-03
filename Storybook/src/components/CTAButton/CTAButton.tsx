@@ -44,9 +44,9 @@ const styles: Partial<Record<StyleKey, React.CSSProperties>> = {
 
   /* ── Secondary (Recuperar carteira) ── */
   secondary: {
-    background: '#070506',
+    background: 'transparent',
     color: '#ffffff',
-    border: 'none',
+    border: '1px solid #333333',
     boxShadow: 'none',
   },
 
