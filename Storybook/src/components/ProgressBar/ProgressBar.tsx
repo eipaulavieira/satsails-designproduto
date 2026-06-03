@@ -37,7 +37,7 @@ export function ProgressBar({ label, fillPx = 100 }: ProgressBarProps) {
         <div style={{
           width: clamp,
           height: 3,
-          background: '#00C853',
+          background: '#FF9800',
           borderRadius: 99,
           transition: 'width 0.4s ease',
         }} />
