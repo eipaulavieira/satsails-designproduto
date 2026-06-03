@@ -59,7 +59,7 @@ export function LoginCarousel({
       {/* Progress bar segmentado — topo */}
       <div style={{
         position: 'absolute',
-        top: 44, left: 0, right: 0,
+        top: 48, left: 0, right: 0,
         display: 'flex',
         gap: 4,
         padding: '0 4px',
