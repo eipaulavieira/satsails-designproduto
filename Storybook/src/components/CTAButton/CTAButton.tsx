@@ -42,9 +42,9 @@ const styles: Partial<Record<StyleKey, React.CSSProperties>> = {
     boxShadow: '0 4px 11px 0 rgba(0,0,0,0.25)',
   },
 
-  /* ── Secondary (Recuperar carteira — texto branco) ── */
+  /* ── Secondary (Recuperar carteira) ── */
   secondary: {
-    background: 'transparent',
+    background: '#070506',
     color: '#ffffff',
     border: 'none',
     boxShadow: 'none',
