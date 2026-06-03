@@ -61,8 +61,10 @@ export function LoginCarousel({
         position: 'absolute',
         top: 48, left: 0, right: 0,
         display: 'flex',
-        gap: 4,
-        padding: '0 4px',
+        width: 358,
+        alignItems: 'center',
+        gap: 11,
+        margin: '0 auto',
         zIndex: 20,
         boxSizing: 'border-box' as const,
       }}>
