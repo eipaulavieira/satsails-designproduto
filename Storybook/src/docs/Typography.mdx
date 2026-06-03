@@ -48,6 +48,107 @@ import { fontFamilies, fontSizes, fontWeights } from '../tokens/typography';
 
 ---
 
+## Uso Real no Projeto
+
+Frequência de cada tamanho medida diretamente no código do protótipo (`app.html`) e nos componentes React.
+
+### Tier 1 — Crítico (use constantemente)
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginTop: 16, marginBottom: 24 }}>
+  <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '14px 20px', background: '#0C0B0D', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#fff', minWidth: 48 }}>13px</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#FF9800', minWidth: 64 }}>13×</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272' }}>Card titles, inputs, nav items, labels, tx-name</span>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '14px 20px', background: '#0C0B0D', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#fff', minWidth: 48 }}>11px</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#FF9800', minWidth: 64 }}>14×</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272' }}>Descriptions, subtexts, network labels, fees, dates, amounts</span>
+  </div>
+</div>
+
+### Tier 2 — Muito Usado (use frequentemente)
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: 24 }}>
+  <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '14px 20px', background: '#111', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 16, color: '#fff', minWidth: 48 }}>16px</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#D1D2D2', minWidth: 64 }}>7×</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272' }}>Subtitles, section titles, asset titles, input labels</span>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '14px 20px', background: '#111', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 14, color: '#fff', minWidth: 48 }}>14px</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#D1D2D2', minWidth: 64 }}>5×</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272' }}>Buttons, social buttons, asset names, selectors</span>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '14px 20px', background: '#111', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 15, color: '#fff', minWidth: 48 }}>15px</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#D1D2D2', minWidth: 64 }}>4×</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272' }}>Status time, CTA buttons, select buttons</span>
+  </div>
+</div>
+
+### Tier 3 — Usado Regularmente
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: 24 }}>
+  <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '14px 20px', background: '#0C0B0D', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 12, color: '#fff', minWidth: 48 }}>12px</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#D1D2D2', minWidth: 64 }}>4×</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272' }}>Error messages, detail headers, taxa bars, dividers</span>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '14px 20px', background: '#0C0B0D', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 18, color: '#fff', minWidth: 48 }}>18px</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#D1D2D2', minWidth: 64 }}>3×</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272' }}>Nav titles, key buttons, scan titles (NavHeader)</span>
+  </div>
+</div>
+
+### Tier 4 — Hierarquia Alta (para destaque)
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: 24 }}>
+  <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '14px 20px', background: '#111', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 24, color: '#fff', minWidth: 48 }}>24px</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#D1D2D2', minWidth: 64 }}>1×</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272' }}>Login subtitle</span>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '14px 20px', background: '#111', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 28, color: '#fff', minWidth: 48 }}>28px</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#D1D2D2', minWidth: 64 }}>1×</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272' }}>Afiliado title variant</span>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '14px 20px', background: '#111', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 32, color: '#fff', minWidth: 48 }}>32px</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#D1D2D2', minWidth: 64 }}>1×</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272' }}>Email title</span>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '14px 20px', background: '#111', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 33, color: '#FF9800', minWidth: 48 }}>33px</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#D1D2D2', minWidth: 64 }}>2×</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272' }}>Section titles (tipo-conta), balance display</span>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '14px 20px', background: '#111', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 40, color: '#FF9800', minWidth: 48 }}>48px</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#D1D2D2', minWidth: 64 }}>1×</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272' }}>Main headline — tela de login</span>
+  </div>
+</div>
+
+### Tier 5 — Especial (use raramente)
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: 8 }}>
+  <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '14px 20px', background: '#0C0B0D', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 9, color: '#727272', minWidth: 48 }}>9px</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#555', minWidth: 64 }}>1×</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#555' }}>QA labels — Quick Actions somente</span>
+  </div>
+  <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '14px 20px', background: '#0C0B0D', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 10, color: '#727272', minWidth: 48 }}>10px</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: '#555', minWidth: 64 }}>2×</span>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#555' }}>Nav labels, disclaimers</span>
+  </div>
+</div>
+
+---
+
 ## Pesos
 
 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginTop: 24 }}>

@@ -53,4 +53,107 @@ export const scale = spacing;
 
 Sempre prefira tokens de espaçamento a valores ad-hoc. A base da escala é **4px** — use apenas múltiplos desta unidade para manter a grade consistente.
 
+---
+
+## Layout — Flexbox Gaps
+
+O projeto **não utiliza CSS Grid**. Todo o layout é construído com `display: flex`. Os valores de `gap` abaixo foram medidos diretamente no código.
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginTop: 24 }}>
+
+  <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '14px 20px', background: '#0C0B0D', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'monospace', fontSize: 13, color: '#FF9800', minWidth: 56 }}>8px</span>
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center', flex: 1 }}>
+      {[0,1,2,3,4].map(i => <div key={i} style={{ width: 8, height: 8, background: '#FF9800', borderRadius: 2 }} />)}
+    </div>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272', minWidth: 260, textAlign: 'right' }}>Cards, inputs, botões, subcards</span>
+  </div>
+
+  <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '14px 20px', background: '#111', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'monospace', fontSize: 13, color: '#D1D2D2', minWidth: 56 }}>12px</span>
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center', flex: 1 }}>
+      {[0,1,2,3].map(i => <div key={i} style={{ width: 12, height: 8, background: '#D1D2D2', borderRadius: 2 }} />)}
+    </div>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272', minWidth: 260, textAlign: 'right' }}>Assets, transações, popups</span>
+  </div>
+
+  <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '14px 20px', background: '#0C0B0D', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'monospace', fontSize: 13, color: '#D1D2D2', minWidth: 56 }}>16px</span>
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center', flex: 1 }}>
+      {[0,1,2,3].map(i => <div key={i} style={{ width: 16, height: 8, background: '#D1D2D2', borderRadius: 2 }} />)}
+    </div>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272', minWidth: 260, textAlign: 'right' }}>Seções, grupos, detalhes</span>
+  </div>
+
+  <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '14px 20px', background: '#111', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'monospace', fontSize: 13, color: '#D1D2D2', minWidth: 56 }}>20px</span>
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center', flex: 1 }}>
+      {[0,1,2].map(i => <div key={i} style={{ width: 20, height: 8, background: '#D1D2D2', borderRadius: 2 }} />)}
+    </div>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272', minWidth: 260, textAlign: 'right' }}>Body geral, containers</span>
+  </div>
+
+  <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '14px 20px', background: '#0C0B0D', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'monospace', fontSize: 13, color: '#D1D2D2', minWidth: 56 }}>24px</span>
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center', flex: 1 }}>
+      {[0,1,2].map(i => <div key={i} style={{ width: 24, height: 8, background: '#D1D2D2', borderRadius: 2 }} />)}
+    </div>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272', minWidth: 260, textAlign: 'right' }}>Grupos principais, logins</span>
+  </div>
+
+  <div style={{ height: 1, background: '#1a1a1a', margin: '4px 0' }} />
+
+  <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '14px 20px', background: '#111', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'monospace', fontSize: 13, color: '#555', minWidth: 56 }}>4px</span>
+    <div style={{ display: 'flex', gap: 4, alignItems: 'center', flex: 1 }}>
+      {[0,1,2,3,4,5].map(i => <div key={i} style={{ width: 4, height: 8, background: '#555', borderRadius: 2 }} />)}
+    </div>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#555', minWidth: 260, textAlign: 'right' }}>BNB buttons</span>
+  </div>
+
+  <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '14px 20px', background: '#0C0B0D', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'monospace', fontSize: 13, color: '#555', minWidth: 56 }}>6px</span>
+    <div style={{ display: 'flex', gap: 4, alignItems: 'center', flex: 1 }}>
+      {[0,1,2,3,4].map(i => <div key={i} style={{ width: 6, height: 8, background: '#555', borderRadius: 2 }} />)}
+    </div>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#555', minWidth: 260, textAlign: 'right' }}>Texto, labels</span>
+  </div>
+
+  <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '14px 20px', background: '#111', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'monospace', fontSize: 13, color: '#555', minWidth: 56 }}>10px</span>
+    <div style={{ display: 'flex', gap: 4, alignItems: 'center', flex: 1 }}>
+      {[0,1,2,3].map(i => <div key={i} style={{ width: 10, height: 8, background: '#555', borderRadius: 2 }} />)}
+    </div>
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#555', minWidth: 260, textAlign: 'right' }}>Popups internos</span>
+  </div>
+
+  <div style={{ height: 1, background: '#1a1a1a', margin: '4px 0' }} />
+
+  <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '14px 20px', background: '#0C0B0D', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'monospace', fontSize: 13, color: '#444', minWidth: 56 }}>52px</span>
+    <div style={{ width: 52, height: 8, background: '#333', borderRadius: 2, flex: 1, maxWidth: 52 }} />
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#444', minWidth: 260, textAlign: 'right' }}>PIN inputs — único</span>
+  </div>
+
+  <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '14px 20px', background: '#111', borderRadius: 8 }}>
+    <span style={{ fontFamily: 'monospace', fontSize: 13, color: '#444', minWidth: 56 }}>68px</span>
+    <div style={{ width: 68, height: 8, background: '#333', borderRadius: 2, flex: 1, maxWidth: 68 }} />
+    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#444', minWidth: 260, textAlign: 'right' }}>Login content — único</span>
+  </div>
+
+</div>
+
+| Gap | Frequência | Onde é usado |
+|---|---|---|
+| `8px` | ⭐⭐⭐⭐⭐ Muito alto | Cards, inputs, botões, subcards |
+| `12px` | ⭐⭐⭐⭐ Alto | Assets, transações, popups |
+| `16px` | ⭐⭐⭐⭐ Alto | Seções, grupos, detalhes |
+| `24px` | ⭐⭐⭐ Médio | Grupos principais, logins |
+| `20px` | ⭐⭐ Baixo | Body geral, containers |
+| `6px` | ⭐⭐ Baixo | Texto, labels |
+| `10px` | ⭐⭐ Baixo | Popups internos |
+| `52px` | ⭐ Único | PIN inputs |
+| `68px` | ⭐ Único | Login content |
+| `4px` | ⭐ Único | BNB buttons |
+
 </div>
