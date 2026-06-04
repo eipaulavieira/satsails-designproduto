@@ -2,6 +2,7 @@
 
 Repositório de design da Satsails. Aqui você encontra o protótipo navegável do app e o Storybook com todos os componentes documentados.
 
+![alt text](image.png)
 ---
 
 ## Os dois arquivos principais
@@ -16,8 +17,9 @@ UX-Repository/09-prototipo/app.html
 ```
 
 Basta abrir o arquivo no navegador — não precisa instalar nada.
-
+S
 ---
+![alt text](image-1.png)
 
 ### 2. Storybook — documentação de componentes
 
@@ -31,6 +33,7 @@ Storybook/
 Precisa de instalação (Node.js). Veja as instruções abaixo.
 
 ---
+![alt text](image-2.png)
 
 ## Como baixar e usar
 
