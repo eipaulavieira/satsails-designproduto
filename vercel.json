@@ -1,7 +1,8 @@
 {
   "version": 2,
   "framework": null,
-  "buildCommand": "cd Storybook && npm install && npm run build-storybook",
+  "buildCommand": "",
+  "installCommand": "",
   "outputDirectory": ".",
   "cleanUrls": false,
   "rewrites": [
