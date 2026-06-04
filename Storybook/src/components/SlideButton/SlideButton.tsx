@@ -119,11 +119,13 @@ export function SlideButton({ label = 'Deslize para enviar', onComplete }: Slide
       {!completed && (
         <span style={{
           position: 'absolute',
-          left: thumbLeft + THUMB_W + 12,
+          left: 0,
+          right: 0,
           top: 0,
           bottom: 0,
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'center',
           fontFamily: "'Inter', sans-serif",
           fontSize: 16,
           fontWeight: 300,
