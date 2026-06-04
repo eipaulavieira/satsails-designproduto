@@ -9,7 +9,7 @@
     { "source": "/storybook", "destination": "/storybook/", "permanent": false }
   ],
   "rewrites": [
-    { "source": "/storybook/",      "destination": "/Storybook/storybook-static/index.html" },
-    { "source": "/storybook/:path*", "destination": "/Storybook/storybook-static/:path*" }
+    { "source": "/storybook/",       "destination": "/storybook-dist/index.html" },
+    { "source": "/storybook/:path*", "destination": "/storybook-dist/:path*" }
   ]
 }
