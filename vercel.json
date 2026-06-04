@@ -5,8 +5,11 @@
   "installCommand": "",
   "outputDirectory": ".",
   "cleanUrls": false,
+  "redirects": [
+    { "source": "/storybook", "destination": "/storybook/", "permanent": false }
+  ],
   "rewrites": [
-    { "source": "/storybook/(.*)", "destination": "/Storybook/storybook-static/$1" },
-    { "source": "/storybook",      "destination": "/Storybook/storybook-static/index.html" }
+    { "source": "/storybook/",      "destination": "/Storybook/storybook-static/index.html" },
+    { "source": "/storybook/:path*", "destination": "/Storybook/storybook-static/:path*" }
   ]
 }
