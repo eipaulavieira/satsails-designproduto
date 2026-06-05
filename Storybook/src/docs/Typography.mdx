@@ -4,62 +4,87 @@ import { fontFamilies, fontSizes, fontWeights, pxToRem, flutterTextTheme } from 
 
 <Meta title="Fundação/Tipografia" />
 
-export const TH = ({ children, color }) => (
-  <th style={{
-    padding: '8px 14px', textAlign: 'left', fontSize: 10, fontWeight: 600,
-    fontFamily: 'JetBrains Mono, monospace', letterSpacing: '0.06em',
-    textTransform: 'uppercase', color: color || '#9ca3af',
-    borderBottom: '2px solid #e8e8e8', background: '#fafafa',
-    whiteSpace: 'nowrap',
-  }}>{children}</th>
-);
+export const allSizes = [9,10,11,12,13,14,15,16,18,20,24,28,30,32,33,48];
 
-export const TD = ({ children, mono, muted, style }) => (
-  <td style={{
-    padding: '10px 14px', fontSize: mono ? 12 : 13,
-    fontFamily: mono ? 'JetBrains Mono, monospace' : 'Inter, sans-serif',
-    color: muted ? '#9ca3af' : '#374151',
-    borderBottom: '1px solid #f3f4f6',
-    verticalAlign: 'middle',
-    ...style,
-  }}>{children}</td>
-);
-
-export const Pill = ({ children, color, bg, border }) => (
-  <span style={{
-    display: 'inline-block', padding: '2px 8px', borderRadius: 20,
-    fontSize: 11, fontFamily: 'JetBrains Mono, monospace',
-    fontWeight: 500, whiteSpace: 'nowrap',
-    color: color || '#374151',
-    background: bg || '#f3f4f6',
-    border: `1px solid ${border || '#e5e7eb'}`,
-  }}>{children}</span>
-);
-
-export const UsageRow = ({ px, freq, tier, where }) => {
+export const ConvRow = ({ px }) => {
   const rem = pxToRem(px);
   const theme = flutterTextTheme(px);
-  const tierColor = tier === 1 ? '#F7931A' : tier === 2 ? '#FF9800' : tier === 3 ? '#D1D2D2' : '#727272';
+  const isBase = px === 16;
   return (
-    <tr>
-      <TD mono style={{ fontWeight: 600, color: '#0C0B0D', fontSize: 13 }}>{px}px</TD>
-      <TD mono><Pill>{rem}</Pill></TD>
-      <TD mono><Pill color="#1565C0" bg="#E3F2FD" border="#90CAF9">{px} sp</Pill></TD>
-      <TD mono muted>{theme || '—'}</TD>
-      <TD><span style={{ fontSize: 11, fontFamily: 'JetBrains Mono, monospace', color: tierColor, fontWeight: 600 }}>{freq}</span></TD>
-      <TD muted style={{ fontSize: 12 }}>{where}</TD>
-    </tr>
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: '64px 16px 110px 1fr',
+      alignItems: 'center',
+      gap: 0,
+      padding: '10px 20px',
+      background: isBase ? '#fff8f0' : 'transparent',
+      borderBottom: '1px solid #f3f4f6',
+      borderLeft: isBase ? '3px solid #F7931A' : '3px solid transparent',
+    }}>
+      <span style={{
+        fontFamily: 'JetBrains Mono, monospace',
+        fontWeight: 700,
+        fontSize: 15,
+        color: '#0C0B0D',
+      }}>{px}px</span>
+      <span style={{ color: '#d1d5db', fontSize: 13, textAlign: 'center' }}>→</span>
+      <span style={{
+        fontFamily: 'JetBrains Mono, monospace',
+        fontWeight: 600,
+        fontSize: 15,
+        color: '#166534',
+      }}>{rem}</span>
+      <span style={{
+        fontFamily: 'JetBrains Mono, monospace',
+        fontSize: 11,
+        color: '#9ca3af',
+        paddingLeft: 16,
+      }}>
+        {isBase && <span style={{ color: '#F7931A', marginRight: 8 }}>← base</span>}
+        {theme && `Flutter: ${theme}`}
+      </span>
+    </div>
   );
 };
 
-<div style={{ maxWidth: 960 }}>
+<div style={{ maxWidth: 900 }}>
 
 <div style={{ marginBottom: 32 }}>
   <p style={{ fontSize: 11, fontFamily: 'JetBrains Mono, monospace', color: '#9ca3af', marginBottom: 8, letterSpacing: '0.06em', textTransform: 'uppercase' }}>02 / Fundação</p>
   <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em', color: '#0C0B0D', margin: '0 0 10px' }}>Tipografia</h1>
   <p style={{ fontSize: 14, color: '#6b7280', lineHeight: 1.7, margin: 0 }}>
-    Escala de tamanhos com equivalências em <strong>rem</strong> (base 16px) e <strong>Flutter</strong> (fontSize em sp + TextTheme Material 3).
+    Escala de tamanhos com equivalências em <strong>rem</strong> (base 16px) e especificação <strong>Flutter</strong> (sp + TextTheme Material 3).
   </p>
+</div>
+
+---
+
+## Conversão px → rem
+
+<div style={{ fontSize: 12, color: '#6b7280', marginBottom: 16, fontFamily: 'JetBrains Mono, monospace' }}>
+  Base: <strong style={{ color: '#F7931A' }}>16px = 1rem</strong> &nbsp;·&nbsp; fórmula: <strong>px ÷ 16 = rem</strong>
+</div>
+
+<div style={{
+  border: '1px solid #e8e8e8',
+  borderRadius: 10,
+  overflow: 'hidden',
+  marginBottom: 8,
+}}>
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: '64px 16px 110px 1fr',
+    gap: 0,
+    padding: '8px 20px',
+    background: '#fafafa',
+    borderBottom: '2px solid #e8e8e8',
+  }}>
+    <span style={{ fontSize: 10, fontWeight: 700, fontFamily: 'JetBrains Mono, monospace', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#9ca3af' }}>px</span>
+    <span />
+    <span style={{ fontSize: 10, fontWeight: 700, fontFamily: 'JetBrains Mono, monospace', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#16a34a' }}>rem</span>
+    <span style={{ fontSize: 10, fontWeight: 700, fontFamily: 'JetBrains Mono, monospace', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#1565C0', paddingLeft: 16 }}>Flutter TextTheme M3</span>
+  </div>
+  {allSizes.map(px => <ConvRow key={px} px={px} />)}
 </div>
 
 ---
@@ -79,75 +104,89 @@ export const UsageRow = ({ px, freq, tier, where }) => {
 
 ---
 
-## Escala de Tamanhos
+## Tokens de Tamanho
 
-<div style={{ marginTop: 24, overflowX: 'auto' }}>
-  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
-    <thead>
-      <tr>
-        <TH>Token</TH>
-        <TH>px</TH>
-        <TH color="#16a34a">rem</TH>
-        <TH color="#1565C0">Flutter sp</TH>
-        <TH color="#1565C0">TextTheme M3</TH>
-        <TH>line-height</TH>
-        <TH>Amostra</TH>
-      </tr>
-    </thead>
-    <tbody>
-      {fontSizes.map((t, i) => (
-        <tr key={t.token} style={{ background: i % 2 === 0 ? '#fff' : '#fafafa' }}>
-          <TD mono muted>{t.token}</TD>
-          <TD mono style={{ fontWeight: 700, color: '#0C0B0D' }}>{t.size}</TD>
-          <TD mono><Pill color="#166534" bg="#f0fdf4" border="#bbf7d0">{t.rem}</Pill></TD>
-          <TD mono><Pill color="#1565C0" bg="#E3F2FD" border="#90CAF9">{t.flutter.sp} sp</Pill></TD>
-          <TD mono muted style={{ fontSize: 11 }}>{t.flutter.textTheme || '—'}</TD>
-          <TD mono muted>{t.lineHeight}</TD>
-          <TD style={{ fontSize: t.size, color: '#0C0B0D', lineHeight: t.lineHeight }}>{t.sample}</TD>
-        </tr>
-      ))}
-    </tbody>
-  </table>
+<div style={{ marginTop: 20, border: '1px solid #e8e8e8', borderRadius: 10, overflow: 'hidden' }}>
+  <div style={{
+    display: 'grid', gridTemplateColumns: '130px 64px 16px 110px 200px 1fr',
+    padding: '8px 20px', background: '#fafafa', borderBottom: '2px solid #e8e8e8', gap: 0,
+  }}>
+    {['Token','px','','rem','TextTheme M3','Amostra'].map((h, i) => (
+      <span key={i} style={{
+        fontSize: 10, fontWeight: 700, fontFamily: 'JetBrains Mono, monospace',
+        letterSpacing: '0.08em', textTransform: 'uppercase',
+        color: i === 2 ? '#16a34a' : i === 3 ? '#16a34a' : i === 4 ? '#1565C0' : '#9ca3af',
+      }}>{h}</span>
+    ))}
+  </div>
+  {fontSizes.map((t, i) => (
+    <div key={t.token} style={{
+      display: 'grid', gridTemplateColumns: '130px 64px 16px 110px 200px 1fr',
+      padding: '12px 20px', gap: 0, alignItems: 'center',
+      background: i % 2 === 0 ? '#fff' : '#fafafa',
+      borderBottom: '1px solid #f3f4f6',
+    }}>
+      <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: '#9ca3af' }}>{t.token}</span>
+      <span style={{ fontFamily: 'JetBrains Mono, monospace', fontWeight: 700, fontSize: 14, color: '#0C0B0D' }}>{t.size}</span>
+      <span style={{ color: '#d1d5db', fontSize: 12, textAlign: 'center' }}>→</span>
+      <span style={{ fontFamily: 'JetBrains Mono, monospace', fontWeight: 600, fontSize: 14, color: '#166534' }}>{t.rem}</span>
+      <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: '#1565C0' }}>{t.flutter.textTheme || '—'}</span>
+      <span style={{ fontSize: t.size, color: '#374151', lineHeight: t.lineHeight }}>{t.sample}</span>
+    </div>
+  ))}
 </div>
 
 ---
 
 ## Uso Real no Projeto
 
-Frequência de cada tamanho medida no protótipo (`app.html`) e nos componentes React.
-
-<div style={{ marginTop: 20, overflowX: 'auto' }}>
-  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
-    <thead>
-      <tr>
-        <TH>px</TH>
-        <TH color="#16a34a">rem</TH>
-        <TH color="#1565C0">Flutter sp</TH>
-        <TH color="#1565C0">TextTheme M3</TH>
-        <TH>Freq.</TH>
-        <TH>Onde é usado</TH>
-      </tr>
-    </thead>
-    <tbody>
-      <UsageRow px={11}  freq="★★★" tier={1} where="Descriptions, subtexts, network labels, fees, dates, amounts" />
-      <UsageRow px={13}  freq="★★★" tier={1} where="Card titles, inputs, nav items, labels, tx-name" />
-      <UsageRow px={14}  freq="★★"  tier={2} where="Buttons, social buttons, asset names, selectors" />
-      <UsageRow px={15}  freq="★★"  tier={2} where="Status time, CTA buttons, select buttons" />
-      <UsageRow px={16}  freq="★★"  tier={2} where="Subtitles, section titles, asset titles, input labels" />
-      <UsageRow px={12}  freq="★"   tier={3} where="Error messages, detail headers, taxa bars, dividers" />
-      <UsageRow px={18}  freq="★"   tier={3} where="Nav titles, key buttons, scan titles (NavHeader)" />
-      <UsageRow px={24}  freq="○"   tier={4} where="Login subtitle" />
-      <UsageRow px={28}  freq="○"   tier={4} where="Afiliado title variant" />
-      <UsageRow px={32}  freq="○"   tier={4} where="Email title" />
-      <UsageRow px={33}  freq="○"   tier={4} where="Section titles (tipo-conta), balance display" />
-      <UsageRow px={48}  freq="○"   tier={4} where="Main headline — tela de login" />
-      <UsageRow px={9}   freq="·"   tier={5} where="QA labels — Quick Actions somente" />
-      <UsageRow px={10}  freq="·"   tier={5} where="Nav labels, disclaimers" />
-    </tbody>
-  </table>
+<div style={{ marginTop: 20, border: '1px solid #e8e8e8', borderRadius: 10, overflow: 'hidden' }}>
+  <div style={{
+    display: 'grid', gridTemplateColumns: '64px 16px 110px 180px 60px 1fr',
+    padding: '8px 20px', background: '#fafafa', borderBottom: '2px solid #e8e8e8', gap: 0,
+  }}>
+    {[{l:'px',c:'#9ca3af'},{l:'',c:''},{l:'rem',c:'#16a34a'},{l:'TextTheme M3',c:'#1565C0'},{l:'Freq.',c:'#9ca3af'},{l:'Onde é usado',c:'#9ca3af'}].map((h, i) => (
+      <span key={i} style={{ fontSize: 10, fontWeight: 700, fontFamily: 'JetBrains Mono, monospace', letterSpacing: '0.08em', textTransform: 'uppercase', color: h.c }}>{h.l}</span>
+    ))}
+  </div>
+  {[
+    {px:11, freq:'★★★', tier:1, where:'Descriptions, subtexts, network labels, fees, dates, amounts'},
+    {px:13, freq:'★★★', tier:1, where:'Card titles, inputs, nav items, labels, tx-name'},
+    {px:14, freq:'★★',  tier:2, where:'Buttons, social buttons, asset names, selectors'},
+    {px:15, freq:'★★',  tier:2, where:'Status time, CTA buttons, select buttons'},
+    {px:16, freq:'★★',  tier:2, where:'Subtitles, section titles, asset titles, input labels'},
+    {px:12, freq:'★',   tier:3, where:'Error messages, detail headers, taxa bars, dividers'},
+    {px:18, freq:'★',   tier:3, where:'Nav titles, key buttons, scan titles (NavHeader)'},
+    {px:24, freq:'○',   tier:4, where:'Login subtitle'},
+    {px:28, freq:'○',   tier:4, where:'Afiliado title variant'},
+    {px:32, freq:'○',   tier:4, where:'Email title'},
+    {px:33, freq:'○',   tier:4, where:'Section titles (tipo-conta), balance display'},
+    {px:48, freq:'○',   tier:4, where:'Main headline — tela de login'},
+    {px:9,  freq:'·',   tier:5, where:'QA labels — Quick Actions somente'},
+    {px:10, freq:'·',   tier:5, where:'Nav labels, disclaimers'},
+  ].map((row, i) => {
+    const rem = pxToRem(row.px);
+    const theme = flutterTextTheme(row.px);
+    const freqColor = row.tier===1?'#F7931A':row.tier===2?'#FF9800':row.tier===3?'#D1D2D2':'#727272';
+    return (
+      <div key={row.px} style={{
+        display: 'grid', gridTemplateColumns: '64px 16px 110px 180px 60px 1fr',
+        padding: '10px 20px', gap: 0, alignItems: 'center',
+        background: i % 2 === 0 ? '#fff' : '#fafafa',
+        borderBottom: '1px solid #f3f4f6',
+      }}>
+        <span style={{ fontFamily: 'JetBrains Mono, monospace', fontWeight: 700, fontSize: 14, color: '#0C0B0D' }}>{row.px}px</span>
+        <span style={{ color: '#d1d5db', fontSize: 12, textAlign: 'center' }}>→</span>
+        <span style={{ fontFamily: 'JetBrains Mono, monospace', fontWeight: 600, fontSize: 14, color: '#166534' }}>{rem}</span>
+        <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: '#1565C0' }}>{theme || '—'}</span>
+        <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 12, color: freqColor, fontWeight: 700 }}>{row.freq}</span>
+        <span style={{ fontSize: 12, color: '#6b7280' }}>{row.where}</span>
+      </div>
+    );
+  })}
 </div>
 
-<div style={{ marginTop: 12, display: 'flex', gap: 20, fontSize: 11, color: '#9ca3af', fontFamily: 'JetBrains Mono, monospace' }}>
+<div style={{ marginTop: 10, display: 'flex', gap: 20, fontSize: 11, color: '#9ca3af', fontFamily: 'JetBrains Mono, monospace' }}>
   <span><span style={{ color: '#F7931A' }}>★★★</span> Crítico</span>
   <span><span style={{ color: '#FF9800' }}>★★</span> Muito usado</span>
   <span><span style={{ color: '#D1D2D2' }}>★</span> Regular</span>
