@@ -4,52 +4,61 @@ import { fontFamilies, fontSizes, fontWeights, pxToRem, flutterTextTheme } from 
 
 <Meta title="Fundação/Tipografia" />
 
-export const RemBadge = ({ rem }) => (
-  <span style={{
-    display: 'inline-flex', alignItems: 'center', gap: 3,
-    padding: '2px 7px', borderRadius: 4,
-    background: '#f0f0f0', border: '1px solid #e0e0e0',
-    fontFamily: 'JetBrains Mono, monospace', fontSize: 10.5, color: '#555',
+export const TH = ({ children, color }) => (
+  <th style={{
+    padding: '8px 14px', textAlign: 'left', fontSize: 10, fontWeight: 600,
+    fontFamily: 'JetBrains Mono, monospace', letterSpacing: '0.06em',
+    textTransform: 'uppercase', color: color || '#9ca3af',
+    borderBottom: '2px solid #e8e8e8', background: '#fafafa',
     whiteSpace: 'nowrap',
-  }}>{rem}</span>
+  }}>{children}</th>
 );
 
-export const FlutterBadge = ({ sp, textTheme }) => (
-  <span style={{
-    display: 'inline-flex', alignItems: 'center', gap: 5,
-    padding: '2px 7px', borderRadius: 4,
-    background: '#E3F2FD', border: '1px solid #90CAF9',
-    fontFamily: 'JetBrains Mono, monospace', fontSize: 10.5, color: '#1565C0',
-    whiteSpace: 'nowrap',
-  }}>
-    <span style={{ opacity: 0.6, fontSize: 10 }}>Flutter</span>
-    <span>fontSize: {sp}</span>
-    {textTheme && <span style={{ opacity: 0.55 }}>·</span>}
-    {textTheme && <span style={{ color: '#1976D2' }}>{textTheme}</span>}
-  </span>
+export const TD = ({ children, mono, muted, style }) => (
+  <td style={{
+    padding: '10px 14px', fontSize: mono ? 12 : 13,
+    fontFamily: mono ? 'JetBrains Mono, monospace' : 'Inter, sans-serif',
+    color: muted ? '#9ca3af' : '#374151',
+    borderBottom: '1px solid #f3f4f6',
+    verticalAlign: 'middle',
+    ...style,
+  }}>{children}</td>
 );
 
-export const SizeRow = ({ px, label }) => {
+export const Pill = ({ children, color, bg, border }) => (
+  <span style={{
+    display: 'inline-block', padding: '2px 8px', borderRadius: 20,
+    fontSize: 11, fontFamily: 'JetBrains Mono, monospace',
+    fontWeight: 500, whiteSpace: 'nowrap',
+    color: color || '#374151',
+    background: bg || '#f3f4f6',
+    border: `1px solid ${border || '#e5e7eb'}`,
+  }}>{children}</span>
+);
+
+export const UsageRow = ({ px, freq, tier, where }) => {
   const rem = pxToRem(px);
   const theme = flutterTextTheme(px);
+  const tierColor = tier === 1 ? '#F7931A' : tier === 2 ? '#FF9800' : tier === 3 ? '#D1D2D2' : '#727272';
   return (
-    <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, padding: '14px 20px', background: '#0C0B0D', borderRadius: 8, flexWrap: 'wrap' }}>
-      <span style={{ fontFamily: 'Inter, sans-serif', fontSize: px, color: '#fff', minWidth: 52 }}>{px}px</span>
-      <RemBadge rem={rem} />
-      <FlutterBadge sp={px} textTheme={theme} />
-      {label && <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, color: '#727272', marginLeft: 4 }}>{label}</span>}
-    </div>
+    <tr>
+      <TD mono style={{ fontWeight: 600, color: '#0C0B0D', fontSize: 13 }}>{px}px</TD>
+      <TD mono><Pill>{rem}</Pill></TD>
+      <TD mono><Pill color="#1565C0" bg="#E3F2FD" border="#90CAF9">{px} sp</Pill></TD>
+      <TD mono muted>{theme || '—'}</TD>
+      <TD><span style={{ fontSize: 11, fontFamily: 'JetBrains Mono, monospace', color: tierColor, fontWeight: 600 }}>{freq}</span></TD>
+      <TD muted style={{ fontSize: 12 }}>{where}</TD>
+    </tr>
   );
 };
 
-<div style={{ maxWidth: 860 }}>
+<div style={{ maxWidth: 960 }}>
 
 <div style={{ marginBottom: 32 }}>
-  <p className="ds-section-label">02 / Fundação</p>
+  <p style={{ fontSize: 11, fontFamily: 'JetBrains Mono, monospace', color: '#9ca3af', marginBottom: 8, letterSpacing: '0.06em', textTransform: 'uppercase' }}>02 / Fundação</p>
   <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em', color: '#0C0B0D', margin: '0 0 10px' }}>Tipografia</h1>
-  <p style={{ fontSize: 15, color: '#6b7280', lineHeight: 1.7, margin: 0, maxWidth: 560 }}>
-    Famílias tipográficas, escala de tamanhos e pesos utilizados em toda a interface da Satsails.
-    Cada tamanho exibe o equivalente em <strong>rem</strong> (base 16 px) e a especificação <strong>Flutter</strong> (fontSize em sp + TextTheme Material 3).
+  <p style={{ fontSize: 14, color: '#6b7280', lineHeight: 1.7, margin: 0 }}>
+    Escala de tamanhos com equivalências em <strong>rem</strong> (base 16px) e <strong>Flutter</strong> (fontSize em sp + TextTheme Material 3).
   </p>
 </div>
 
@@ -57,13 +66,11 @@ export const SizeRow = ({ px, label }) => {
 
 ## Famílias
 
-<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 24 }}>
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 24, marginBottom: 8 }}>
   {Object.values(fontFamilies).map(f => (
     <div key={f.token} style={{ padding: '24px', border: '1px solid #e8e8e8', borderRadius: 10 }}>
       <div style={{ fontSize: 11, fontFamily: 'JetBrains Mono, monospace', color: '#9ca3af', marginBottom: 12 }}>{f.token}</div>
-      <div style={{ fontSize: 28, fontFamily: f.value, fontWeight: 600, color: '#0C0B0D', marginBottom: 8, letterSpacing: '-0.01em' }}>
-        Aa Bb Cc
-      </div>
+      <div style={{ fontSize: 28, fontFamily: f.value, fontWeight: 600, color: '#0C0B0D', marginBottom: 8, letterSpacing: '-0.01em' }}>Aa Bb Cc</div>
       <div style={{ fontSize: 12, color: '#6b7280' }}>{f.label}</div>
       <div style={{ fontSize: 11, fontFamily: 'JetBrains Mono, monospace', color: '#d1d5db', marginTop: 4, wordBreak: 'break-all' }}>{f.value}</div>
     </div>
@@ -74,67 +81,78 @@ export const SizeRow = ({ px, label }) => {
 
 ## Escala de Tamanhos
 
-<div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 2 }}>
-  {fontSizes.map(t => (
-    <div key={t.token} style={{ padding: '16px 20px', border: '1px solid #f0f0f0', borderRadius: 8, display: 'flex', flexDirection: 'column', gap: 8 }}>
-      {/* linha 1: token + badges */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-        <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: '#9ca3af', minWidth: 100 }}>{t.token}</span>
-        <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 11, color: '#6b7280' }}>{t.size} / {t.lineHeight}</span>
-        <RemBadge rem={t.rem} />
-        <FlutterBadge sp={t.flutter.sp} textTheme={t.flutter.textTheme} />
-      </div>
-      {/* linha 2: amostra */}
-      <div style={{ fontSize: t.size, lineHeight: t.lineHeight, fontWeight: 400, color: '#0C0B0D' }}>
-        {t.sample}
-      </div>
-    </div>
-  ))}
+<div style={{ marginTop: 24, overflowX: 'auto' }}>
+  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+    <thead>
+      <tr>
+        <TH>Token</TH>
+        <TH>px</TH>
+        <TH color="#16a34a">rem</TH>
+        <TH color="#1565C0">Flutter sp</TH>
+        <TH color="#1565C0">TextTheme M3</TH>
+        <TH>line-height</TH>
+        <TH>Amostra</TH>
+      </tr>
+    </thead>
+    <tbody>
+      {fontSizes.map((t, i) => (
+        <tr key={t.token} style={{ background: i % 2 === 0 ? '#fff' : '#fafafa' }}>
+          <TD mono muted>{t.token}</TD>
+          <TD mono style={{ fontWeight: 700, color: '#0C0B0D' }}>{t.size}</TD>
+          <TD mono><Pill color="#166534" bg="#f0fdf4" border="#bbf7d0">{t.rem}</Pill></TD>
+          <TD mono><Pill color="#1565C0" bg="#E3F2FD" border="#90CAF9">{t.flutter.sp} sp</Pill></TD>
+          <TD mono muted style={{ fontSize: 11 }}>{t.flutter.textTheme || '—'}</TD>
+          <TD mono muted>{t.lineHeight}</TD>
+          <TD style={{ fontSize: t.size, color: '#0C0B0D', lineHeight: t.lineHeight }}>{t.sample}</TD>
+        </tr>
+      ))}
+    </tbody>
+  </table>
 </div>
 
 ---
 
 ## Uso Real no Projeto
 
-Frequência de cada tamanho medida diretamente no código do protótipo (`app.html`) e nos componentes React.
+Frequência de cada tamanho medida no protótipo (`app.html`) e nos componentes React.
 
-### Tier 1 — Crítico (use constantemente)
-
-<div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginTop: 16, marginBottom: 24 }}>
-  <SizeRow px={13} label="13× · Card titles, inputs, nav items, labels, tx-name" />
-  <SizeRow px={11} label="14× · Descriptions, subtexts, network labels, fees, dates, amounts" />
+<div style={{ marginTop: 20, overflowX: 'auto' }}>
+  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+    <thead>
+      <tr>
+        <TH>px</TH>
+        <TH color="#16a34a">rem</TH>
+        <TH color="#1565C0">Flutter sp</TH>
+        <TH color="#1565C0">TextTheme M3</TH>
+        <TH>Freq.</TH>
+        <TH>Onde é usado</TH>
+      </tr>
+    </thead>
+    <tbody>
+      <UsageRow px={11}  freq="★★★" tier={1} where="Descriptions, subtexts, network labels, fees, dates, amounts" />
+      <UsageRow px={13}  freq="★★★" tier={1} where="Card titles, inputs, nav items, labels, tx-name" />
+      <UsageRow px={14}  freq="★★"  tier={2} where="Buttons, social buttons, asset names, selectors" />
+      <UsageRow px={15}  freq="★★"  tier={2} where="Status time, CTA buttons, select buttons" />
+      <UsageRow px={16}  freq="★★"  tier={2} where="Subtitles, section titles, asset titles, input labels" />
+      <UsageRow px={12}  freq="★"   tier={3} where="Error messages, detail headers, taxa bars, dividers" />
+      <UsageRow px={18}  freq="★"   tier={3} where="Nav titles, key buttons, scan titles (NavHeader)" />
+      <UsageRow px={24}  freq="○"   tier={4} where="Login subtitle" />
+      <UsageRow px={28}  freq="○"   tier={4} where="Afiliado title variant" />
+      <UsageRow px={32}  freq="○"   tier={4} where="Email title" />
+      <UsageRow px={33}  freq="○"   tier={4} where="Section titles (tipo-conta), balance display" />
+      <UsageRow px={48}  freq="○"   tier={4} where="Main headline — tela de login" />
+      <UsageRow px={9}   freq="·"   tier={5} where="QA labels — Quick Actions somente" />
+      <UsageRow px={10}  freq="·"   tier={5} where="Nav labels, disclaimers" />
+    </tbody>
+  </table>
 </div>
 
-### Tier 2 — Muito Usado (use frequentemente)
-
-<div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: 24 }}>
-  <SizeRow px={16} label="7× · Subtitles, section titles, asset titles, input labels" />
-  <SizeRow px={14} label="5× · Buttons, social buttons, asset names, selectors" />
-  <SizeRow px={15} label="4× · Status time, CTA buttons, select buttons" />
-</div>
-
-### Tier 3 — Usado Regularmente
-
-<div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: 24 }}>
-  <SizeRow px={12} label="4× · Error messages, detail headers, taxa bars, dividers" />
-  <SizeRow px={18} label="3× · Nav titles, key buttons, scan titles (NavHeader)" />
-</div>
-
-### Tier 4 — Hierarquia Alta (para destaque)
-
-<div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: 24 }}>
-  <SizeRow px={24} label="1× · Login subtitle" />
-  <SizeRow px={28} label="1× · Afiliado title variant" />
-  <SizeRow px={32} label="1× · Email title" />
-  <SizeRow px={33} label="2× · Section titles (tipo-conta), balance display" />
-  <SizeRow px={48} label="1× · Main headline — tela de login" />
-</div>
-
-### Tier 5 — Especial (use raramente)
-
-<div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: 8 }}>
-  <SizeRow px={9}  label="1× · QA labels — Quick Actions somente" />
-  <SizeRow px={10} label="2× · Nav labels, disclaimers" />
+<div style={{ marginTop: 12, display: 'flex', gap: 20, fontSize: 11, color: '#9ca3af', fontFamily: 'JetBrains Mono, monospace' }}>
+  <span><span style={{ color: '#F7931A' }}>★★★</span> Crítico</span>
+  <span><span style={{ color: '#FF9800' }}>★★</span> Muito usado</span>
+  <span><span style={{ color: '#D1D2D2' }}>★</span> Regular</span>
+  <span><span style={{ color: '#727272' }}>○</span> Destaque</span>
+  <span><span style={{ color: '#727272' }}>·</span> Especial</span>
 </div>
 
 ---
