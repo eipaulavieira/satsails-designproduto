@@ -27,14 +27,21 @@ export function BalanceTotalCard({
       blur={blur}
       background={background}
       borderColor={borderColor}
+      style={{
+        display: 'flex',
+        height: 148,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}
     >
       <div
         style={{
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'space-between',
           alignItems: 'flex-start',
-          height: 100,
+          gap: 8,
+          alignSelf: 'stretch',
         }}
       >
         <span

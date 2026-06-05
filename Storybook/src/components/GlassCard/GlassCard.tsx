@@ -19,6 +19,8 @@ export interface GlassCardProps {
   minHeight?: string | number;
   /** Classe extra */
   className?: string;
+  /** Overrides de estilo adicionais */
+  style?: React.CSSProperties;
 }
 
 export function GlassCard({
@@ -31,6 +33,7 @@ export function GlassCard({
   width = '100%',
   minHeight,
   className,
+  style,
 }: GlassCardProps) {
   return (
     <div
@@ -47,6 +50,7 @@ export function GlassCard({
         boxSizing: 'border-box',
         position: 'relative',
         overflow: 'hidden',
+        ...style,
       }}
     >
       {children}
