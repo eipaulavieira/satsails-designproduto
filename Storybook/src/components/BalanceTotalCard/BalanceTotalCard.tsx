@@ -31,7 +31,7 @@ export function BalanceTotalCard({
         display: 'flex',
         height: 148,
         flexDirection: 'column',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
       }}
     >
