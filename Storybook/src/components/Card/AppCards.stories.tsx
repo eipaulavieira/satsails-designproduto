@@ -50,7 +50,7 @@ export const HomeBalanceCard: StoryObj = {
       }}>
         <span style={{ color: '#727272', fontFamily: 'Inter', fontSize: 11 }}>Saldo total</span>
         <div>
-          <div style={{ color: '#fff', fontFamily: 'Inter', fontSize: 33, fontWeight: 400 }}>R$ 68.420,00</div>
+          <div style={{ color: '#fff', fontFamily: 'Inter', fontSize: 33, fontWeight: 700 }}>R$ 68.420,00</div>
           <div style={{ color: '#727272', fontFamily: 'Inter', fontSize: 14 }}>≈ 0.18563 BTC</div>
         </div>
       </div>

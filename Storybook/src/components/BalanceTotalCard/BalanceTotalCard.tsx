@@ -54,7 +54,7 @@ export function BalanceTotalCard({
             color: '#FFF',
             fontFamily: 'Inter, sans-serif',
             fontSize: 33,
-            fontWeight: 400,
+            fontWeight: 700,
             lineHeight: '120%',
           }}
         >
