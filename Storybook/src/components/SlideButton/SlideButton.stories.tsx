@@ -105,22 +105,22 @@ type Story = StoryObj<typeof SlideButton>;
 
 export const Enviar: Story = {
   name: 'Deslize para enviar',
-  args: { label: 'Deslize para enviar' },
+  args: { label: 'Deslize para enviar', color: '#026A2D' },
 };
 
 export const Trocar: Story = {
   name: 'Deslize para trocar',
-  args: { label: 'Deslize para trocar' },
+  args: { label: 'Deslize para trocar', color: '#FF9800' },
 };
 
 export const Receber: Story = {
   name: 'Deslize para receber',
-  args: { label: 'Deslize para receber' },
+  args: { label: 'Deslize para receber', color: '#FF9800' },
 };
 
 export const Converter: Story = {
   name: 'Deslize para converter',
-  args: { label: 'Deslize para converter' },
+  args: { label: 'Deslize para converter', color: '#FF9800' },
 };
 
 export const Vender: Story = {
@@ -133,10 +133,10 @@ export const TodosLabels: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <SlideButton label="Deslize para enviar"    />
-      <SlideButton label="Deslize para trocar"    />
-      <SlideButton label="Deslize para receber"   />
-      <SlideButton label="Deslize para converter" />
+      <SlideButton label="Deslize para enviar"    color="#026A2D" />
+      <SlideButton label="Deslize para trocar"    color="#FF9800" />
+      <SlideButton label="Deslize para receber"   color="#FF9800" />
+      <SlideButton label="Deslize para converter" color="#FF9800" />
       <SlideButton label="Deslize para vender"    color="#026A2D" />
     </div>
   ),
