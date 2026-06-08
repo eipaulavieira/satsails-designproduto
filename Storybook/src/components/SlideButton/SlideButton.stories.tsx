@@ -88,7 +88,8 @@ SlideAction(
     },
   },
   argTypes: {
-    label: { control: 'text', description: 'Texto do botão' },
+    label: { control: 'text',  description: 'Texto do botão' },
+    color: { control: 'color', description: 'Cor do thumb e fill (#FF9800 padrão, #026A2D para vender)' },
   },
   decorators: [
     (Story) => (
@@ -122,6 +123,11 @@ export const Converter: Story = {
   args: { label: 'Deslize para converter' },
 };
 
+export const Vender: Story = {
+  name: 'Deslize para vender',
+  args: { label: 'Deslize para vender', color: '#026A2D' },
+};
+
 export const TodosLabels: Story = {
   name: 'Todos os labels',
   parameters: { controls: { disable: true } },
@@ -131,6 +137,7 @@ export const TodosLabels: Story = {
       <SlideButton label="Deslize para trocar"    />
       <SlideButton label="Deslize para receber"   />
       <SlideButton label="Deslize para converter" />
+      <SlideButton label="Deslize para vender"    color="#026A2D" />
     </div>
   ),
 };

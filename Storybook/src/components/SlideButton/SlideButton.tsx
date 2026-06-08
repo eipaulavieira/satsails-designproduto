@@ -3,6 +3,7 @@ import { useState, useRef, useCallback } from 'react';
 export interface SlideButtonProps {
   label?: string;
   onComplete?: () => void;
+  color?: string;
 }
 
 const ChevronRight = () => (
@@ -23,7 +24,7 @@ const PADDING    = 3;
 const MAX_TRAVEL = TRACK_W - THUMB_W - PADDING * 2;
 const CENTER_X   = (TRACK_W - THUMB_W) / 2;
 
-export function SlideButton({ label = 'Deslize para enviar', onComplete }: SlideButtonProps) {
+export function SlideButton({ label = 'Deslize para enviar', onComplete, color = '#FF9800' }: SlideButtonProps) {
   const [progress, setProgress]   = useState(0); // 0–1
   const [completed, setCompleted] = useState(false);
 
@@ -110,7 +111,7 @@ export function SlideButton({ label = 'Deslize para enviar', onComplete }: Slide
           width: fillWidth,
           height: 55,
           borderRadius: 40,
-          background: '#FF9800',
+          background: color,
           pointerEvents: 'none',
         }} />
       )}
@@ -148,7 +149,7 @@ export function SlideButton({ label = 'Deslize para enviar', onComplete }: Slide
           width: THUMB_W,
           height: 55,
           borderRadius: 40,
-          background: completed ? '#00C853' : '#FF9800',
+          background: completed ? '#00C853' : color,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
