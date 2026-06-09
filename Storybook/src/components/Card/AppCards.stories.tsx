@@ -46,7 +46,8 @@ export const HomeBalanceCard: StoryObj = {
         boxSizing: 'border-box',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
+        gap: 8,
       }}>
         <span style={{ color: '#727272', fontFamily: 'Inter', fontSize: 11 }}>Saldo total</span>
         <div>
