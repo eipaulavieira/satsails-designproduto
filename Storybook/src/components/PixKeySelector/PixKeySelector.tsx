@@ -98,13 +98,13 @@ export function PixKeySelector({ value, onChange }: PixKeySelectorProps) {
               flexShrink: 0,
             }}
           >
-            <Icon color={isSelected ? '#FFFFFF' : '#727272'} />
+            <Icon color={isSelected ? '#00C853' : '#727272'} />
             <span style={{
               fontFamily: 'Inter, sans-serif',
               fontSize: 12,
               fontWeight: 400,
               lineHeight: 'normal',
-              color: isSelected ? '#FFFFFF' : '#727272',
+              color: isSelected ? '#00C853' : '#727272',
               whiteSpace: 'nowrap',
               transition: 'color 0.15s ease',
             }}>
