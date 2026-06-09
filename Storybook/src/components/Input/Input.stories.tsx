@@ -105,6 +105,46 @@ export const PhoneInput18: Story = {
   },
 };
 
+const IconLock = () => (
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+    <rect x="3.5" y="8" width="11" height="8.5" rx="2" stroke="#727272" strokeWidth="1.4"/>
+    <path d="M6 8V5.5a3 3 0 1 1 6 0V8" stroke="#727272" strokeWidth="1.4" strokeLinecap="round"/>
+    <circle cx="9" cy="12" r="1" fill="#727272"/>
+  </svg>
+);
+
+const IconCpf = () => (
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+    <rect x="1.5" y="3.5" width="15" height="11" rx="2" stroke="#727272" strokeWidth="1.4"/>
+    <circle cx="5.5" cy="9" r="1.5" stroke="#727272" strokeWidth="1.2"/>
+    <line x1="8.5" y1="7.5" x2="14" y2="7.5" stroke="#727272" strokeWidth="1.2" strokeLinecap="round"/>
+    <line x1="8.5" y1="9" x2="14" y2="9" stroke="#727272" strokeWidth="1.2" strokeLinecap="round"/>
+    <line x1="8.5" y1="10.5" x2="11.5" y2="10.5" stroke="#727272" strokeWidth="1.2" strokeLinecap="round"/>
+  </svg>
+);
+
+const IconCnpj = () => (
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+    <rect x="2" y="5" width="9" height="11" rx="1" stroke="#727272" strokeWidth="1.4"/>
+    <path d="M11 8h3a1 1 0 0 1 1 1v7" stroke="#727272" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+    <rect x="4.5" y="8" width="2" height="2" stroke="#727272" strokeWidth="1.1"/>
+    <rect x="7.5" y="8" width="2" height="2" stroke="#727272" strokeWidth="1.1"/>
+    <rect x="4.5" y="11.5" width="2" height="2" stroke="#727272" strokeWidth="1.1"/>
+    <rect x="7.5" y="11.5" width="2" height="2" stroke="#727272" strokeWidth="1.1"/>
+  </svg>
+);
+
+const IconCalendar = () => (
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+    <rect x="1.5" y="3.5" width="15" height="13" rx="2" stroke="#727272" strokeWidth="1.4"/>
+    <path d="M1.5 7.5h15" stroke="#727272" strokeWidth="1.4" strokeLinecap="round"/>
+    <path d="M6 1.5v4M12 1.5v4" stroke="#727272" strokeWidth="1.4" strokeLinecap="round"/>
+    <rect x="4" y="10" width="2.5" height="2" rx="0.5" fill="#727272"/>
+    <rect x="7.75" y="10" width="2.5" height="2" rx="0.5" fill="#727272"/>
+    <rect x="11.5" y="10" width="2.5" height="2" rx="0.5" fill="#727272"/>
+  </svg>
+);
+
 const IconScan = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
     <path d="M15.75 2.8125V5.625C15.75 5.77418 15.6907 5.91726 15.5852 6.02275C15.4798 6.12824 15.3367 6.1875 15.1875 6.1875C15.0383 6.1875 14.8952 6.12824 14.7898 6.02275C14.6843 5.91726 14.625 5.77418 14.625 5.625V3.375H12.375C12.2258 3.375 12.0827 3.31574 11.9773 3.21025C11.8718 3.10476 11.8125 2.96168 11.8125 2.8125C11.8125 2.66332 11.8718 2.52024 11.9773 2.41475C12.0827 2.30926 12.2258 2.25 12.375 2.25H15.1875C15.3367 2.25 15.4798 2.30926 15.5852 2.41475C15.6907 2.52024 15.75 2.66332 15.75 2.8125ZM5.625 14.625H3.375V12.375C3.375 12.2258 3.31574 12.0827 3.21025 11.9773C3.10476 11.8718 2.96168 11.8125 2.8125 11.8125C2.66332 11.8125 2.52024 11.8718 2.41475 11.9773C2.30926 12.0827 2.25 12.2258 2.25 12.375V15.1875C2.25 15.3367 2.30926 15.4798 2.41475 15.5852C2.52024 15.6907 2.66332 15.75 2.8125 15.75H5.625C5.77418 15.75 5.91726 15.6907 6.02275 15.5852C6.12824 15.4798 6.1875 15.3367 6.1875 15.1875C6.1875 15.0383 6.12824 14.8952 6.02275 14.7898C5.91726 14.6843 5.77418 14.625 5.625 14.625ZM15.1875 11.8125C15.0383 11.8125 14.8952 11.8718 14.7898 11.9773C14.6843 12.0827 14.625 12.2258 14.625 12.375V14.625H12.375C12.2258 14.625 12.0827 14.6843 11.9773 14.7898C11.8718 14.8952 11.8125 15.0383 11.8125 15.1875C11.8125 15.3367 11.8718 15.4798 11.9773 15.5852C12.0827 15.6907 12.2258 15.75 12.375 15.75H15.1875C15.3367 15.75 15.4798 15.6907 15.5852 15.5852C15.6907 15.4798 15.75 15.3367 15.75 15.1875V12.375C15.75 12.2258 15.6907 12.0827 15.5852 11.9773C15.4798 11.8718 15.3367 11.8125 15.1875 11.8125ZM2.8125 6.1875C2.96168 6.1875 3.10476 6.12824 3.21025 6.02275C3.31574 5.91726 3.375 5.77418 3.375 5.625V3.375H5.625C5.77418 3.375 5.91726 3.31574 6.02275 3.21025C6.12824 3.10476 6.1875 2.96168 6.1875 2.8125C6.1875 2.66332 6.12824 2.52024 6.02275 2.41475C5.91726 2.30926 5.77418 2.25 5.625 2.25H2.8125C2.66332 2.25 2.52024 2.30926 2.41475 2.41475C2.30926 2.52024 2.25 2.66332 2.25 2.8125V5.625C2.25 5.77418 2.30926 5.91726 2.41475 6.02275C2.52024 6.12824 2.66332 6.1875 2.8125 6.1875ZM5.625 5.0625H12.375C12.5242 5.0625 12.6673 5.12176 12.7727 5.22725C12.8782 5.33274 12.9375 5.47582 12.9375 5.625V12.375C12.9375 12.5242 12.8782 12.6673 12.7727 12.7727C12.6673 12.8782 12.5242 12.9375 12.375 12.9375H5.625C5.47582 12.9375 5.33274 12.8782 5.22725 12.7727C5.12176 12.6673 5.0625 12.5242 5.0625 12.375V5.625C5.0625 5.47582 5.12176 5.33274 5.22725 5.22725C5.33274 5.12176 5.47582 5.0625 5.625 5.0625ZM6.1875 11.8125H11.8125V6.1875H6.1875V11.8125Z" fill="white"/>
@@ -180,6 +220,51 @@ export const QuantidadeFormatada: StoryObj = {
   },
 };
 
+export const PinInput: Story = {
+  name: 'PIN — Código de segurança',
+  args: {
+    type: 'password',
+    placeholder: 'Digite seu PIN',
+    icon: <IconLock />,
+  },
+};
+
+export const CpfInput: Story = {
+  name: 'Identificação — CPF',
+  args: {
+    type: 'text',
+    placeholder: 'Digite seu CPF',
+    icon: <IconCpf />,
+  },
+};
+
+export const CnpjInput: Story = {
+  name: 'Identificação — CNPJ',
+  args: {
+    type: 'text',
+    placeholder: 'Digite seu CNPJ',
+    icon: <IconCnpj />,
+  },
+};
+
+export const DataInicial: Story = {
+  name: 'Filtro — Data inicial',
+  args: {
+    label: 'Data inicial',
+    type: 'date',
+    icon: <IconCalendar />,
+  },
+};
+
+export const DataFinal: Story = {
+  name: 'Filtro — Data final',
+  args: {
+    label: 'Data final',
+    type: 'date',
+    icon: <IconCalendar />,
+  },
+};
+
 export const SemIcone: Story = {
   name: 'Sem ícone',
   args: {
@@ -203,12 +288,15 @@ export const TodosInputs: Story = {
   parameters: { controls: { disable: true } },
   render: () => (
     <div style={{ width: 358, background: '#080808', padding: '24px 16px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <AppInput type="email"    placeholder="Digite seu melhor e-mail *"      icon={<IconEmail />} />
-      <AppInput type="text"     placeholder="Digite seu código de afiliado"   icon={<IconAfiliado />} />
-      <AppInput type="text"     placeholder="Nome"                            icon={<IconNome />} />
-      <AppInput type="tel"      placeholder="WhatsApp"                        icon={<IconPhone18 />} />
-      <AppInput type="text"     placeholder="Campo sem ícone" />
-      <AppInput type="text"     placeholder="Desabilitado"                    icon={<IconEmail />} disabled />
+      <AppInput type="email"    placeholder="Digite seu melhor e-mail *"           icon={<IconEmail />} />
+      <AppInput type="password" placeholder="Digite seu PIN"                        icon={<IconLock />} />
+      <AppInput type="text"     placeholder="Digite seu código de afiliado"        icon={<IconAfiliado />} />
+      <AppInput label="Endereço do destinatário" type="text" placeholder="Digite o endereço" rightIcon={<IconScan />} />
+      <AppInput type="text"     placeholder="Digite seu CPF"                       icon={<IconCpf />} />
+      <AppInput type="text"     placeholder="Digite seu CNPJ"                      icon={<IconCnpj />} />
+      <AppInput label="Quantidade" type="text"  placeholder="Digite a quantidade desejada" />
+      <AppInput label="Data inicial" type="date"                                   icon={<IconCalendar />} />
+      <AppInput label="Data final"   type="date"                                   icon={<IconCalendar />} />
     </div>
   ),
 };
